@@ -1,0 +1,9 @@
+20-min-exp/Library/
+20-min-exp/Temp/
+20-min-exp/Obj/
+*.csproj
+*.unityproj
+*.sln
+*.user
+*.userprefs
+*.DS_store
