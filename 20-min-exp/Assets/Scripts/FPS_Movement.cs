@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Movement : MonoBehaviour {
+public class FPS_Movement : MonoBehaviour {
 
     public float Speed;
     private GameObject _head;
