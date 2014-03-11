@@ -10,7 +10,7 @@ public class LevelLoader {
     /// Returns the current progess or -1 if there is no level loading.
     /// </summary>
     public static float Progress {
-        get { return _currentLoadJob == null ? -1 : Mathf.Round(_currentLoadJob.progress * 100f); }
+        get { return _currentLoadJob == null ? -1 : Mathf.Round(_currentLoadJob.progress * 100f) ; }
     }
 
     public static LoadStatus Status {
