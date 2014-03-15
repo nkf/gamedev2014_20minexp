@@ -30,6 +30,7 @@ public class ConversationAgent : MonoBehaviour {
 		// Read in the conversation from the JSON file and initialise the node collection
 		JSONNode node = JSONNode.Parse( File.ReadAllText(@_conversationPath) );
 		allNodes = new ConversationNode[ node["AllNodes"].Count ];
+
 		
 		// Build all ConversationNodes and add to allNodes
 		foreach(JSONNode n in node["AllNodes"].Childs) {
@@ -123,12 +124,12 @@ public class ConversationAgent : MonoBehaviour {
 		}
 	}
 
-	protected void StartConversation() {
+	public void StartConversation() {
 		_conversationIsRunning = true;
 		//SimplePlayer.PLAYER.SwitchState(PlayerState.IN_CONVERSATION);
 	}
 
-	protected void StopConversation() {
+	protected virtual void StopConversation() {
 		_conversationIsRunning = false;
 		//SimplePlayer.PLAYER.SwitchState(PlayerState.PLAYING);
 		Restart();
