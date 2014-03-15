@@ -5,8 +5,8 @@
             "index": 0,
             "dialogue": "What is thy name, brave traveler?",
             "responses": [
-                ["What is this 'name', you are talking about?", 1],
-                ["KONDIFAXE!!!", 2]
+                {"response": "What is this 'name', you are talking about?", "gotoNode": 1},
+                {"response": "KONDIFAXE!!!", "gotoNode": 2}
             ]
         },
         
@@ -14,7 +14,7 @@
             "index": 1,
             "dialogue": "The name your parents gave you at birth.",
             "responses": [
-                ["MY PARENTS ARE DEEEEEAD", 3]
+                {"response": "MY PARENTS ARE DEEEEEAD", "gotoNode": 3}
             ]
         },
         
@@ -22,7 +22,7 @@
             "index": 2,
             "dialogue": "That is indeed a perculiar name!",
             "responses": [
-                ["STFU!", 3]
+                {"response": "STFU!", "gotoNode": 3}
             ]
         },
 

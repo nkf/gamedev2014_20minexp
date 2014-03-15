@@ -38,8 +38,8 @@ public class ConversationAgent : MonoBehaviour {
 			// Set up responses
 			int i = 0; // .Childs doesn't have Count/Size field
 			foreach(JSONNode response in n["responses"].Childs) {
-				cNode.responses[i] = response[0];
-				cNode.nodeLinks[i] = response[1].AsInt;
+				cNode.responses[i] = response["response"];
+				cNode.nodeLinks[i] = response["gotoNode"].AsInt;
 				i++;
 			}
 			
