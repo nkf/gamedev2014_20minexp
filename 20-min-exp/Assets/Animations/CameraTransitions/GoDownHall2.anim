@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: OpeningAnimation
+  m_Name: GoDownHall2
   serializedVersion: 4
   m_AnimationType: 2
   m_Compressed: 0
@@ -17,15 +17,15 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: -3.22565174, y: 2, z: 3.99023104}
-        inSlope: {x: 0, y: 0, z: -.552185357}
-        outSlope: {x: 0, y: 0, z: -.552185357}
-        tangentMode: 1106771968
-      - time: 3
-        value: {x: -3.22565174, y: 2, z: 2.33367491}
-        inSlope: {x: 0, y: 0, z: -.170468748}
-        outSlope: {x: 0, y: 0, z: -.170468748}
-        tangentMode: 3
+        value: {x: -8.63249779, y: 2, z: -.287462711}
+        inSlope: {x: 0, y: 0, z: -1.25775015}
+        outSlope: {x: 0, y: 0, z: -1.25775015}
+        tangentMode: 0
+      - time: 3.5
+        value: {x: -8.63249779, y: 2, z: -4.68958807}
+        inSlope: {x: 0, y: 0, z: -1.25775015}
+        outSlope: {x: 0, y: 0, z: -1.25775015}
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: 
@@ -40,7 +40,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 3.0333333
+    m_StopTime: 3.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -59,12 +59,12 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -3.22565174
+        value: -8.63249779
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 3
-        value: -3.22565174
+      - time: 3.5
+        value: -8.63249779
         inSlope: 0
         outSlope: 0
         tangentMode: 10
@@ -82,7 +82,7 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 3
+      - time: 3.5
         value: 2
         inSlope: 0
         outSlope: 0
@@ -97,15 +97,15 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 3.99023104
-        inSlope: -.552185357
-        outSlope: -.552185357
+        value: -.287462711
+        inSlope: -1.25775015
+        outSlope: -1.25775015
         tangentMode: 10
-      - time: 3
-        value: 2.33367491
-        inSlope: -.170468748
-        outSlope: -.170468748
-        tangentMode: 0
+      - time: 3.5
+        value: -4.68958807
+        inSlope: -1.25775015
+        outSlope: -1.25775015
+        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.z
@@ -113,11 +113,4 @@ AnimationClip:
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves: []
-  m_Events:
-  - time: 3.0333333
-    functionName: StartConversation1
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: OpeningAnimation
+  m_Name: GoDownHall1
   serializedVersion: 4
   m_AnimationType: 2
   m_Compressed: 0
@@ -17,15 +17,15 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: -3.22565174, y: 2, z: 3.99023104}
-        inSlope: {x: 0, y: 0, z: -.552185357}
-        outSlope: {x: 0, y: 0, z: -.552185357}
-        tangentMode: 1106771968
-      - time: 3
-        value: {x: -3.22565174, y: 2, z: 2.33367491}
-        inSlope: {x: 0, y: 0, z: -.170468748}
-        outSlope: {x: 0, y: 0, z: -.170468748}
-        tangentMode: 3
+        value: {x: -8.63249683, y: 2, z: 2.18130827}
+        inSlope: {x: -2.38418579e-07, y: 0, z: -.617192745}
+        outSlope: {x: -2.38418579e-07, y: 0, z: -.617192745}
+        tangentMode: 0
+      - time: 4
+        value: {x: -8.63249779, y: 2, z: -.287462711}
+        inSlope: {x: -2.38418579e-07, y: 0, z: -.617192745}
+        outSlope: {x: -2.38418579e-07, y: 0, z: -.617192745}
+        tangentMode: 4
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: 
@@ -40,7 +40,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 3.0333333
+    m_StopTime: 4.0333333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -59,14 +59,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -3.22565174
-        inSlope: 0
-        outSlope: 0
+        value: -8.63249683
+        inSlope: -2.38418579e-07
+        outSlope: -2.38418579e-07
         tangentMode: 10
-      - time: 3
-        value: -3.22565174
-        inSlope: 0
-        outSlope: 0
+      - time: 4
+        value: -8.63249779
+        inSlope: -2.38418579e-07
+        outSlope: -2.38418579e-07
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -82,7 +82,7 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 3
+      - time: 4
         value: 2
         inSlope: 0
         outSlope: 0
@@ -97,15 +97,15 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 3.99023104
-        inSlope: -.552185357
-        outSlope: -.552185357
+        value: 2.18130827
+        inSlope: -.617192745
+        outSlope: -.617192745
         tangentMode: 10
-      - time: 3
-        value: 2.33367491
-        inSlope: -.170468748
-        outSlope: -.170468748
-        tangentMode: 0
+      - time: 4
+        value: -.287462711
+        inSlope: -.617192745
+        outSlope: -.617192745
+        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.z
@@ -114,7 +114,7 @@ AnimationClip:
     script: {fileID: 0}
   m_EulerEditorCurves: []
   m_Events:
-  - time: 3.0333333
+  - time: 4.0333333
     functionName: StartConversation1
     data: 
     objectReferenceParameter: {fileID: 0}
