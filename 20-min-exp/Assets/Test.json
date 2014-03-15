@@ -4,25 +4,22 @@
     {
       "index": 0,
       "dialogue": "Hello, World",
+      "delay": 1.0,
       "responses": [
-        [
-          "Hello, yourself!",
-          1
-        ],
-        [
-          "Bye!",
-          2
-        ]
+        {"response": "Hello, yourself!", "gotoNode": 1 },
+        {"response": "Bye!", "gotoNode": 2 }
       ]
     },
     {
       "index": 1,
       "dialogue": "WUUARG",
+      "delay": 1.0,
       "responses": []
     },
     {
       "index": 2,
       "dialogue": "Bye, yourself!",
+      "delay": 1.0,
       "responses": []
     }
   ]
