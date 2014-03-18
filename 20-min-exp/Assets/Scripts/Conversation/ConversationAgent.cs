@@ -44,8 +44,8 @@ public class ConversationAgent : MonoBehaviour {
 			// Set up responses
 			int i = 0; // .Childs doesn't have Count/Size field
 			foreach(JSONNode response in n["responses"].Childs) {
-				cNode.responses[i] = response["response"];
-				cNode.nodeLinks[i] = response["gotoNode"].AsInt;
+				cNode.Responses[i] = response["response"];
+				cNode.NodeLinks[i] = response["gotoNode"].AsInt;
 				i++;
 			}
 			
@@ -65,7 +65,7 @@ public class ConversationAgent : MonoBehaviour {
 			if (Input.GetKey(KeyCode.UpArrow) && _highlightedResponse != 0) {
 				_highlightedResponse--;
 			}
-			if (Input.GetKey (KeyCode.DownArrow) && _highlightedResponse != getCurrentNode().responses.Length-1) {
+			if (Input.GetKey (KeyCode.DownArrow) && _highlightedResponse != getCurrentNode().Responses.Length-1) {
 				_highlightedResponse++;
 			}
 			if (Input.GetKeyDown (KeyCode.Return) && !getCurrentNode().IsEndNode) {
@@ -84,7 +84,7 @@ public class ConversationAgent : MonoBehaviour {
 			break;
 
 		case ConversationState.AWKWARD:
-			if (Time.time - endTimer > getCurrentNode().answeringDelay) {
+			if (Time.time - endTimer > getCurrentNode().AnsweringDelay) {
 				_state = ConversationState.SELECTION_TIME;
 				SelectResponse(_highlightedResponse);
 			}
@@ -116,7 +116,7 @@ public class ConversationAgent : MonoBehaviour {
 		switch(_state) {
 		case ConversationState.SELECTION_TIME:
 			// Write responses
-			string[] responses = getCurrentNode().responses;
+			string[] responses = getCurrentNode().Responses;
 			for(int i = 0; i < responses.Length; i++) {
 				RenderAnswer(i, barHeight);
 			}
@@ -150,7 +150,7 @@ public class ConversationAgent : MonoBehaviour {
 		} else {
 			style.normal.textColor = Color.white;
 		}
-		GUI.Label(responsePos, getCurrentNode().responses[i], style);
+		GUI.Label(responsePos, getCurrentNode().Responses[i], style);
 	}
 
 	public void StartConversation() {
@@ -173,7 +173,7 @@ public class ConversationAgent : MonoBehaviour {
 	}
 	
 	public void SelectResponse(int responseIndex) {
-		currentNode = getCurrentNode().nodeLinks[responseIndex];
+		currentNode = getCurrentNode().NodeLinks[responseIndex];
 		_highlightedResponse = 0;
 	}
 }
