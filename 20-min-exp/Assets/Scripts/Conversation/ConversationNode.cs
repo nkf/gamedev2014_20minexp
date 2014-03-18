@@ -6,6 +6,7 @@ public class ConversationNode {
 
 	public string Dialogue;
 	public string[] responses;
+	public float answeringDelay; // Delay after choosing a response
 	
 	// The indexes in this array points to indexes in an array which contains all conversation nodes.
 	public int[] nodeLinks;
@@ -26,11 +27,12 @@ public class ConversationNode {
 	/// </summary>
 	/// <param name="dialogue">The dialogue to be contained in this node.</param>
 	/// <param name="noOfResponses">The number of responses from this node.</param>
-	public ConversationNode (string dialogue, int noOfResponses)
+	public ConversationNode (string dialogue, int noOfResponses, float answeringDelay)
 	{
-		Dialogue = dialogue;
-		responses = new string[noOfResponses];
-		nodeLinks = new int[noOfResponses];
+		this.Dialogue = dialogue;
+		this.responses = new string[noOfResponses];
+		this.nodeLinks = new int[noOfResponses];
+		this.answeringDelay = answeringDelay;
 	}
 
 	public override string ToString ()
