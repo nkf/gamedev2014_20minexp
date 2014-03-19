@@ -1,2 +1,2 @@
 asphalt.jpg				http://www.sharecg.com/images/medium/5924.jpg
-
+stone.jpg				http://www.aversis.be/textures/stone-tile-texture.htm

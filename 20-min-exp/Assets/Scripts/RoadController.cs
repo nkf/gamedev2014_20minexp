@@ -9,31 +9,47 @@ public class RoadController : MonoBehaviour {
     private Bounds _roadBounds;
 	// Use this for initialization
 	void Start () {
-
+	    _speed = Speed;
 	}
 
     public float Speed = 50;
+    public float Acceleration = 1f;
+    public float DeAcceleration = 1f;
+    public float MinSpeed = 40;
+    public float MaxSpeed = 100;
     public float SteeringSpeed = 0.5f;
     public float SwayFactor = 0.02f;
     public float EdgeSlowDownThreshold = 3f;
     public float EdgePadding = 1f;
     private float _slowDownFactor = 1;
-	// Update is called once per frame
+    private float _speed;
+    // Update is called once per frame
 	void Update () {
 	    var p = transform.position;
-	    var hInput = Input.GetAxis("Horizontal");
-	    var move = hInput * SteeringSpeed + (Random.value*SwayFactor);
+	    //var hInput = Input.GetAxis("Horizontal");
+	    var hInput = MouseHorizontalPosition();
+	    if (Input.GetMouseButton(0)) _speed += Acceleration * Time.deltaTime;
+	    else _speed -= Acceleration * Time.deltaTime;
+	    _speed = Mathf.Clamp(_speed, MinSpeed, MaxSpeed);
+	    var move = hInput * SteeringSpeed + SwayFactor;
 	    //Calculate edge slowdown
 	    var edgeDis = DistanceToEdge();
 	    _slowDownFactor = Mathf.InverseLerp(0, EdgeSlowDownThreshold, edgeDis);
         //if we are going too close to the edge AND are on course towards the edge.
 	    if (edgeDis < EdgePadding && Mathf.Sign(transform.position.x) == Mathf.Sign(move)) move = 0;
         //apply
+        Debug.Log(_speed * _slowDownFactor);
 	    p.x += move * _slowDownFactor;
-        p.z += Speed * Time.deltaTime * _slowDownFactor;
+        p.z += _speed * Time.deltaTime * _slowDownFactor;
 	    transform.position = p;
 	    
 	}
+
+    private float MouseHorizontalPosition() {
+        var mp = Input.mousePosition.x;
+        var t = Mathf.InverseLerp(0, Screen.width, mp);
+        return Mathf.Lerp(-1, 1, t);
+    }
 
     void FixedUpdate() {
         RaycastHit hit;

@@ -14,7 +14,6 @@ public class RoadGenerator : MonoBehaviour {
 
     public int RoadBufferSize;
 
-
     private string[] _normalRoadSections;
     private string[] _exoticRoadSections;
     private Random _rng;
