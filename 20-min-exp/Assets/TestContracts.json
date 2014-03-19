@@ -1,0 +1,29 @@
+{
+  "allContracts": [
+    {
+      "title": "New hats for management.",
+      "description": "HAT PARTY!!",
+      "price": 400
+    },
+    {
+      "title": "Cheezburger?",
+      "description": "Can haz?",
+      "price": 25
+    },
+    {
+      "title": "Rugbrød for Michail",
+      "description": "For educational puposes",
+      "price": 15
+    },
+    {
+      "title": "Bacon",
+      "description": "Always important",
+      "price": 50
+    },
+    {
+      "title": "Vidya gaaaems",
+      "description": "For pley tiemz",
+      "price": 10000
+    }
+  ]
+}

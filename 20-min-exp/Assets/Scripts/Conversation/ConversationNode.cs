@@ -4,11 +4,16 @@ using SimpleJSON;
 
 public class ConversationNode {
 
-	public string Dialogue;
-	public string[] responses;
-	
+	protected string _dialogue;
+	protected string[] _responses;
+	protected float _answeringDelay; // Delay after choosing a response
 	// The indexes in this array points to indexes in an array which contains all conversation nodes.
-	public int[] nodeLinks;
+	protected int[] _nodeLinks;
+
+	public string Dialogue      { get { return _dialogue; } }
+	public string[] Responses   { get { return _responses; } }
+	public float AnsweringDelay { get { return _answeringDelay; } }
+	public int[] NodeLinks      { get { return _nodeLinks; } }
 
 	/**
 	 * Whether this node is an end node. This is currently true, if there are no responses available.
@@ -17,7 +22,7 @@ public class ConversationNode {
 	 */
 	public bool IsEndNode {
 		get {
-			return nodeLinks.Length == 0 ? true : false;
+			return _nodeLinks.Length == 0 ? true : false;
 		}
 	}
 
@@ -26,16 +31,17 @@ public class ConversationNode {
 	/// </summary>
 	/// <param name="dialogue">The dialogue to be contained in this node.</param>
 	/// <param name="noOfResponses">The number of responses from this node.</param>
-	public ConversationNode (string dialogue, int noOfResponses)
+	public ConversationNode (string dialogue, int noOfResponses, float answeringDelay)
 	{
-		Dialogue = dialogue;
-		responses = new string[noOfResponses];
-		nodeLinks = new int[noOfResponses];
+		this._dialogue = dialogue;
+		this._responses = new string[noOfResponses];
+		this._nodeLinks = new int[noOfResponses];
+		this._answeringDelay = answeringDelay;
 	}
 
 	public override string ToString ()
 	{
-		return string.Format ("[ConversationNode: responses={0}, nodeLinks={1}, Dialogue={2}]", responses, nodeLinks, Dialogue);
+		return string.Format ("[ConversationNode: responses={0}, nodeLinks={1}, Dialogue={2}]", _responses, _nodeLinks, _dialogue);
 	}
 	
 
