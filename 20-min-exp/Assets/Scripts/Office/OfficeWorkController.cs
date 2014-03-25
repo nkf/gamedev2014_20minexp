@@ -85,22 +85,15 @@ public class OfficeWorkController : MonoBehaviour {
 	}
 
 	public void SelectContract(Contract contract) {
-		// The whole point of the game is, that selecting contracts changes nothing
 //		_highlightedContract = 0;
 		_loadNewContracts = true;
+		Toolbox.Instance.gameState.MoneyCounter -= contract.Price;
 	}
 
 	void OnGUI() {
 		Vector3 pos = Camera.main.WorldToScreenPoint( _loadedContracts[_highlightedContract].transform.position );
-		Rect posBackground  = new Rect(pos.x, Screen.height-pos.y, 20, 20);
-		DrawQuad(posBackground, Color.blue);
+		Rect selectionPos = new Rect(pos.x, Screen.height-pos.y, 20, 20);
+		GUIHelpers.DrawQuad(selectionPos, Color.blue);
 	}
 
-	public void DrawQuad(Rect position, Color color) {
-		Texture2D texture = new Texture2D(1, 1);
-		texture.SetPixel(0,0,color);
-		texture.Apply();
-		GUI.skin.box.normal.background = texture;
-		GUI.Box(position, GUIContent.none);
-	}
 }
