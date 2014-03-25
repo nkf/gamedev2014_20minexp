@@ -23,10 +23,16 @@ public class LevelLoader {
     }
 
     public static bool Load(string level) {
-        if (_currentLoadJob != null) {Debug.Log("Could not load \""+level+"\", because a level is already loading"); return false;}
+        if (_currentLoadJob != null) {
+			Debug.Log("Could not load \""+level+"\", because a level is already loading");
+			return false;
+		}
+
         _currentLoadJob = Application.LoadLevelAsync(level);
-        if(_currentLoadJob != null) _currentLoadJob.allowSceneActivation = false;
-        return _currentLoadJob != null;
+        if(_currentLoadJob != null)
+			_currentLoadJob.allowSceneActivation = false;
+        
+		return _currentLoadJob != null;
     }
 
     public static void Switch() {

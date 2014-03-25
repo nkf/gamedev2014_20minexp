@@ -13,4 +13,8 @@ public class HallAnimationFunctions : MonoBehaviour {
         Conversation1.StartConversation();
     }
 
+	public void EndHallAnimation() {
+		Toolbox.Instance.levelController.LoadNext();
+	}
+
 }
