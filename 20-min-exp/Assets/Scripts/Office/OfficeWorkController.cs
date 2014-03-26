@@ -20,6 +20,8 @@ public class OfficeWorkController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		// TODO: Delete for final version
+		GameState touchTheSingleton = Toolbox.Instance.gameState;
 
 		// Read in the conversation from the JSON file and initialise the node collection
 		JSONNode node = JSONNode.Parse( File.ReadAllText(@contractPath) );

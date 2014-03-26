@@ -3,15 +3,22 @@ using System.Collections;
 
 public class HallAnimationFunctions : MonoBehaviour {
 
-    public ConversationAgent Conversation1;
+	public GameObject door;
+    public ConversationAgent conversationKid;
+
     // Use this for initialization
     void Start() {
 
     }
 
     public void StartConversation1() {
-        Conversation1.StartConversation();
+        conversationKid.StartConversation();
     }
+
+	public void OpenDoorNew() {
+		var ani = door.GetComponent<Animation>();
+		ani.Play();
+	}
 
 	public void EndHallAnimation() {
 		Toolbox.Instance.levelController.LoadNext();
