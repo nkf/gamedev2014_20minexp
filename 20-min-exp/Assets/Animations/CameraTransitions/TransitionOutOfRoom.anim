@@ -2813,13 +2813,6 @@ AnimationClip:
     classID: 4
     script: {fileID: 0}
   m_Events:
-  - time: 2.0333333
-    functionName: OpenDoor1
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 3.4333334
     functionName: SwitchToCamera1
     data: 

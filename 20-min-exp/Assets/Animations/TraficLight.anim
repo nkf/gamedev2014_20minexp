@@ -23,22 +23,22 @@ AnimationClip:
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 1.54999995
+      - time: 3
         value: .918052793
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - time: 2.98333335
+      - time: 6
         value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 4.4666667
+      - time: 9.01666641
         value: .918052793
         inSlope: 0
         outSlope: 0
         tangentMode: 7
-      - time: 6
+      - time: 11.9833336
         value: .918052793
         inSlope: 0
         outSlope: 0
@@ -57,17 +57,17 @@ AnimationClip:
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 2.98333335
+      - time: 6
         value: .436612546
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 4.4666667
+      - time: 9.01666641
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 7
-      - time: 6
+      - time: 11.9833336
         value: 1
         inSlope: 0
         outSlope: 0
@@ -87,7 +87,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 6
+    m_StopTime: 11.9833336
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -110,22 +110,22 @@ AnimationClip:
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 1.54999995
+      - time: 3
         value: .918052793
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - time: 2.98333335
+      - time: 6
         value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 4.4666667
+      - time: 9.01666641
         value: .918052793
         inSlope: 0
         outSlope: 0
         tangentMode: 7
-      - time: 6
+      - time: 11.9833336
         value: .918052793
         inSlope: 0
         outSlope: 0
@@ -144,17 +144,17 @@ AnimationClip:
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 2.98333335
+      - time: 6
         value: .436612546
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 4.4666667
+      - time: 9.01666641
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 7
-      - time: 6
+      - time: 11.9833336
         value: 1
         inSlope: 0
         outSlope: 0

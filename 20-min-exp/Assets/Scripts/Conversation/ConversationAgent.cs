@@ -101,7 +101,8 @@ public class ConversationAgent : MonoBehaviour {
 
 		// Draw Background
 		Texture2D texture = new Texture2D(1, 1);
-		texture.SetPixel(0,0, Color.blue);
+		Color color = new Color(0.2F, 0.3F, 0.4F, 0.5F);
+		texture.SetPixel(0,0, color);
 		texture.Apply();
 		GUI.skin.box.normal.background = texture;
 		GUI.Box(posBackground, GUIContent.none);
