@@ -15,9 +15,9 @@ public class Toolbox : Singleton<Toolbox> {
 	public GameState gameState;
 
 	void Awake () {
-		levelController = new LevelController();
-		
+	    levelController = gameObject.AddComponent<LevelController>();
 		gameStateObject = new GameObject();
+	    gameStateObject.transform.parent = transform;
 		gameState = gameStateObject.AddComponent("GameState") as GameState;
 		DontDestroyOnLoad(gameObject);
 		DontDestroyOnLoad(gameStateObject);

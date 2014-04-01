@@ -1,40 +1,27 @@
-﻿using UnityEngine;
+﻿using System.Runtime.Serialization.Formatters;
+using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(GUIText))]
-public class LevelController {
+public class LevelController : MonoBehaviour {
 
 	private int _currentLevelIndex;
-	private string[] _levelNames;
-//    private GUIText _text;
-
-	public LevelController() {
-		_levelNames = new string[3];
-		_levelNames[0] = "House";
-		_levelNames[1] = "Road";
-		_levelNames[2] = "Office";
-	}
+    private bool _loading = false;
 
 	/// <summary>
 	/// Loads the next level in the game.
 	/// </summary>
-	public void LoadNext() {
-		// TODO: Go to some fade-out crap
-		LevelLoader.Load( _levelNames[_currentLevelIndex+1] );
-		// TODO: Render load progress
-
-		// When the scene has loaded, switch to it
-		LevelLoader.Switch();
+	public void LoadNext(float fadeTime = 3.0f) {
+	    if (_loading) return;
+	    _loading = true;
+        LevelLoader.Load(++_currentLevelIndex);
+	    StartCoroutine(Camera.main.FadeToBlack(fadeTime, () => {
+	        StartCoroutine(TrySwitch());
+	        _loading = false;
+	    }));
 	}
 
-    IEnumerator LoadingText() {
-        if (LevelLoader.Status == LoadStatus.NotLoading) yield break;
-//        _text.enabled = true;
-        while (LevelLoader.Status == LoadStatus.Loading) {
-//            _text.text = LevelLoader.Progress+"%";
-            yield return new WaitForEndOfFrame();
-        }
-        yield return new WaitForEndOfFrame();
-//        _text.text = 100 + "%";
+    static IEnumerator TrySwitch() {
+        while (LevelLoader.Status == LoadStatus.Loading) yield return new WaitForEndOfFrame();
+        if (LevelLoader.Status == LoadStatus.Done) LevelLoader.Switch();
     }
 }
