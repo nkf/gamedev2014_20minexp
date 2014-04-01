@@ -4,16 +4,26 @@ using SimpleJSON;
 
 public class ConversationNode {
 
-	protected string _dialogue;
+	protected string   _dialogue;
 	protected string[] _responses;
-	protected float _answeringDelay; // Delay after choosing a response
+	protected float    _answeringDelay; // Delay after choosing a response
 	// The indexes in this array points to indexes in an array which contains all conversation nodes.
-	protected int[] _nodeLinks;
+	protected int[]    _nodeLinks;
+	protected float    _silentResponse;
+	protected int      _silentGoto;
 
 	public string Dialogue      { get { return _dialogue; } }
 	public string[] Responses   { get { return _responses; } }
 	public float AnsweringDelay { get { return _answeringDelay; } }
 	public int[] NodeLinks      { get { return _nodeLinks; } }
+	public float SilentResponse {
+		set { _silentResponse = value; }
+		get { return _silentResponse; }
+	}
+	public int SilentGoto       {
+		set { _silentGoto = value; }
+		get { return _silentGoto; }
+	}
 
 	/**
 	 * Whether this node is an end node. This is currently true, if there are no responses available.

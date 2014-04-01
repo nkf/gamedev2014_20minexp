@@ -13409,9 +13409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2941fe1c3f9d0f44f8fcd508be6865e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door1: {fileID: 0}
   Conversation1: {fileID: 2085920127}
-  Camera1: {fileID: 0}
 --- !u!95 &1320020945
 Animator:
   serializedVersion: 2
@@ -20840,7 +20838,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conversationPath: Assets/Test2.json
-  DinnerCamera: {fileID: 1320020943}
 --- !u!1 &2088043822
 GameObject:
   m_ObjectHideFlags: 0

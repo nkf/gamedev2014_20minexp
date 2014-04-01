@@ -24,7 +24,9 @@ public class ConversationAgent : MonoBehaviour {
 	protected ConversationState _state = ConversationState.SELECTION_TIME;
 	
 	private float endTimer;				// Used to time the display time of the last conversation dialogue
-	
+	private float nodeTimer;
+	private bool nodeTimerHasBeenSet = false;
+
 	// Use this for initialization
 	protected virtual void Start () {
 		// Modifies the path to use the path seperator for the current system
@@ -48,6 +50,12 @@ public class ConversationAgent : MonoBehaviour {
 				cNode.NodeLinks[i] = response["gotoNode"].AsInt;
 				i++;
 			}
+
+			var silResp = n["silentResponse"];
+			if (silResp != null) {
+				cNode.SilentResponse = silResp["timer"].AsFloat;
+				cNode.SilentGoto     = silResp["gotoNode"].AsInt;
+			}
 			
 			// Add to allNodes
 			allNodes[ n["index"].AsInt ] = cNode;
@@ -58,6 +66,20 @@ public class ConversationAgent : MonoBehaviour {
 	protected virtual void Update () {
 		if (!_conversationIsRunning)
 			return;
+
+
+		// Check whether conversation should skip ahead if no answer is selected
+		if (getCurrentNode().SilentResponse > 0.0) {
+			if (!nodeTimerHasBeenSet) {
+				nodeTimer = Time.time;
+				nodeTimerHasBeenSet = true;
+			}
+
+			if (Time.time - nodeTimer > getCurrentNode().SilentResponse) {
+				currentNode = getCurrentNode().SilentGoto;
+				nodeTimerHasBeenSet = false;
+			}
+		}
 
 		switch(_state) {
 		case ConversationState.SELECTION_TIME:
