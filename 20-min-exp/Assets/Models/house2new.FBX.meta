@@ -45,6 +45,34 @@ ModelImporter:
     100078: WestGable
     100080: WestWall
     100082: WindowFrame
+    100084: Box001
+    100086: WindowFrame001
+    100088: WindowFrame002
+    100090: WindowFrame003
+    100092: WindowFrame004
+    100094: AtticWindowPane
+    100096: KitchenWindowPane
+    100098: ToiletWindowPane
+    100100: WindowPane
+    100102: WindowPane001
+    100104: WindowPane002
+    100106: WindowPane003
+    100108: WindowPane004
+    100110: RoomDoor001
+    100112: RoomDoor002
+    100114: RoomDoor003
+    100116: RoomDoor004
+    100118: RoomDoor005
+    100120: RoomDoorFrame001
+    100122: RoomDoorFrame002
+    100124: RoomDoorFrame003
+    100126: RoomDoorFrame004
+    100128: RoomDoorFrame005
+    100130: BathroomFloor
+    100132: KitchenFloor
+    100134: MainFloor
+    100136: RoomFloor
+    100138: RoomFloor1
     400000: AtticFacade
     400002: AtticGutterEast
     400004: AtticGutterWest
@@ -87,6 +115,34 @@ ModelImporter:
     400078: WestGable
     400080: WestWall
     400082: WindowFrame
+    400084: Box001
+    400086: WindowFrame001
+    400088: WindowFrame002
+    400090: WindowFrame003
+    400092: WindowFrame004
+    400094: AtticWindowPane
+    400096: KitchenWindowPane
+    400098: ToiletWindowPane
+    400100: WindowPane
+    400102: WindowPane001
+    400104: WindowPane002
+    400106: WindowPane003
+    400108: WindowPane004
+    400110: RoomDoor001
+    400112: RoomDoor002
+    400114: RoomDoor003
+    400116: RoomDoor004
+    400118: RoomDoor005
+    400120: RoomDoorFrame001
+    400122: RoomDoorFrame002
+    400124: RoomDoorFrame003
+    400126: RoomDoorFrame004
+    400128: RoomDoorFrame005
+    400130: BathroomFloor
+    400132: KitchenFloor
+    400134: MainFloor
+    400136: RoomFloor
+    400138: RoomFloor1
     2300000: AtticFacade
     2300002: AtticGutterEast
     2300004: AtticGutterWest
@@ -128,6 +184,34 @@ ModelImporter:
     2300076: WestGable
     2300078: WestWall
     2300080: WindowFrame
+    2300082: Box001
+    2300084: WindowFrame001
+    2300086: WindowFrame002
+    2300088: WindowFrame003
+    2300090: WindowFrame004
+    2300092: AtticWindowPane
+    2300094: KitchenWindowPane
+    2300096: ToiletWindowPane
+    2300098: WindowPane
+    2300100: WindowPane001
+    2300102: WindowPane002
+    2300104: WindowPane003
+    2300106: WindowPane004
+    2300108: RoomDoor001
+    2300110: RoomDoor002
+    2300112: RoomDoor003
+    2300114: RoomDoor004
+    2300116: RoomDoor005
+    2300118: RoomDoorFrame001
+    2300120: RoomDoorFrame002
+    2300122: RoomDoorFrame003
+    2300124: RoomDoorFrame004
+    2300126: RoomDoorFrame005
+    2300128: BathroomFloor
+    2300130: KitchenFloor
+    2300132: MainFloor
+    2300134: RoomFloor
+    2300136: RoomFloor1
     3300000: AtticFacade
     3300002: AtticGutterEast
     3300004: AtticGutterWest
@@ -169,6 +253,34 @@ ModelImporter:
     3300076: WestGable
     3300078: WestWall
     3300080: WindowFrame
+    3300082: Box001
+    3300084: WindowFrame001
+    3300086: WindowFrame002
+    3300088: WindowFrame003
+    3300090: WindowFrame004
+    3300092: AtticWindowPane
+    3300094: KitchenWindowPane
+    3300096: ToiletWindowPane
+    3300098: WindowPane
+    3300100: WindowPane001
+    3300102: WindowPane002
+    3300104: WindowPane003
+    3300106: WindowPane004
+    3300108: RoomDoor001
+    3300110: RoomDoor002
+    3300112: RoomDoor003
+    3300114: RoomDoor004
+    3300116: RoomDoor005
+    3300118: RoomDoorFrame001
+    3300120: RoomDoorFrame002
+    3300122: RoomDoorFrame003
+    3300124: RoomDoorFrame004
+    3300126: RoomDoorFrame005
+    3300128: BathroomFloor
+    3300130: KitchenFloor
+    3300132: MainFloor
+    3300134: RoomFloor
+    3300136: RoomFloor1
     4300000: HouseBase
     4300002: FacadeWall
     4300004: SouthWall
@@ -210,6 +322,34 @@ ModelImporter:
     4300076: KitchenDoorFrame
     4300078: FenceWest
     4300080: FenceEast
+    4300082: Box001
+    4300084: WindowFrame001
+    4300086: WindowFrame002
+    4300088: WindowFrame003
+    4300090: WindowFrame004
+    4300092: WindowPane
+    4300094: WindowPane001
+    4300096: WindowPane002
+    4300098: WindowPane003
+    4300100: KitchenWindowPane
+    4300102: AtticWindowPane
+    4300104: WindowPane004
+    4300106: ToiletWindowPane
+    4300108: RoomDoorFrame001
+    4300110: RoomDoor001
+    4300112: RoomDoorFrame002
+    4300114: RoomDoor002
+    4300116: RoomDoor003
+    4300118: RoomDoorFrame003
+    4300120: RoomDoor004
+    4300122: RoomDoorFrame004
+    4300124: RoomDoor005
+    4300126: RoomDoorFrame005
+    4300128: RoomFloor
+    4300130: RoomFloor1
+    4300132: KitchenFloor
+    4300134: BathroomFloor
+    4300136: MainFloor
     9500000: //RootNode
   materials:
     importMaterials: 1
