@@ -5,7 +5,7 @@ using System.Collections;
 public class LevelController : MonoBehaviour {
 
 	private int _currentLevelIndex;
-    private bool _loading;
+    private bool _loading = false;
 
 	/// <summary>
 	/// Loads the next level in the game.
@@ -13,11 +13,11 @@ public class LevelController : MonoBehaviour {
 	public void LoadNext(float fadeTime = 3.0f) {
 	    if (_loading) return;
 	    _loading = true;
-        LevelLoader.Load(_currentLevelIndex++);
-	    Camera.main.FadeToBlack(fadeTime, () => {
+        LevelLoader.Load(++_currentLevelIndex);
+	    StartCoroutine(Camera.main.FadeToBlack(fadeTime, () => {
 	        StartCoroutine(TrySwitch());
 	        _loading = false;
-	    });
+	    }));
 	}
 
     static IEnumerator TrySwitch() {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using System.Collections;
 
@@ -29,5 +30,17 @@ public static class CameraUtil {
 
     private static IEnumerator FadeFrom(GUITexture toFade, float time, Action onComplete) {
         return Fader(toFade, time, onComplete, (start, end, ttime) => Mathf.InverseLerp(end, start, ttime));
+    }
+    
+    public static void SwitchTo(this Camera c) {
+        AudioListener al;
+        foreach(var camera in Camera.allCameras.Where(camera => camera != c)) {
+            camera.enabled = false;
+            al = camera.gameObject.GetComponent<AudioListener>();
+            if(al != null) al.enabled = false;
+        }
+        c.enabled = true;
+        al = c.gameObject.GetComponent<AudioListener>();
+        if(al != null) al.enabled = true;
     }
 }
