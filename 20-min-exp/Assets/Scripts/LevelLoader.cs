@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using UnityEngine;
 using System.Collections;
 using AsyncOperation = UnityEngine.AsyncOperation;
@@ -10,7 +11,11 @@ public class LevelLoader {
     /// Returns the current progess or -1 if there is no level loading.
     /// </summary>
     public static float Progress {
-        get { return _currentLoadJob == null ? -1 : Mathf.Round(_currentLoadJob.progress * 100f) ; }
+        get { return _currentLoadJob == null ? -1 : _fixedProgress(_currentLoadJob.progress) ; }
+    }
+
+    private static float _fixedProgress(float progress) {
+        return Mathf.Lerp(0, 100, Mathf.InverseLerp(0, 0.9f, progress));
     }
 
     public static LoadStatus Status {
@@ -22,17 +27,23 @@ public class LevelLoader {
         }
     }
 
-    public static bool Load(string level) {
-        if (_currentLoadJob != null) {
-			Debug.Log("Could not load \""+level+"\", because a level is already loading");
-			return false;
-		}
+    public static bool Load(string levelName) {
+        return _Load(() => Application.LoadLevelAsync(levelName));
+    }
 
-        _currentLoadJob = Application.LoadLevelAsync(level);
+    public static bool Load(int levelIndex) {
+        return _Load(() => Application.LoadLevelAsync(levelIndex));
+    }
+
+    private static bool _Load(Func<AsyncOperation> getLoadJob) {
+        if(_currentLoadJob != null) {
+            Debug.Log("Could not load a new level, because a level is already loading");
+            return false;
+        }
+        _currentLoadJob = getLoadJob();
         if(_currentLoadJob != null)
-			_currentLoadJob.allowSceneActivation = false;
-        
-		return _currentLoadJob != null;
+            _currentLoadJob.allowSceneActivation = false;
+        return _currentLoadJob != null;
     }
 
     public static void Switch() {
