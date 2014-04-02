@@ -1,29 +1,136 @@
 {
-  "allContracts": [
+  "normalContracts": [
     {
       "title": "New hats for management.",
       "description": "HAT PARTY!!",
-      "price": 400
+      "homefulProfit": 400,
+      "businessProfit": 100000
     },
     {
       "title": "Cheezburger?",
       "description": "Can haz?",
-      "price": 25
+      "homefulProfit": 25,
+      "businessProfit": 100000
     },
     {
       "title": "Rugbrød for Michail",
       "description": "For educational puposes",
-      "price": 15
+      "homefulProfit": 15,
+      "businessProfit": 100000
     },
     {
       "title": "Bacon",
       "description": "Always important",
-      "price": 50
+      "homefulProfit": 50,
+      "businessProfit": 100000
     },
+    {
+      "title": "Grethe",
+      "description": "plrp",
+      "homefulProfit": 50,
+      "businessProfit": 100000
+    },
+    {
+      "title": "Sovs",
+      "description": "BRUN!",
+      "homefulProfit": 50,
+      "businessProfit": 100000
+    },
+    {
+      "title": "Imma fukk u up",
+      "description": "BRUN!",
+      "homefulProfit": 50,
+      "businessProfit": 100000
+    },{
+      "title": "New hats for management.",
+      "description": "HAT PARTY!!",
+      "homefulProfit": 400,
+      "businessProfit": 100000
+    },
+    {
+      "title": "Cheezburger?",
+      "description": "Can haz?",
+      "homefulProfit": 25,
+      "businessProfit": 100000
+    },
+    {
+      "title": "Rugbrød for Michail",
+      "description": "For educational puposes",
+      "homefulProfit": 15,
+      "businessProfit": 100000
+    },
+    {
+      "title": "Bacon",
+      "description": "Always important",
+      "homefulProfit": 50,
+      "businessProfit": 100000
+    },
+    {
+      "title": "Grethe",
+      "description": "plrp",
+      "homefulProfit": 50,
+      "businessProfit": 100000
+    },
+    {
+      "title": "Sovs",
+      "description": "BRUN!",
+      "homefulProfit": 50,
+      "businessProfit": 100000
+    },
+    {
+      "title": "Imma fukk u up",
+      "description": "BRUN!",
+      "homefulProfit": 50,
+      "businessProfit": 100000
+    },{
+      "title": "New hats for management.",
+      "description": "HAT PARTY!!",
+      "homefulProfit": 400,
+      "businessProfit": 100000
+    },
+    {
+      "title": "Cheezburger?",
+      "description": "Can haz?",
+      "homefulProfit": 25,
+      "businessProfit": 100000
+    },
+    {
+      "title": "Rugbrød for Michail",
+      "description": "For educational puposes",
+      "homefulProfit": 15,
+      "businessProfit": 100000
+    },
+    {
+      "title": "Bacon",
+      "description": "Always important",
+      "homefulProfit": 50,
+      "businessProfit": 100000
+    },
+    {
+      "title": "Grethe",
+      "description": "plrp",
+      "homefulProfit": 50,
+      "businessProfit": 100000
+    },
+    {
+      "title": "Sovs",
+      "description": "BRUN!",
+      "homefulProfit": 50,
+      "businessProfit": 100000
+    },
+    {
+      "title": "Imma fukk u up",
+      "description": "BRUN!",
+      "homefulProfit": 50,
+      "businessProfit": 100000
+    }
+  ],
+  "badassContracts": [
     {
       "title": "Vidya gaaaems",
       "description": "For pley tiemz",
-      "price": 10000
+      "homefulProfit": 10000,
+      "businessProfit": 200000
     }
   ]
 }
