@@ -2,18 +2,21 @@
 using System.Collections;
 
 public class GameState : MonoBehaviour {
+    public int MoneyCounter { get; set; }
 
-	private int _moneyCounter;
-	public int MoneyCounter {
-		get { return _moneyCounter; }
-		set { _moneyCounter = value; }
-	}
-
-	// Use this for initialization
+    // Use this for initialization
 	void Start () {
-		MoneyCounter = 34000;
+	    MoneyCounter = 500000;
+	    StartCoroutine(MoneyDecay());
 	}
-	
+
+    IEnumerator MoneyDecay() {
+        while (true) {
+            yield return new WaitForSeconds(0.8f);
+            MoneyCounter-=100;
+        }
+    }
+
 	// Update is called once per frame
 	void Update () {
 	
