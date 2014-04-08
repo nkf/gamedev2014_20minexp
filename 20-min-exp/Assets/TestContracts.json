@@ -1,6 +1,18 @@
 {
   "normalContracts": [
     {
+      "title": "Build new house",
+      "description": "In poor part",
+      "homefulProfit": 10000,
+      "businessProfit": 100000
+    },
+    {
+      "title": "Build corporate HQ",
+      "description": "",
+      "homefulProfit": 50000,
+      "businessProfit": 100000
+    },
+    {
       "title": "New hats for management.",
       "description": "HAT PARTY!!",
       "homefulProfit": 400,
