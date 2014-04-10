@@ -29,7 +29,7 @@ public class RoadController : MonoBehaviour {
 	    //var hInput = Input.GetAxis("Horizontal");
 	    var hInput = MouseHorizontalPosition();
 	    if (Input.GetMouseButton(0)) _speed += Acceleration * Time.deltaTime;
-	    else _speed -= Acceleration * Time.deltaTime;
+	    else _speed -= DeAcceleration * Time.deltaTime;
 	    _speed = Mathf.Clamp(_speed, MinSpeed, MaxSpeed);
 	    var move = hInput * SteeringSpeed + SwayFactor;
 	    //Calculate edge slowdown

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 
 public class Selectable : MonoBehaviour {
 
@@ -11,7 +10,7 @@ public class Selectable : MonoBehaviour {
     void OnDestroy() {
         All.Remove(this);
     }
-    public void Select() {
-        Destroy(gameObject);
+    public virtual void Select() {
+        Debug.Log(gameObject.name);
     }
 }
