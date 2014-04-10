@@ -5,13 +5,23 @@ using System.Collections;
 
 public static class CameraUtil {
 
+	public static GameObject _blackScreen;
+
     public static IEnumerator FadeToBlack(this Camera camera, float time, Action onComplete) {
-        var blackTexture = GameObject.Instantiate(Resources.Load<GameObject>("BlackScreen")) as GameObject;
-        blackTexture.transform.position = new Vector3(0.5f, 0.5f);
-        return FadeTo(blackTexture.GetComponent<GUITexture>(), time, onComplete);
+        _blackScreen = GameObject.Instantiate(Resources.Load<GameObject>("BlackScreen")) as GameObject;
+        _blackScreen.transform.position = new Vector3(0.5f, 0.5f);
+        return FadeTo(_blackScreen.GetComponent<GUITexture>(), time, onComplete);
     }
 
-    private static IEnumerator Fader(GUITexture toFade, float time, Action onComplete, Func<float, float, float, float> alphaCalculator) {
+	public static IEnumerator FadeInFromBlack(this Camera camera, float time, Action onComplete) {
+		if (_blackScreen == null) {
+			_blackScreen = GameObject.Instantiate(Resources.Load<GameObject>("BlackScreen")) as GameObject;
+			_blackScreen.transform.position = new Vector3(0.5f, 0.5f);
+		}
+		return FadeFrom(_blackScreen.GetComponent<GUITexture>(), time, onComplete);
+	}
+
+    private static IEnumerator Fader(GUITexture toFade, float time, Action onComplete, Func<float, float, float, float> alphaCalculator, bool destroyBlackScreen) {
         var c = toFade.color;
         var start = Time.time;
         var end = start + time;
@@ -22,14 +32,15 @@ public static class CameraUtil {
             yield return new WaitForEndOfFrame();
         }
         if (onComplete != null) onComplete();
+		if (destroyBlackScreen) UnityEngine.Object.Destroy(_blackScreen);
     }
 
     private static IEnumerator FadeTo(GUITexture toFade, float time, Action onComplete) {
-        return Fader(toFade, time, onComplete, Mathf.InverseLerp);
+        return Fader(toFade, time, onComplete, Mathf.InverseLerp, false);
     }
 
     private static IEnumerator FadeFrom(GUITexture toFade, float time, Action onComplete) {
-        return Fader(toFade, time, onComplete, (start, end, ttime) => Mathf.InverseLerp(end, start, ttime));
+        return Fader(toFade, time, onComplete, (start, end, ttime) => Mathf.InverseLerp(end, start, ttime), true) ;
     }
     
     public static void SwitchTo(this Camera c) {
