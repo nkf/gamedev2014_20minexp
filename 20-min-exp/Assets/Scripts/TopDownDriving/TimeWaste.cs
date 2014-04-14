@@ -1,18 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TimeWaste : MonoBehaviour {
+public class TimeWaste : InvokableAction {
 
 	public int timeWasteInMins;
 	public int timeWastePrice;
 
 	protected float timeWasteInSecs    { get { return timeWasteInMins * 60; } }
 
-	private bool _actionAvailable = false;
-
 	// Use this for initialization
 	void Start () {
-		Toolbox touch = Toolbox.Instance;
+
 	}
 	
 	// Update is called once per frame
@@ -24,21 +22,12 @@ public class TimeWaste : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Return)) {
 			PlayCutscene();
 
+			// Diable action and car controls
 			_actionAvailable = false;
+			Car.PLAYER.SetControls(false);
+
 			Toolbox.Instance.gameState.MoneyCounter -= timeWastePrice;  // Pay for what ever this is.
 			AppearanceGameState.INSTANCE.SpendTime(timeWasteInSecs);    // Spend time
-		}
-	}
-
-	void OnTriggerEnter(Collider collider) {
-		if (collider.gameObject.Equals(Car.PLAYER.gameObject)) {
-			_actionAvailable = true;
-		}
-	}
-
-	void OnTriggerExit(Collider collider) {
-		if (collider.gameObject.Equals(Car.PLAYER.gameObject)) {
-			_actionAvailable = false;
 		}
 	}
 
@@ -63,6 +52,9 @@ public class TimeWaste : MonoBehaviour {
 	 */
 	protected void OnEndCutscene() {
 		AppearanceGameState.INSTANCE.InCutscene = false;
+
+		// Reenable car controls. Mucho importante
+		Car.PLAYER.SetControls(true);
 	}
 
 	void OnGUI() {
