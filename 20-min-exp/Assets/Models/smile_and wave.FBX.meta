@@ -96,7 +96,7 @@ ModelImporter:
     13700006: Box009
     13700008: Box010
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:

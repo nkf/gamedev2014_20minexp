@@ -87,7 +87,7 @@ ModelImporter:
     4300030: Cylinder007
     9500000: //RootNode
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:

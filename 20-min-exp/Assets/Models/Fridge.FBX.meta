@@ -1,13 +1,33 @@
 fileFormatVersion: 2
-guid: d717a4b785e2bb74895c71df181897c4
+guid: 8f2f62c607e56e74c848cfa71dcfc7da
 ModelImporter:
   serializedVersion: 15
   fileIDToRecycleName:
     100000: //RootNode
+    100002: LeftDoor
+    100004: LeftHandle
+    100006: RightDoor
+    100008: RightHandle
     400000: //RootNode
+    400002: LeftDoor
+    400004: LeftHandle
+    400006: RightDoor
+    400008: RightHandle
     2300000: //RootNode
+    2300002: LeftDoor
+    2300004: LeftHandle
+    2300006: RightDoor
+    2300008: RightHandle
     3300000: //RootNode
-    4300000: Cylinder001
+    3300002: LeftDoor
+    3300004: LeftHandle
+    3300006: RightDoor
+    3300008: RightHandle
+    4300000: Body
+    4300002: RightDoor
+    4300004: RightHandle
+    4300006: LeftDoor
+    4300008: LeftHandle
     9500000: //RootNode
   materials:
     importMaterials: 0

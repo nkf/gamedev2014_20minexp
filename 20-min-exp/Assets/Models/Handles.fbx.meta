@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 458680443aa37c74fa061b815aa7e017
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 15
   fileIDToRecycleName:
     100000: pPipe5
     100002: pPipe4
@@ -22,7 +22,7 @@ ModelImporter:
     4300004: pPipe6
     11100000: //RootNode
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 3
     materialSearch: 1
   animations:
@@ -72,5 +72,4 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 1
-  additionalBone: 0
   userData: 
