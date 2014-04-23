@@ -73,6 +73,25 @@ ModelImporter:
     100134: MainFloor
     100136: RoomFloor
     100138: RoomFloor1
+    100140: Faucet
+    100142: Handle
+    100144: Handle 1
+    100146: Handle 2
+    100148: LeftCupboard
+    100150: LeftHandle
+    100152: LeftHandle 1
+    100154: LeftTap
+    100156: RightCupboard
+    100158: RightHandle
+    100160: RightHandle 1
+    100162: RightTap
+    100164: Sink
+    100166: SinkCupboard
+    100168: TopLeftCupboard
+    100170: TopLeftShelf
+    100172: TopRightCupboard
+    100174: TopRightCupboard001
+    100176: TopRightShelf
     400000: AtticFacade
     400002: AtticGutterEast
     400004: AtticGutterWest
@@ -143,6 +162,25 @@ ModelImporter:
     400134: MainFloor
     400136: RoomFloor
     400138: RoomFloor1
+    400140: Faucet
+    400142: Handle
+    400144: Handle 1
+    400146: Handle 2
+    400148: LeftCupboard
+    400150: LeftHandle
+    400152: LeftHandle 1
+    400154: LeftTap
+    400156: RightCupboard
+    400158: RightHandle
+    400160: RightHandle 1
+    400162: RightTap
+    400164: Sink
+    400166: SinkCupboard
+    400168: TopLeftCupboard
+    400170: TopLeftShelf
+    400172: TopRightCupboard
+    400174: TopRightCupboard001
+    400176: TopRightShelf
     2300000: AtticFacade
     2300002: AtticGutterEast
     2300004: AtticGutterWest
@@ -212,6 +250,25 @@ ModelImporter:
     2300132: MainFloor
     2300134: RoomFloor
     2300136: RoomFloor1
+    2300138: Faucet
+    2300140: Handle
+    2300142: Handle 1
+    2300144: Handle 2
+    2300146: LeftCupboard
+    2300148: LeftHandle
+    2300150: LeftHandle 1
+    2300152: LeftTap
+    2300154: RightCupboard
+    2300156: RightHandle
+    2300158: RightHandle 1
+    2300160: RightTap
+    2300162: Sink
+    2300164: SinkCupboard
+    2300166: TopLeftCupboard
+    2300168: TopLeftShelf
+    2300170: TopRightCupboard
+    2300172: TopRightCupboard001
+    2300174: TopRightShelf
     3300000: AtticFacade
     3300002: AtticGutterEast
     3300004: AtticGutterWest
@@ -281,6 +338,25 @@ ModelImporter:
     3300132: MainFloor
     3300134: RoomFloor
     3300136: RoomFloor1
+    3300138: Faucet
+    3300140: Handle
+    3300142: Handle 1
+    3300144: Handle 2
+    3300146: LeftCupboard
+    3300148: LeftHandle
+    3300150: LeftHandle 1
+    3300152: LeftTap
+    3300154: RightCupboard
+    3300156: RightHandle
+    3300158: RightHandle 1
+    3300160: RightTap
+    3300162: Sink
+    3300164: SinkCupboard
+    3300166: TopLeftCupboard
+    3300168: TopLeftShelf
+    3300170: TopRightCupboard
+    3300172: TopRightCupboard001
+    3300174: TopRightShelf
     4300000: HouseBase
     4300002: FacadeWall
     4300004: SouthWall
@@ -350,6 +426,25 @@ ModelImporter:
     4300132: KitchenFloor
     4300134: BathroomFloor
     4300136: MainFloor
+    4300138: SinkCupboard
+    4300140: Sink
+    4300142: Faucet
+    4300144: RightTap
+    4300146: LeftTap
+    4300148: TopLeftCupboard
+    4300150: TopLeftShelf
+    4300152: TopRightCupboard
+    4300154: TopRightShelf
+    4300156: LeftCupboard
+    4300158: RightHandle
+    4300160: LeftHandle
+    4300162: Handle
+    4300164: Handle
+    4300166: Handle
+    4300168: RightCupboard
+    4300170: RightHandle
+    4300172: LeftHandle
+    4300174: TopRightCupboard001
     9500000: //RootNode
   materials:
     importMaterials: 0
