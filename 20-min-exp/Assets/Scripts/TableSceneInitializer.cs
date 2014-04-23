@@ -38,23 +38,29 @@ public class TableSceneInitializer : MonoBehaviour {
 	protected void FiringDayMorningInit() {
 		Debug.Log("Firing day morning");
 		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "Assets/Test2.json";
+		WifeAgent.JANE.GetComponent<WifeAgent>().StartConversation();
 	}
 
 	protected void FiringDayAfternoon() {
 		Debug.Log("Firing day afternoon");
+		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "Assets/Test2.json";
+		WifeAgent.JANE.GetComponent<WifeAgent>().StartConversation();
 	}
 
 	protected void Appearances1Init() {
 		Debug.Log("Appearences day 1");
+		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "Assets/Test2.json";
+		WifeAgent.JANE.GetComponent<WifeAgent>().StartConversation();
 	}
 
 	protected void Appearances2Init() {
 		Debug.Log("Appearences day 2");
+		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "Assets/Test2.json";
+		WifeAgent.JANE.GetComponent<WifeAgent>().StartConversation();
 	}
 
 	protected void Appearances3Init() {
 		Debug.Log("Appearences day 3");
-		// TODO: Load Sell stuff?
 
 		// Disable Jane because homeful guy is lonely
 		foreach (Transform child in WifeAgent.JANE.transform)
@@ -73,5 +79,7 @@ public class TableSceneInitializer : MonoBehaviour {
 					child2.renderer.enabled = false;
 			}
 		}
+
+		// TODO: Load Sell stuff, but not through the wife script this time? 
 	}
 }
