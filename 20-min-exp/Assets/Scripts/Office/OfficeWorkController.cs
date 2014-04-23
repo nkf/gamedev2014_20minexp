@@ -36,12 +36,41 @@ public class OfficeWorkController : MonoBehaviour {
 		// TODO: For testing purposes. Can be deleted for final version
 		GameState touchTheSingleton = Toolbox.Instance.gameState;
 
+		if (Toolbox.Instance.gameState.DayCounter == GameState.REGULAR_DAY)
+			InitRegularWorkday();
+		else if (Toolbox.Instance.gameState.DayCounter == GameState.FIRING_DAY_MORNING)
+			InitLayoffDay();
+	
+	}
 
+	// Update is called once per frame
+	void Update () {
+		if (Toolbox.Instance.gameState.DayCounter == GameState.REGULAR_DAY)
+			UpdateRegularDay();
+		else if  (Toolbox.Instance.gameState.DayCounter == GameState.FIRING_DAY_MORNING)
+			UpdateLayoffDay();
+	}
+
+
+	void OnGUI() {
+		// TODO: Remove on level load
+		if (Toolbox.Instance.gameState.DayCounter == GameState.REGULAR_DAY) {
+			Vector3 pos = Camera.main.WorldToScreenPoint( _loadedContracts[_highlightedContract].transform.position );
+			Rect selectionPos = new Rect(pos.x, Screen.height-pos.y, 20, 20);
+			GUIHelpers.DrawQuad(selectionPos, Color.blue);
+		}
+	}
+
+	/////////////////////
+	/// Regular day logic
+	/////////////////////
+
+	protected void InitRegularWorkday() {
 		// Read in the conversation from the JSON file and initialise the node collection
 		JSONNode node = JSONNode.Parse( File.ReadAllText(@contractPath) );
 		_normalContracts = new List<Contract>();
 		_badassContracts = new List<Contract>();
-
+		
 		// Read and write normal contracts
 		foreach (JSONNode n in node["normalContracts"].Childs) {
 			_normalContracts.Add( new Contract(n["title"], n["description"], n["homefulProfit"].AsInt, n["businessProfit"].AsInt) );
@@ -50,7 +79,7 @@ public class OfficeWorkController : MonoBehaviour {
 		foreach (JSONNode n in node["badassContracts"].Childs) {
 			_badassContracts.Add( new Contract(n["title"], n["description"], n["homefulProfit"].AsInt, n["businessProfit"].AsInt) );
 		}
-
+		
 		// Save references for all the contract spawn points
 		ArrayList sp = new ArrayList();
 		foreach (Transform child in transform) {
@@ -61,21 +90,26 @@ public class OfficeWorkController : MonoBehaviour {
 		_loadedContracts = new ContractBehaviour[sp.Count];
 		_usedContracts = new List<Contract>();
 		sp.CopyTo(_spawnPoints);
-
+		
 		// Initialize BADASS randomizer based on the number of normal contracts
 		_baseChance    = node["normalContracts"].Count;
 		_currentChance = _baseChance;
 		_blocker       = (int) Math.Round((node.Count/4.0) * _spawnPoints.Length);
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	protected void UpdateRegularDay() {
 		if (_loadNewContracts)
 			LoadContracts();
 
-		if (_normalContracts.Count <= 0)
+		if (_normalContracts.Count <= 0) {
 			Debug.Log ("Geemu Ovaa");
-
+			// If first in-game day, Start new day (with table, and hall, and driving and shit)
+			if (Toolbox.Instance.gameState.DayCounter == GameState.REGULAR_DAY) {
+				Toolbox.Instance.levelController.Load(LevelController.TABLE);
+				Toolbox.Instance.gameState.DayCounter = 1;
+			}
+		}
+		
 		// Controls
 		if (Input.GetKeyDown(KeyCode.LeftArrow) && _highlightedContract != 0) {
 			_highlightedContract--;
@@ -85,13 +119,13 @@ public class OfficeWorkController : MonoBehaviour {
 		}
 		if (Input.GetKeyDown(KeyCode.Return)) {
 			if (_normalContracts.Count > 0)
-		    	SelectContract( _loadedContracts[_highlightedContract].Contract );
+				SelectContract( _loadedContracts[_highlightedContract].Contract );
 		}
 	}
-
+	
 	private bool SpawnBadassContract() {
 		int val = (int) Mathf.Round( UnityEngine.Random.value * _currentChance );
-
+		
 		if (val == 0 && _currentBlocker == 0) {
 			_currentBlocker = _blocker;
 			_currentChance = _baseChance;
@@ -103,8 +137,7 @@ public class OfficeWorkController : MonoBehaviour {
 			return false;
 		}
 	}
-
-
+	
 	private void LoadContracts() {
 		// Find a random contracts and instantiate them
 		for (int i = 0; i < _loadedContracts.Length; i++) {
@@ -135,18 +168,45 @@ public class OfficeWorkController : MonoBehaviour {
 		
 		_loadNewContracts = false;
 	}
-
+	
 	public void SelectContract(Contract contract) {
-//		_highlightedContract = 0;
+		//		_highlightedContract = 0;
 		_loadNewContracts = true;
 		Toolbox.Instance.gameState.MoneyCounter += contract.HomefulProfit;
 		// TODO: Business profit
 	}
 
-	void OnGUI() {
-		Vector3 pos = Camera.main.WorldToScreenPoint( _loadedContracts[_highlightedContract].transform.position );
-		Rect selectionPos = new Rect(pos.x, Screen.height-pos.y, 20, 20);
-		GUIHelpers.DrawQuad(selectionPos, Color.blue);
+	//////////////////////
+	// Layoff day logic
+	//////////////////////
+
+	protected float startTime;
+	public float showRedundancyNoticeTime = 5.0f;
+
+	protected void InitLayoffDay() {
+		startTime = Time.time;
+
+		// Find the spawn point (only use first one)
+		ArrayList sp = new ArrayList();
+		foreach (Transform child in transform) {
+			if (child.name.Equals("Spawn"))
+				sp.Add(child);
+		}
+		_spawnPoints = new Transform[sp.Count];
+		sp.CopyTo(_spawnPoints);
+
+		Vector3 derp = _spawnPoints[0].position;
+
+		// Manually create the pink slip (as Contract)
+		Contract pinkSlip = new Contract("Notice", "You're fired!", 0, 0); 
+
+		// Spawn new prefab and assign a contract object (with contract content)
+		Transform tra = Instantiate(contractPrefab, _spawnPoints[0].position, Quaternion.identity) as Transform;
+		tra.gameObject.GetComponent<ContractBehaviour>().Contract = pinkSlip;
 	}
 
+	protected void UpdateLayoffDay() {
+		if ((Time.time - startTime) > showRedundancyNoticeTime)
+			Toolbox.Instance.levelController.Load (LevelController.WINDOW_SHOPPER, 5.0f);
+	}
 }

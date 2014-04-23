@@ -38,7 +38,6 @@ public class RoadController : MonoBehaviour {
         //if we are going too close to the edge AND are on course towards the edge.
 	    if (edgeDis < EdgePadding && Mathf.Sign(transform.position.x) == Mathf.Sign(move)) move = 0;
         //apply
-        Debug.Log(_speed * _slowDownFactor);
 	    p.x += move * _slowDownFactor;
         p.z += _speed * Time.deltaTime * _slowDownFactor;
 	    transform.position = p;

@@ -7,7 +7,7 @@ public class HallMovement : MonoBehaviour {
 	void Update () {
 	    var v = Input.GetAxis("Vertical");
 	    var p = transform.position;
-	    p.z = p.z - v * Time.deltaTime;
+	    p.z = p.z - (v * (Time.deltaTime +5));
 	    transform.position = p;
 
 	}

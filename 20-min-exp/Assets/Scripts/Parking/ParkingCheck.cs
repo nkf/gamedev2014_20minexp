@@ -20,7 +20,7 @@ public class ParkingCheck : MonoBehaviour {
         var carBox = other.GetComponent<BoxCollider>();
         var corners = GetBoundingCorners(carBox, other.transform);
         var contained = corners.Aggregate(true, (acc, corner) => acc & _box.bounds.Contains(corner));
-        if(contained) Toolbox.Instance.levelController.LoadNext(5);
+        if(contained) Toolbox.Instance.levelController.Load(LevelController.OFFICE);
     }
 
     private static IEnumerable<Vector3> GetBoundingCorners(BoxCollider box, Transform origin) {
