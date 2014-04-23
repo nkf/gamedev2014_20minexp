@@ -33,44 +33,6 @@ public class ConversationAgent : MonoBehaviour {
 
 	// Use this for initialization
 	protected virtual void Start () {
-		// Modifies the path to use the path seperator for the current system
-		_conversationPath = _conversationPath.Replace(@"/", Path.DirectorySeparatorChar.ToString());
-		_conversationPath = _conversationPath.Replace(@"\", Path.DirectorySeparatorChar.ToString());	
-
-		// Read in the conversation from the JSON file and initialise the node collection
-		JSONNode node = JSONNode.Parse( File.ReadAllText(@_conversationPath) );
-		allNodes = new ConversationNode[ node["AllNodes"].Count ];
-
-		
-		// Build all ConversationNodes and add to allNodes
-		foreach(JSONNode n in node["AllNodes"].Childs) {
-			// If answeringDelay is undefined, it will default to 0.0
-			ConversationNode cNode = new ConversationNode(n["dialogue"], n["responses"].Count, n["answeringDelay"].AsFloat);
-			
-			// Set up responses
-			int i = 0; // .Childs doesn't have Count/Size field
-			foreach(JSONNode response in n["responses"].Childs) {
-				cNode.Responses[i] = response["response"];
-				cNode.NodeLinks[i] = response["gotoNode"].AsInt;
-				i++;
-			}
-
-			var silResp = n["silentResponse"];
-			if (silResp != null) {
-				cNode.SilentResponse = silResp["timer"].AsFloat;
-				cNode.SilentGoto     = silResp["gotoNode"].AsInt;
-			}
-
-			JSONNode answerAppearanceDelay = n["answeringAppearanceDelay"];
-			cNode.AnswerAppearanceDelay = answerAppearanceDelay.AsFloat;
-
-			JSONNode nextNodeDelay = n["nextNodeDelay"];
-			cNode.NextNodeDelay = nextNodeDelay.AsFloat;
-			
-			// Add to allNodes
-			allNodes[ n["index"].AsInt ] = cNode;
-		}
-
 
 	}
 
@@ -140,8 +102,6 @@ public class ConversationAgent : MonoBehaviour {
 				endTimer = Time.time;
 				endTimerHasBeenSet = true;
 			}
-
-			Debug.Log (getCurrentNode().NextNodeDelay);
 
 			if ((Time.time - endTimer) > getCurrentNode().NextNodeDelay) {
 				_state = ConversationState.ANSWERING_APPERANCE_DELAY;
@@ -225,6 +185,46 @@ public class ConversationAgent : MonoBehaviour {
 	}
 
 	public void StartConversation() {
+		// First, load conversation resource
+		// Modifies the path to use the path seperator for the current system
+		_conversationPath = _conversationPath.Replace(@"/", Path.DirectorySeparatorChar.ToString());
+		_conversationPath = _conversationPath.Replace(@"\", Path.DirectorySeparatorChar.ToString());	
+		
+		// Read in the conversation from the JSON file and initialise the node collection
+		JSONNode node = JSONNode.Parse( File.ReadAllText(@_conversationPath) );
+		allNodes = new ConversationNode[ node["AllNodes"].Count ];
+		
+		
+		// Build all ConversationNodes and add to allNodes
+		foreach(JSONNode n in node["AllNodes"].Childs) {
+			// If answeringDelay is undefined, it will default to 0.0
+			ConversationNode cNode = new ConversationNode(n["dialogue"], n["responses"].Count, n["answeringDelay"].AsFloat);
+			
+			// Set up responses
+			int i = 0; // .Childs doesn't have Count/Size field
+			foreach(JSONNode response in n["responses"].Childs) {
+				cNode.Responses[i] = response["response"];
+				cNode.NodeLinks[i] = response["gotoNode"].AsInt;
+				i++;
+			}
+			
+			var silResp = n["silentResponse"];
+			if (silResp != null) {
+				cNode.SilentResponse = silResp["timer"].AsFloat;
+				cNode.SilentGoto     = silResp["gotoNode"].AsInt;
+			}
+			
+			JSONNode answerAppearanceDelay = n["answeringAppearanceDelay"];
+			cNode.AnswerAppearanceDelay = answerAppearanceDelay.AsFloat;
+			
+			JSONNode nextNodeDelay = n["nextNodeDelay"];
+			cNode.NextNodeDelay = nextNodeDelay.AsFloat;
+			
+			// Add to allNodes
+			allNodes[ n["index"].AsInt ] = cNode;
+		}
+
+		// Then set the conversation as running
 		_conversationIsRunning = true;
 		//SimplePlayer.PLAYER.SwitchState(PlayerState.IN_CONVERSATION);
 	}
