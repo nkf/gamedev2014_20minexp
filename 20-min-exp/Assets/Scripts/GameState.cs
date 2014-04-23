@@ -38,7 +38,7 @@ public class GameState : MonoBehaviour {
 
     private bool _showingCenterText;
     private string _centerText;
-    private Rect _center = new Rect(Screen.width/2f, Screen.height/2f, 0, 0);
+    private readonly Rect _center = new Rect(Screen.width/2f, Screen.height/2f, 0, 0);
     public void ShowCenterText(string text) {
         _showingCenterText = true;
         _centerText = text;

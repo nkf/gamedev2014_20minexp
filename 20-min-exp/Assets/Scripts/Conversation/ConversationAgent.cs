@@ -141,7 +141,6 @@ public class ConversationAgent : MonoBehaviour {
 				endTimerHasBeenSet = true;
 			}
 
-			Debug.Log (getCurrentNode().NextNodeDelay);
 
 			if ((Time.time - endTimer) > getCurrentNode().NextNodeDelay) {
 				_state = ConversationState.ANSWERING_APPERANCE_DELAY;
