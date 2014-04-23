@@ -7,11 +7,17 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Table.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Hall.unity
+  - enabled: 1
+    path: Assets/Hall2.unity
   - enabled: 1
     path: Assets/Road.unity
   - enabled: 1
     path: Assets/Parking.unity
   - enabled: 1
     path: Assets/Office.unity
+  - enabled: 1
+    path: Assets/sidescroller_proto.unity
+  - enabled: 1
+    path: Assets/Appearences.unity

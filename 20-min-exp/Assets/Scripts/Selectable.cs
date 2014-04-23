@@ -12,5 +12,6 @@ public class Selectable : MonoBehaviour {
     }
     public virtual void Select() {
         Debug.Log(gameObject.name);
+		Destroy (gameObject);
     }
 }

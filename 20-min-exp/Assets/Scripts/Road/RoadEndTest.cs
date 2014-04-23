@@ -11,6 +11,6 @@ public class RoadEndTest : MonoBehaviour {
     }
 
     void GoNext() {
-        Toolbox.Instance.levelController.LoadNext();
+        Toolbox.Instance.levelController.Load(LevelController.PARKING);
     }
 }

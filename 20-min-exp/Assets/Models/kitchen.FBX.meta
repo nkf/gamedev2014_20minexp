@@ -20,6 +20,23 @@ ModelImporter:
     100028: Object005
     100030: Object006
     100032: Object008
+    100034: Faucet
+    100036: Handle
+    100038: Handle 1
+    100040: Handle 2
+    100042: LeftCupboard
+    100044: LeftHandle
+    100046: LeftHandle 1
+    100048: LeftTap
+    100050: RightCupboard
+    100052: RightHandle
+    100054: RightHandle 1
+    100056: RightTap
+    100058: Sink
+    100060: TopLeftCupboard
+    100062: TopLeftShelf
+    100064: TopRightCupboard
+    100066: TopRightShelf
     400000: Box001
     400002: Box002
     400004: Box003
@@ -37,6 +54,23 @@ ModelImporter:
     400028: Object005
     400030: Object006
     400032: Object008
+    400034: Faucet
+    400036: Handle
+    400038: Handle 1
+    400040: Handle 2
+    400042: LeftCupboard
+    400044: LeftHandle
+    400046: LeftHandle 1
+    400048: LeftTap
+    400050: RightCupboard
+    400052: RightHandle
+    400054: RightHandle 1
+    400056: RightTap
+    400058: Sink
+    400060: TopLeftCupboard
+    400062: TopLeftShelf
+    400064: TopRightCupboard
+    400066: TopRightShelf
     2300000: Box001
     2300002: Box002
     2300004: Box003
@@ -53,6 +87,24 @@ ModelImporter:
     2300026: Object005
     2300028: Object006
     2300030: Object008
+    2300032: Faucet
+    2300034: Handle
+    2300036: Handle 1
+    2300038: Handle 2
+    2300040: //RootNode
+    2300042: LeftCupboard
+    2300044: LeftHandle
+    2300046: LeftHandle 1
+    2300048: LeftTap
+    2300050: RightCupboard
+    2300052: RightHandle
+    2300054: RightHandle 1
+    2300056: RightTap
+    2300058: Sink
+    2300060: TopLeftCupboard
+    2300062: TopLeftShelf
+    2300064: TopRightCupboard
+    2300066: TopRightShelf
     3300000: Box001
     3300002: Box002
     3300004: Box003
@@ -69,6 +121,24 @@ ModelImporter:
     3300026: Object005
     3300028: Object006
     3300030: Object008
+    3300032: Faucet
+    3300034: Handle
+    3300036: Handle 1
+    3300038: Handle 2
+    3300040: //RootNode
+    3300042: LeftCupboard
+    3300044: LeftHandle
+    3300046: LeftHandle 1
+    3300048: LeftTap
+    3300050: RightCupboard
+    3300052: RightHandle
+    3300054: RightHandle 1
+    3300056: RightTap
+    3300058: Sink
+    3300060: TopLeftCupboard
+    3300062: TopLeftShelf
+    3300064: TopRightCupboard
+    3300066: TopRightShelf
     4300000: Box001
     4300002: Box002
     4300004: Box003
@@ -85,6 +155,24 @@ ModelImporter:
     4300026: Cylinder001
     4300028: Cylinder002
     4300030: Cylinder007
+    4300032: SinkCupboard
+    4300034: Sink
+    4300036: Faucet
+    4300038: RightTap
+    4300040: LeftTap
+    4300042: TopLeftCupboard
+    4300044: TopLeftShelf
+    4300046: TopRightCupboard
+    4300048: TopRightShelf
+    4300050: LeftCupboard
+    4300052: RightHandle
+    4300054: LeftHandle
+    4300056: Handle
+    4300058: Handle
+    4300060: Handle
+    4300062: RightCupboard
+    4300064: RightHandle
+    4300066: LeftHandle
     9500000: //RootNode
   materials:
     importMaterials: 0

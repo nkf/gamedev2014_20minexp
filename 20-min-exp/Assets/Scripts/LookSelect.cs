@@ -33,6 +33,7 @@ public class LookSelect : MonoBehaviour {
             var selectable = hit.collider.GetComponent<Selectable>();
 	        if (material != _current && selectable != null && selectable.enabled) {
 	            if (_current != null) FadeOut(_current, FadeOutTime);
+
 	            _current = material;
 	            _currentSelection = selectable;
 	            _fadingIn = true;
