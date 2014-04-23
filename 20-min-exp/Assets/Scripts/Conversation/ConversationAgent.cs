@@ -11,7 +11,7 @@ using SimpleJSON;
 /// </summary>
 public class ConversationAgent : MonoBehaviour {
 
-	protected enum ConversationState { AWKWARD, SELECTION_TIME };
+	protected enum ConversationState { AWKWARD, SELECTION_TIME, ANSWERING_APPERANCE_DELAY, DIALOGUE_PAUSE };
 	
 	public string _conversationPath;	// Relative path to the JSON conversation file
 
@@ -21,8 +21,12 @@ public class ConversationAgent : MonoBehaviour {
 	protected bool _conversationIsRunning = false;
 	protected int _highlightedResponse = 0;
 
-	protected ConversationState _state = ConversationState.SELECTION_TIME;
-	
+	/// <summary>
+	/// The conversation state should loop between DIALOGUE_PAUSE, ANSWERING_APPEARANCE_DELAY, SELECTION_TIME, AWKWARD starting with DIALOGUE_PAUSE
+	/// to ensure that next node delays on the first node is handled correctly.
+	/// </summary>
+	protected ConversationState _state = ConversationState.DIALOGUE_PAUSE;
+
 	private float endTimer;				// Used to time the display time of the last conversation dialogue
 	private float nodeTimer;
 	private bool nodeTimerHasBeenSet = false;
@@ -56,17 +60,25 @@ public class ConversationAgent : MonoBehaviour {
 				cNode.SilentResponse = silResp["timer"].AsFloat;
 				cNode.SilentGoto     = silResp["gotoNode"].AsInt;
 			}
+
+			JSONNode answerAppearanceDelay = n["answeringAppearanceDelay"];
+			cNode.AnswerAppearanceDelay = answerAppearanceDelay.AsFloat;
+
+			JSONNode nextNodeDelay = n["nextNodeDelay"];
+			cNode.NextNodeDelay = nextNodeDelay.AsFloat;
 			
 			// Add to allNodes
 			allNodes[ n["index"].AsInt ] = cNode;
 		}
+
+
 	}
-	
+
+	bool endTimerHasBeenSet = false;
 	// Update is called once per frame
 	protected virtual void Update () {
 		if (!_conversationIsRunning)
 			return;
-
 
 		// Check whether conversation should skip ahead if no answer is selected
 		if (getCurrentNode().SilentResponse > 0.0) {
@@ -107,8 +119,33 @@ public class ConversationAgent : MonoBehaviour {
 
 		case ConversationState.AWKWARD:
 			if (Time.time - endTimer > getCurrentNode().AnsweringDelay) {
-				_state = ConversationState.SELECTION_TIME;
+				endTimer = Time.time;
+				_state = ConversationState.DIALOGUE_PAUSE;
 				SelectResponse(_highlightedResponse);
+			}
+			break;
+		case ConversationState.ANSWERING_APPERANCE_DELAY:
+			if (!endTimerHasBeenSet) {
+				endTimer = Time.time;
+				endTimerHasBeenSet = true;
+			}
+
+			if ((Time.time - endTimer) > getCurrentNode().AnswerAppearanceDelay) {
+				_state = ConversationState.SELECTION_TIME;
+				endTimerHasBeenSet = false;
+			}
+			break;
+		case ConversationState.DIALOGUE_PAUSE:
+			if (!endTimerHasBeenSet) {
+				endTimer = Time.time;
+				endTimerHasBeenSet = true;
+			}
+
+			Debug.Log (getCurrentNode().NextNodeDelay);
+
+			if ((Time.time - endTimer) > getCurrentNode().NextNodeDelay) {
+				_state = ConversationState.ANSWERING_APPERANCE_DELAY;
+				endTimerHasBeenSet = false;
 			}
 			break;
 		}
@@ -129,15 +166,10 @@ public class ConversationAgent : MonoBehaviour {
 		GUI.skin.box.normal.background = texture;
 		GUI.Box(posBackground, GUIContent.none);
 
-		// Write Dialogue
-		GUIStyle style = new GUIStyle();
-		style.fontSize = 15;
-		style.alignment = TextAnchor.UpperCenter;
-		style.normal.textColor = Color.white;
-		GUI.Label(posBackground, getCurrentNode().Dialogue, style);
 
 		switch(_state) {
 		case ConversationState.SELECTION_TIME:
+			RenderDialogue(posBackground);
 			// Write responses
 			string[] responses = getCurrentNode().Responses;
 			for(int i = 0; i < responses.Length; i++) {
@@ -146,13 +178,29 @@ public class ConversationAgent : MonoBehaviour {
 			break;
 
 		case ConversationState.AWKWARD:
+			RenderDialogue(posBackground);
 			RenderAnswer(_highlightedResponse, barHeight);
 			break;
+		case ConversationState.ANSWERING_APPERANCE_DELAY:
+			RenderDialogue(posBackground);
+			// Don't render responses
+			break;
+		case ConversationState.DIALOGUE_PAUSE:
+			// Don't anything but the conversation background
+			break;
 		}
-
 	}
 
-	public void RenderAnswer(int i, int height) {
+	protected void RenderDialogue(Rect position) {
+		// Write Dialogue
+		GUIStyle style = new GUIStyle();
+		style.fontSize = 15;
+		style.alignment = TextAnchor.UpperCenter;
+		style.normal.textColor = Color.white;
+		GUI.Label(position, getCurrentNode().Dialogue, style);
+	}
+
+	protected void RenderAnswer(int i, int height) {
 		int dialogueOffset = 15; // Offsets the responses in the y-direction so they don't clash with the displayed dialogue.
 
 		Rect responsePos = new Rect(0, Screen.height-height+(i*15)+dialogueOffset, Screen.width, 15);
@@ -190,7 +238,7 @@ public class ConversationAgent : MonoBehaviour {
 	public ConversationNode getCurrentNode() {
 		return allNodes[currentNode];
 	}
-	
+
 	public void Restart() {
 		currentNode = 0;
 	}

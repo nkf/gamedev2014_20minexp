@@ -4,7 +4,9 @@
         {
             "index": 0,
             "dialogue": "When do you have to leave, darling?",
-            "silentResponse": { "timer": 10.0, "gotoNode": 4},
+            "silentResponse": { "timer": 1000.0, "gotoNode": 4},
+            "answeringAppearanceDelay": 2.0,
+            "nextNodeDelay": 2.0,
             "responses": [
                 {"response": "8 o'clock, as always", "timer": 5.0, "gotoNode": 1},
                 
@@ -14,6 +16,7 @@
         {
             "index": 1,
             "dialogue": "Of course.",
+            "nextNodeDelay": 2.0,
             "responses": [
                 {"response": "...", "gotoNode": 3}
             ]

@@ -7,6 +7,8 @@ public class ConversationNode {
 	protected string   _dialogue;
 	protected string[] _responses;
 	protected float    _answeringDelay; // Delay after choosing a response
+	protected float    _answerAppearanceDelay; // Delay between NPC dialogue and player response choices appearance
+	protected float    _nextNodeDelay; // Delay between a chosen response and the next NPC dialogue
 	// The indexes in this array points to indexes in an array which contains all conversation nodes.
 	protected int[]    _nodeLinks;
 	protected float    _silentResponse;
@@ -15,6 +17,8 @@ public class ConversationNode {
 	public string Dialogue      { get { return _dialogue; } }
 	public string[] Responses   { get { return _responses; } }
 	public float AnsweringDelay { get { return _answeringDelay; } }
+	public float AnswerAppearanceDelay { get { return _answerAppearanceDelay; } set {_answerAppearanceDelay = value; } }
+	public float NextNodeDelay  { get { return _nextNodeDelay; } set {_nextNodeDelay = value; } }
 	public int[] NodeLinks      { get { return _nodeLinks; } }
 	public float SilentResponse {
 		set { _silentResponse = value; }
