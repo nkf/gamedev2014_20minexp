@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CarControl : MonoBehaviour {
 
-    public float Speed;
+    public float Speed = 2;
     void Update() {
         //var v = Input.GetAxis("Vertical");
         var h = MouseHorizontalPosition();
@@ -13,10 +13,14 @@ public class CarControl : MonoBehaviour {
         transform.localEulerAngles = a;
         var rotation = transform.rotation;
         var force = rotation * Vector3.forward * Speed;
-        if(Input.GetMouseButton(0))
+        if(Input.GetMouseButton(0)) {
+			Debug.Log ("Forward...");
             rigidbody.AddForce(force);
-        else if(Input.GetMouseButton(1))
+		}
+        else if(Input.GetMouseButton(1)) {
+			Debug.Log ("Backward...");
             rigidbody.AddForce(-force);
+		}
 
         if (Input.GetKey(KeyCode.K) && !nigga) {
             nigga = true;

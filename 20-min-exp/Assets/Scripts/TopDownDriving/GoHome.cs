@@ -23,8 +23,12 @@ public class GoHome : InvokableAction {
 			if (AppearanceGameState.INSTANCE.CurrentTime > AppearanceGameState.INSTANCE.dayLengthInSecs-successBufferInSecs &&
 			    AppearanceGameState.INSTANCE.CurrentTime < AppearanceGameState.INSTANCE.dayLengthInSecs)
 			{
-				Debug.Log ("Waifu not suspect!");
-				Toolbox.Instance.levelController.LoadNext(2.0f);
+//				int today = Toolbox.Instance.gameState.DayCounter;
+//				if (today == GameState.APPEARANCES_DAY_1 || GameState.APPEARANCES_DAY_2) {
+				if (LevelLoader.Status == LoadStatus.NotLoading) {
+					Debug.Log ("Waifu not suspect!");
+					Toolbox.Instance.levelController.Load(LevelController.TABLE, 2.0f);
+				}
 			}
 			// Player is too early
 			else if (AppearanceGameState.INSTANCE.CurrentTime < AppearanceGameState.INSTANCE.dayLengthInSecs-successBufferInSecs)
