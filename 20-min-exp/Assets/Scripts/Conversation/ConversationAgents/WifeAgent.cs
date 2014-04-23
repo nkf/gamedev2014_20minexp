@@ -10,11 +10,11 @@ public class WifeAgent : ConversationAgent {
 		    today == GameState.APPEARANCES_DAY_1 ||
 		    today == GameState.APPEARANCES_DAY_2)
 		{
-			Toolbox.Instance.levelController.Load (LevelController.APPEARANCES);
-			Toolbox.Instance.gameState.DayCounter++;
+            Toolbox.Instance.gameState.DayCounter++;
+            Toolbox.Instance.levelController.Load (LevelController.APPEARANCES);
 		} else if (today == GameState.APPEARANCES_DAY_3) {
-			Toolbox.Instance.levelController.Load (LevelController.SELL_STUFF);
-			Toolbox.Instance.gameState.DayCounter++;
+            Toolbox.Instance.gameState.DayCounter++;
+            Toolbox.Instance.levelController.Load (LevelController.SELL_STUFF);
 		} else {
         	Toolbox.Instance.levelController.LoadNext(10);
 		}

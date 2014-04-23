@@ -105,8 +105,8 @@ public class OfficeWorkController : MonoBehaviour {
 			Debug.Log ("Geemu Ovaa");
 			// If first in-game day, Start new day (with table, and hall, and driving and shit)
 			if (Toolbox.Instance.gameState.DayCounter == GameState.REGULAR_DAY) {
-				Toolbox.Instance.levelController.Load(LevelController.TABLE);
-				Toolbox.Instance.gameState.DayCounter = 1;
+                Toolbox.Instance.gameState.DayCounter = 1;
+                Toolbox.Instance.levelController.Load(LevelController.TABLE);
 			}
 		}
 		

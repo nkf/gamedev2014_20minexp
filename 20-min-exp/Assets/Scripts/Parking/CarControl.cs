@@ -19,14 +19,8 @@ public class CarControl : MonoBehaviour {
             rigidbody.AddForce(force);
         else if(Input.GetMouseButton(1))
             rigidbody.AddForce(-force);
-
-        if (Input.GetKey(KeyCode.K) && !nigga) {
-            nigga = true;
-            StartCoroutine(Camera.main.FadeToBlack(2, () => Debug.Log("oookay")));
-        }
     }
 
-    private bool nigga = false;
     private float MouseHorizontalPosition() {
         var mp = Input.mousePosition.x;
         var t = Mathf.InverseLerp(0, Screen.width, mp);

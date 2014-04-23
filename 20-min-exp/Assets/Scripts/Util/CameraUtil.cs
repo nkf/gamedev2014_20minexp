@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using System.Collections;
+using Object = UnityEngine.Object;
 
 public static class CameraUtil {
 
@@ -10,21 +12,18 @@ public static class CameraUtil {
     public static IEnumerator FadeToBlack(this Camera camera, float time, Action onComplete) {
         _blackScreen = GameObject.Instantiate(Resources.Load<GameObject>("BlackScreen")) as GameObject;
         _blackScreen.transform.position = new Vector3(0.5f, 0.5f);
+        Object.DontDestroyOnLoad(_blackScreen);
         return FadeTo(_blackScreen.GetComponent<GUITexture>(), time, onComplete);
     }
 
 	public static IEnumerator FadeInFromBlack(this Camera camera, float time, Action onComplete) {
-		if (_blackScreen == null) {
-			_blackScreen = GameObject.Instantiate(Resources.Load<GameObject>("BlackScreen")) as GameObject;
-			_blackScreen.transform.position = new Vector3(0.5f, 0.5f);
-		}
 		return FadeFrom(_blackScreen.GetComponent<GUITexture>(), time, onComplete);
 	}
 
     private static IEnumerator Fader(GUITexture toFade, float time, Action onComplete, Func<float, float, float, float> alphaCalculator, bool destroyBlackScreen) {
         var c = toFade.color;
         var start = Time.time;
-        var end = start + time;
+        var end = start + time/2; //yeah for some reason we only need half the alpha?
         while (Time.time <= end) {
             var alpha = alphaCalculator(start, end, Time.time);
             var newColor = new Color(c.r, c.g, c.b, alpha);
@@ -53,5 +52,12 @@ public static class CameraUtil {
         c.enabled = true;
         al = c.gameObject.GetComponent<AudioListener>();
         if(al != null) al.enabled = true;
+    }
+
+    public static IEnumerator ShowCenterText(this Camera camera, string text, Action onComplete) {
+        Toolbox.Instance.gameState.ShowCenterText(text);
+        yield return new WaitForSeconds(3);
+        Toolbox.Instance.gameState.HideCenterText();
+        onComplete();
     }
 }

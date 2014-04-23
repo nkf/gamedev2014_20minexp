@@ -6,8 +6,6 @@ public class SideScrollController : MonoBehaviour {
 
     private GameObject[] _wheels;
 	void Start () {
-		Toolbox touch = Toolbox.Instance; // TODO: Remove for final version
-		Debug.Log ("Derp "+Toolbox.Instance.gameState.DayCounter);
 		_wheels = GameObject.FindGameObjectsWithTag("Wheel");
 		startTime = Time.time;
 	}
@@ -42,8 +40,8 @@ public class SideScrollController : MonoBehaviour {
 		//TODO: Find another way and condition to get to the next level 
 		if ((Time.time - startTime) > 5.0f && !isLoading) {
 			// Increase because we want to load the afternoon table scene, which is actually on the same ingame day as the morning table scene before getting fired
-			Toolbox.Instance.gameState.DayCounter++;
 			Toolbox.Instance.levelController.Load(LevelController.TABLE);
+            Toolbox.Instance.gameState.DayCounter++;
 			isLoading = true;
 		}
 	}

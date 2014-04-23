@@ -10,6 +10,8 @@ public class GameState : MonoBehaviour {
 	public static readonly int APPEARANCES_DAY_2    = 4;
 	public static readonly int APPEARANCES_DAY_3    = 5;
 	public static readonly int SELL_STUFF_DAY       = 6;
+
+    public static readonly int TOTAL_DAY_COUNTER    = 7;
     
 	public int MoneyCounter { get; set; }
 
@@ -34,6 +36,18 @@ public class GameState : MonoBehaviour {
 
 	}
 
+    private bool _showingCenterText;
+    private string _centerText;
+    private Rect _center = new Rect(Screen.width/2f, Screen.height/2f, 0, 0);
+    public void ShowCenterText(string text) {
+        _showingCenterText = true;
+        _centerText = text;
+    }
+
+    public void HideCenterText() {
+        _showingCenterText = false;
+    }
+
 	void OnGUI() {
 		// Render monies
 		Vector2 textDimensions = GUI.skin.label.CalcSize( new GUIContent(Toolbox.Instance.gameState.MoneyCounter.ToString()) );
@@ -45,5 +59,9 @@ public class GameState : MonoBehaviour {
 		style.alignment = TextAnchor.UpperCenter;
 		style.normal.textColor = Color.white;
 		GUI.Label(moneyGUI, Toolbox.Instance.gameState.MoneyCounter.ToString(), style);
+
+	    if (_showingCenterText) {
+	        GUI.Label(_center, _centerText, new GUIStyle {fontSize = 30, alignment = TextAnchor.MiddleCenter, normal = {textColor = Color.white}});
+	    }
 	}
 }
