@@ -7,41 +7,49 @@ public class RoadController : MonoBehaviour {
     
     private GameObject _roadBelow;
     private Bounds _roadBounds;
+
 	// Use this for initialization
 	void Start () {
 	    _speed = Speed;
 	}
 
-    public float Speed = 50;
-    public float Acceleration = 1f;
-    public float DeAcceleration = 1f;
-    public float MinSpeed = 40;
-    public float MaxSpeed = 100;
-    public float SteeringSpeed = 0.5f;
-    public float SwayFactor = 0.02f;
+    public float Speed            = 50;
+    public float Acceleration     = 1f;
+    public float DeAcceleration   = 1f;
+    public float MinSpeed         = 40;
+    public float MaxSpeed         = 100;
+    public float SteeringSpeed    = 0.5f;
+    public float SwayFactor       = 0.02f;
     public float EdgeSlowDownThreshold = 3f;
-    public float EdgePadding = 1f;
+    public float EdgePadding      = 1f;
     private float _slowDownFactor = 1;
     private float _speed;
+
     // Update is called once per frame
 	void Update () {
 	    var p = transform.position;
-	    //var hInput = Input.GetAxis("Horizontal");
-	    var hInput = MouseHorizontalPosition();
-	    if (Input.GetMouseButton(0)) _speed += Acceleration * Time.deltaTime;
-	    else _speed -= DeAcceleration * Time.deltaTime;
+	    var hInput = Input.GetAxis("Horizontal");
+//	    var hInput = MouseHorizontalPosition();
+//	    if (Input.GetMouseButton(0))
+		if (Input.GetKey(KeyCode.UpArrow))
+			_speed += Acceleration * Time.deltaTime;
+	    else
+			_speed -= DeAcceleration * Time.deltaTime;
 	    _speed = Mathf.Clamp(_speed, MinSpeed, MaxSpeed);
 	    var move = hInput * SteeringSpeed + SwayFactor;
-	    //Calculate edge slowdown
+	    
+		//Calculate edge slowdown
 	    var edgeDis = DistanceToEdge();
 	    _slowDownFactor = Mathf.InverseLerp(0, EdgeSlowDownThreshold, edgeDis);
-        //if we are going too close to the edge AND are on course towards the edge.
-	    if (edgeDis < EdgePadding && Mathf.Sign(transform.position.x) == Mathf.Sign(move)) move = 0;
-        //apply
+        
+		//if we are going too close to the edge AND are on course towards the edge.
+	    if (edgeDis < EdgePadding && Mathf.Sign(transform.position.x) == Mathf.Sign(move))
+			move = 0;
+        
+		//apply
 	    p.x += move * _slowDownFactor;
         p.z += _speed * Time.deltaTime * _slowDownFactor;
 	    transform.position = p;
-	    
 	}
 
     private float MouseHorizontalPosition() {

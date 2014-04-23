@@ -273,7 +273,7 @@ MonoBehaviour:
   MinSpeed: 100
   MaxSpeed: 1000
   SteeringSpeed: .200000003
-  SwayFactor: .129999995
+  SwayFactor: .0700000003
   EdgeSlowDownThreshold: 2
   EdgePadding: 1
 --- !u!1 &2061750111

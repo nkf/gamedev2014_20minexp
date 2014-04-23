@@ -3,15 +3,19 @@ using System.Collections;
 
 public class DinnerAnimationFunctions : MonoBehaviour {
 
-    public ConversationAgent Conversation1;
-    
+	public static GameObject DINNER_CAMERA;
+
+	public void Awake() {
+		DINNER_CAMERA = this.gameObject;
+	}
+
 	// Use this for initialization
 	void Start () {
 	
 	}
 
     public void StartConversation1() {
-        Conversation1.StartConversation();
+		WifeAgent.JANE.GetComponent<WifeAgent>().StartConversation();
     }
 
 }

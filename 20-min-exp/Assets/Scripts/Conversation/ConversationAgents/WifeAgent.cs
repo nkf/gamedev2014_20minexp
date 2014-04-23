@@ -3,6 +3,13 @@ using UnityEngine;
 using System.Collections;
 
 public class WifeAgent : ConversationAgent {
+
+	public static GameObject JANE;
+
+	protected void Awake() {
+		WifeAgent.JANE = this.gameObject;
+	}
+
     protected override void StopConversation() {
         base.StopConversation();
 		int today = Toolbox.Instance.gameState.DayCounter;
