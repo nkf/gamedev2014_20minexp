@@ -31,7 +31,7 @@ public class LookSelect : MonoBehaviour {
 	    if (Physics.Raycast(ray, out hit, SelectionDistance)) {
 	        var material = hit.collider.renderer.materials.FirstOrDefault(m => m.shader == Target);
             var selectable = hit.collider.GetComponent<Selectable>();
-	        if (material != _current && selectable.enabled) {
+	        if (material != _current && selectable != null && selectable.enabled) {
 	            if (_current != null) FadeOut(_current, FadeOutTime);
 	            _current = material;
 	            _currentSelection = selectable;

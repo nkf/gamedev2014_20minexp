@@ -948,6 +948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb9226a1d45c3e42b5585bad32fdaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BuyPrice: 5000
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -959,6 +960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb9226a1d45c3e42b5585bad32fdaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BuyPrice: 2000
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -970,6 +972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb9226a1d45c3e42b5585bad32fdaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BuyPrice: 2500
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

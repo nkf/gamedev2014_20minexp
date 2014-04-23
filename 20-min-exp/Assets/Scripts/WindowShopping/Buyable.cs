@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Buyable : Selectable {
 
+    public int BuyPrice;
     // Use this for initialization
     private void Start() {}
 
@@ -10,6 +11,7 @@ public class Buyable : Selectable {
     private void Update() {}
 
     public override void Select() {
+        Toolbox.Instance.gameState.MoneyCounter -= BuyPrice;
         Destroy(gameObject);
     }
 

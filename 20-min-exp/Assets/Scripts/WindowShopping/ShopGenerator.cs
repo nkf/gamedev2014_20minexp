@@ -12,21 +12,13 @@ public class ShopGenerator : MonoBehaviour {
     private Random _rng;
     private Vector3 _currentPos;
 	void Start () {
-        var path = Application.dataPath + "/Resources/ShopPrefabs";
-        _shopPaths = Directory.GetFiles(path).Select(s => CleanPath(s)).Distinct().ToArray();
+	    _shopPaths = ResourceUtil.GetPrefabPaths("ShopPrefabs");
         _rng = new Random(RandomSeed);
 	    _currentPos = transform.position;
 	    for (int i = 0; i < 1000; i++) {
 	        CreateNextShop();
 	    }
 	}
-    private static string CleanPath(string path) {
-        path = new Uri(path).AbsolutePath;
-        var start = path.IndexOf(@"ShopPrefabs");
-        var end = path.IndexOf(@".prefab");
-        path = path.Substring(start, end - start);
-        return Uri.UnescapeDataString(path);
-    }
 
     private int _shopId = 0;
     

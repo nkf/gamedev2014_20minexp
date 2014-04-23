@@ -26,7 +26,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400002}
   m_Layer: 0
-  m_Name: ShopGreybox
+  m_Name: ShopGreybox 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
