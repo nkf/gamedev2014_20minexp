@@ -36,7 +36,7 @@ public class RoadController : MonoBehaviour {
 	    else
 			_speed -= DeAcceleration * Time.deltaTime;
 	    _speed = Mathf.Clamp(_speed, MinSpeed, MaxSpeed);
-	    var move = hInput * SteeringSpeed + SwayFactor;
+	    var move = hInput * SteeringSpeed + GetSway();
 	    
 		//Calculate edge slowdown
 	    var edgeDis = DistanceToEdge();
@@ -51,6 +51,19 @@ public class RoadController : MonoBehaviour {
         p.z += _speed * Time.deltaTime * _slowDownFactor;
 	    transform.position = p;
 	}
+
+    private int _nextSwayChange = 100;
+    private int _swayIndex = 0;
+    private int _currentSway = 1;
+    private float GetSway() {
+        _swayIndex++;
+        if (_swayIndex >= _nextSwayChange) {
+            _nextSwayChange = Random.Range(10, 100);
+            _swayIndex = 0;
+            _currentSway = -_currentSway;
+        }
+        return _currentSway*SwayFactor;
+    }
 
     private float MouseHorizontalPosition() {
         var mp = Input.mousePosition.x;
