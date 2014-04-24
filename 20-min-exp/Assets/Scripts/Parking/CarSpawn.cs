@@ -31,15 +31,17 @@ public class CarSpawn : MonoBehaviour {
 	void Start () {
         if(_carPaths == null) _carPaths = ResourceUtil.GetPrefabPaths("CarPrefabs");
 	    CreateSpawnPattern();
-	    var pattern = _spawnPattern[_index++];
+	    var pattern = _spawnPattern[_index];
 	    if (pattern == Pattern.Main) {
-	        var name = Toolbox.Instance.gameState.DayCounter == 2 ? "" : ParkingConfiguration.MainName;
-	        GetComponentInChildren<TextMesh>().text = name;
+	        var playerName = Toolbox.Instance.gameState.DayCounter == 2 ? "" : ParkingConfiguration.MainName;
+	        GetComponentInChildren<TextMesh>().text = playerName;
 	    } else {
 	        if(pattern == Pattern.Taken) SpawnRandomCar();
 	        GetComponentInChildren<TextMesh>().text = ParkingConfiguration.GetRandomName();
 	        GetComponent<BoxCollider>().enabled = false;
 	    }
+	    _index++;
+	    if (_index >= _spawnPattern.Length) _index = 0;
 	}
     private readonly System.Random _rng = new System.Random();
     private static string[] _carPaths;

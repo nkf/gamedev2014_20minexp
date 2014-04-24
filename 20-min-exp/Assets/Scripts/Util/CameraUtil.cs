@@ -14,9 +14,10 @@ public static class CameraUtil {
     private static IEnumerator Fader(GUITexture toFade, float time, Action onComplete, Func<float, float, float, float> alphaCalculator) {
         var c = toFade.color;
         var start = Time.time;
-        var end = start + time/2; //yeah for some reason we only need half the alpha?
+        var end = start + time;
         while (Time.time <= end) {
-            var alpha = alphaCalculator(start, end, Time.time);
+            var t = alphaCalculator(start, end, Time.time);
+            var alpha = Mathf.Lerp(0, 0.5f, t);
             var newColor = new Color(c.r, c.g, c.b, alpha);
             toFade.color = newColor;
             yield return new WaitForEndOfFrame();
