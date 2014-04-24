@@ -1819,6 +1819,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 920674398}
   m_GameObject: {fileID: 559211280}
   m_Mesh: {fileID: 4300056, guid: a3525729897feae42893ce81e797e18a, type: 3}
+--- !u!1 &604581270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 604581272}
+  - 114: {fileID: 604581271}
+  m_Layer: 0
+  m_Name: Ending Animation Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &604581271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 604581270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1ea9db597d0974d83e0a3614ca3e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimationToPlayAtLastSale: {fileID: 2096117702}
+--- !u!4 &604581272
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 604581270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.7059965, y: .66511476, z: -5.41152763}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &612539610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,7 +1924,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 659851795}
-  - 95: {fileID: 659851796}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -1971,21 +2009,6 @@ Transform:
   - {fileID: 1717682469}
   - {fileID: 2100210499}
   m_Father: {fileID: 0}
---- !u!95 &659851796
-Animator:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9500000, guid: 51fca8ea2a2dd0f458a0960a2b2e7382,
-    type: 2}
-  m_PrefabInternal: {fileID: 920674398}
-  m_GameObject: {fileID: 659851794}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a3525729897feae42893ce81e797e18a, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_ApplyRootMotion: 1
-  m_AnimatePhysics: 0
-  m_HasTransformHierarchy: 1
 --- !u!1 &755849705
 GameObject:
   m_ObjectHideFlags: 0
@@ -2499,7 +2522,8 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 51fca8ea2a2dd0f458a0960a2b2e7382, type: 2}
   m_RootGameObject: {fileID: 659851794}
   m_IsPrefabParent: 0
@@ -4880,6 +4904,7 @@ GameObject:
   - 81: {fileID: 2096117695}
   - 114: {fileID: 2096117700}
   - 114: {fileID: 2096117701}
+  - 111: {fileID: 2096117702}
   m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4982,6 +5007,21 @@ MonoBehaviour:
   SelectionMethod: 1
   FadeInTime: .5
   FadeOutTime: .25
+--- !u!111 &2096117702
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2096117694}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 44f29e6c76702314cb86dbf36a6ea7ad, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 44f29e6c76702314cb86dbf36a6ea7ad, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &2100210498
 GameObject:
   m_ObjectHideFlags: 0

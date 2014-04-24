@@ -17,7 +17,7 @@ public static class CameraUtil {
         var end = start + time;
         while (Time.time <= end) {
             var t = alphaCalculator(start, end, Time.time);
-            var alpha = Mathf.Lerp(0, 0.5f, t);
+            var alpha = Mathf.Lerp(0, 0.75f, t);
             var newColor = new Color(c.r, c.g, c.b, alpha);
             toFade.color = newColor;
             yield return new WaitForEndOfFrame();
