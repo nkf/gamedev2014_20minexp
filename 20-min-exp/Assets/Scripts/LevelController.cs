@@ -69,7 +69,7 @@ public class LevelController : MonoBehaviour {
     public static string[] SellText     = new string[GameState.TOTAL_DAY_COUNTER];
 
     static LevelController() {
-        TabelText   [GameState.REGULAR_DAY]         = "YOU ARE AT TABLE DAY 1";
+        TabelText   [GameState.REGULAR_DAY]         = "FAMILY BREAKFAST";
         TabelText   [GameState.FIRING_DAY_MORNING]  = "YOU ARE AT TABLE DAY 2";
         TabelText   [GameState.FIRING_DAY_AFTERNOON]= "YOU ARE AT TABLE DAY 2 EVENING";
         TabelText   [GameState.APPEARANCES_DAY_2]   = "YOU ARE AT TABLE DAY 4";

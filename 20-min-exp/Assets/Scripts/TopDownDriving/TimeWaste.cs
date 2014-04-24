@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+
 public class TimeWaste : InvokableAction {
 
 	public int timeWasteInMins;
 	public int timeWastePrice;
+	public int window1x;
+	public int window1y;
 
 	protected float timeWasteInSecs    { get { return timeWasteInMins * 60; } }
 
@@ -66,13 +70,11 @@ public class TimeWaste : InvokableAction {
 		if (!_actionAvailable)
 			return;
 
-		int pos1Height = 100;
-		int posWidth   = 150;
-		Rect pos1 = new Rect(Screen.width/5, Screen.height/5, posWidth, pos1Height);
-		Rect pos2 = new Rect(Screen.width/5, (Screen.height/5)+pos1Height, posWidth, 20);
+		Rect pos1 = new Rect(2*(Screen.width/5), 2*(Screen.height/5), Screen.width/5, Screen.height/5);
+		Rect pos2 = new Rect(2*(Screen.width/5), 3*(Screen.height/5), Screen.width/5, Screen.height/20);
 
 		GUIHelpers.DrawQuad(pos1, Color.black);
-		GUI.Box(pos1, "Hej, MOSMF \n mullimahuthut \n whutevs");
-		GUI.Box(pos2, "Press a key, to get shitefaced");
+		GUI.Box(pos1, "Jay's Billiards & Sports Bar \n mullimahuthut \n whutevs");
+		GUI.Box(pos2, "Press ENTER to enter");
 	}
 }
