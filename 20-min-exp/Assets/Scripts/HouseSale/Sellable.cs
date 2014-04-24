@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using System.Net.NetworkInformation;
+using UnityEngine;
 using System.Collections;
 
 public class Sellable : Selectable {
@@ -16,6 +18,7 @@ public class Sellable : Selectable {
     
     public override void Select() {
         Toolbox.Instance.gameState.MoneyCounter += SellPrice;
+        if(All.Count(s => s is Sellable) == 1) EndAnimation.Play();
         Destroy(gameObject);
     }
 }

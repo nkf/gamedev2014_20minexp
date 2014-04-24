@@ -33,7 +33,7 @@ public class CarSpawn : MonoBehaviour {
 	    CreateSpawnPattern();
 	    var pattern = _spawnPattern[_index];
 	    if (pattern == Pattern.Main) {
-	        var playerName = Toolbox.Instance.gameState.DayCounter == 2 ? "" : ParkingConfiguration.MainName;
+	        var playerName = Toolbox.Instance.gameState.DayCounter == GameState.FIRING_DAY_MORNING ? "" : ParkingConfiguration.MainName;
 	        GetComponentInChildren<TextMesh>().text = playerName;
 	    } else {
 	        if(pattern == Pattern.Taken) SpawnRandomCar();
