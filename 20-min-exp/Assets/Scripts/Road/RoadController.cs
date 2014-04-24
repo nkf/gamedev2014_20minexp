@@ -29,9 +29,10 @@ public class RoadController : MonoBehaviour {
 	void Update () {
 	    var p = transform.position;
 	    var hInput = Input.GetAxis("Horizontal");
+	    var vInput = Input.GetAxis("Vertical");
 //	    var hInput = MouseHorizontalPosition();
 //	    if (Input.GetMouseButton(0))
-		if (Input.GetKey(KeyCode.UpArrow))
+		if (vInput > 0)
 			_speed += Acceleration * Time.deltaTime;
 	    else
 			_speed -= DeAcceleration * Time.deltaTime;
