@@ -4,12 +4,12 @@ using System.Collections;
 public class Contract  {
 	protected string _title;
 	protected string _description;
-	protected int    _homefulProfit;
+	protected int    _homefulProvisionPct;
 	protected int    _businessProfit;
 
 	public string Title       { get { return _title; } }
 	public string Description { get { return _description; } }
-	public int HomefulProfit  { get { return _homefulProfit; } }
+	public int HomefulProvisionPct  { get { return _homefulProvisionPct; } }
 	public int BusinessProfit { get { return _businessProfit; } }
 
 	// TODO: Word wrap?
@@ -17,7 +17,7 @@ public class Contract  {
 	public Contract(string title, string description, int homefulProfit, int businessProfit) {
 		_title = title;
 		_description = description;
-		_homefulProfit = homefulProfit;
+		_homefulProvisionPct = homefulProfit;
 		_businessProfit = businessProfit;
 	}
 
@@ -30,20 +30,20 @@ public class Contract  {
 		if (obj.GetType () != typeof(Contract))
 			return false;
 		Contract other = (Contract)obj;
-		return _title == other._title && _description == other._description && _homefulProfit == other._homefulProfit && _businessProfit == other._businessProfit;
+		return _title == other._title && _description == other._description && _homefulProvisionPct == other._homefulProvisionPct && _businessProfit == other._businessProfit;
 	}
 	
 
 	public override int GetHashCode ()
 	{
 		unchecked {
-			return (_title != null ? _title.GetHashCode () : 0) ^ (_description != null ? _description.GetHashCode () : 0) ^ _homefulProfit.GetHashCode () ^ _businessProfit.GetHashCode ();
+			return (_title != null ? _title.GetHashCode () : 0) ^ (_description != null ? _description.GetHashCode () : 0) ^ _homefulProvisionPct.GetHashCode () ^ _businessProfit.GetHashCode ();
 		}
 	}
 	
 	public override string ToString ()
 	{
-		return string.Format ("[Contract: _title={0}, _description={1}, _homefulProfit={2}, _businessProfit={3}]", _title, _description, _homefulProfit, _businessProfit);
+		return string.Format ("[Contract: _title={0}, _description={1}, _homefulProfit={2}, _businessProfit={3}]", _title, _description, _homefulProvisionPct, _businessProfit);
 	}
 	
 }

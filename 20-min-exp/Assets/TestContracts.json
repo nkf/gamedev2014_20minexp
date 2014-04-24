@@ -1,148 +1,153 @@
 {
   "normalContracts": [
     {
-      "title": "Build new house",
-      "description": "In poor part",
-      "homefulProfit": 10000,
-      "businessProfit": 100000
+      "title": "--",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed ut orci aliquam, porta est cursus, lacinia ipsum. Fusce\naliquet, erat vel lacinia tempus, dui ligula aliquet nibh\n, non viverra enim mi eget metus. Nunc et mi at quam\nelementum semper in sed est. Vivamus vitae libero dictum\nnisl tincidunt imperdiet.",
+      "homefulProfit": 10,
+      "businessProfit": 12000
     },
     {
-      "title": "Build corporate HQ",
-      "description": "",
-      "homefulProfit": 50000,
-      "businessProfit": 100000
+      "title": "--",
+      "description": "Donec ligula nisi, ullamcorper sit amet placerat ultricies,\ntempus ut augue. Vestibulum ante ipsum primis in faucibus\norci luctus et ultrices posuere cubilia Curae; Quisque\ntincidunt libero a ante sollicitudin, vitae viverra diam\ngravida.",
+      "homefulProfit": 12,
+      "businessProfit": 60000
     },
     {
-      "title": "New hats for management.",
-      "description": "HAT PARTY!!",
-      "homefulProfit": 400,
-      "businessProfit": 100000
-    },
-    {
-      "title": "Cheezburger?",
-      "description": "Can haz?",
-      "homefulProfit": 25,
-      "businessProfit": 100000
-    },
-    {
-      "title": "Rugbrød for Michail",
-      "description": "For educational puposes",
+      "title": "--",
+      "description": "Maecenas non laoreet purus, non faucibus sapien. Nunc\nmauris sapien, viverra in blandit in, dictum non metus.\nEtiam posuere urna adipiscing, hendrerit purus in, rhoncus\nmauris. Duis placerat orci metus, in aliquam velit\nscelerisque non.",
       "homefulProfit": 15,
-      "businessProfit": 100000
+      "businessProfit": 90000
     },
     {
-      "title": "Bacon",
-      "description": "Always important",
-      "homefulProfit": 50,
-      "businessProfit": 100000
+      "title": "--",
+      "description": "Phasellus malesuada blandit metus non imperdiet.\nDonec cursus, velit a vestibulum pulvinar, nibh orci\niaculis odio, nec tempus orci urna ut tortor. Ut adipiscing\neros eget turpis ullamcorper sollicitudin in et sapien.",
+      "homefulProfit": 11,
+      "businessProfit": 85000
     },
     {
-      "title": "Grethe",
-      "description": "plrp",
-      "homefulProfit": 50,
-      "businessProfit": 100000
+      "title": "--",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed ut orci aliquam, porta est cursus, lacinia ipsum. Fusce\naliquet, erat vel lacinia tempus, dui ligula aliquet nibh\n, non viverra enim mi eget metus. Nunc et mi at quam\nelementum semper in sed est. Vivamus vitae libero dictum\nnisl tincidunt imperdiet.",
+      "homefulProfit": 11,
+      "businessProfit": 15000
     },
     {
-      "title": "Sovs",
-      "description": "BRUN!",
-      "homefulProfit": 50,
-      "businessProfit": 100000
+      "title": "--",
+      "description": "Donec ligula nisi, ullamcorper sit amet placerat ultricies,\ntempus ut augue. Vestibulum ante ipsum primis in faucibus\norci luctus et ultrices posuere cubilia Curae; Quisque\ntincidunt libero a ante sollicitudin, vitae viverra diam\ngravida.",
+      "homefulProfit": 13,
+      "businessProfit": 50000
     },
     {
-      "title": "Imma fukk u up",
-      "description": "BRUN!",
-      "homefulProfit": 50,
-      "businessProfit": 100000
+      "title": "--",
+      "description": "Maecenas non laoreet purus, non faucibus sapien. Nunc\nmauris sapien, viverra in blandit in, dictum non metus.\nEtiam posuere urna adipiscing, hendrerit purus in, rhoncus\nmauris. Duis placerat orci metus, in aliquam velit\nscelerisque non.",
+      "homefulProfit": 14,
+      "businessProfit": 45000
+    },
+    {
+      "title": "--",
+      "description": "Phasellus malesuada blandit metus non imperdiet.\nDonec cursus, velit a vestibulum pulvinar, nibh orci\niaculis odio, nec tempus orci urna ut tortor. Ut adipiscing\neros eget turpis ullamcorper sollicitudin in et sapien.",
+      "homefulProfit": 12,
+      "businessProfit": 35000
     },{
-      "title": "New hats for management.",
-      "description": "HAT PARTY!!",
-      "homefulProfit": 400,
-      "businessProfit": 100000
+      "title": "--",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed ut orci aliquam, porta est cursus, lacinia ipsum. Fusce\naliquet, erat vel lacinia tempus, dui ligula aliquet nibh\n, non viverra enim mi eget metus. Nunc et mi at quam\nelementum semper in sed est. Vivamus vitae libero dictum\nnisl tincidunt imperdiet.",
+      "homefulProfit": 10,
+      "businessProfit": 20000
     },
     {
-      "title": "Cheezburger?",
-      "description": "Can haz?",
-      "homefulProfit": 25,
-      "businessProfit": 100000
+      "title": "--",
+      "description": "Donec ligula nisi, ullamcorper sit amet placerat ultricies,\ntempus ut augue. Vestibulum ante ipsum primis in faucibus\norci luctus et ultrices posuere cubilia Curae; Quisque\ntincidunt libero a ante sollicitudin, vitae viverra diam\ngravida.",
+      "homefulProfit": 13,
+      "businessProfit": 63000
     },
     {
-      "title": "Rugbrød for Michail",
-      "description": "For educational puposes",
-      "homefulProfit": 15,
-      "businessProfit": 100000
+      "title": "--",
+      "description": "Maecenas non laoreet purus, non faucibus sapien. Nunc\nmauris sapien, viverra in blandit in, dictum non metus.\nEtiam posuere urna adipiscing, hendrerit purus in, rhoncus\nmauris. Duis placerat orci metus, in aliquam velit\nscelerisque non.",
+      "homefulProfit": 10,
+      "businessProfit": 27000
     },
     {
-      "title": "Bacon",
-      "description": "Always important",
-      "homefulProfit": 50,
-      "businessProfit": 100000
-    },
-    {
-      "title": "Grethe",
-      "description": "plrp",
-      "homefulProfit": 50,
-      "businessProfit": 100000
-    },
-    {
-      "title": "Sovs",
-      "description": "BRUN!",
-      "homefulProfit": 50,
-      "businessProfit": 100000
-    },
-    {
-      "title": "Imma fukk u up",
-      "description": "BRUN!",
-      "homefulProfit": 50,
-      "businessProfit": 100000
+      "title": "--",
+      "description": "Phasellus malesuada blandit metus non imperdiet.\nDonec cursus, velit a vestibulum pulvinar, nibh orci\niaculis odio, nec tempus orci urna ut tortor. Ut adipiscing\neros eget turpis ullamcorper sollicitudin in et sapien.",
+      "homefulProfit": 14,
+      "businessProfit": 76000
     },{
-      "title": "New hats for management.",
-      "description": "HAT PARTY!!",
-      "homefulProfit": 400,
-      "businessProfit": 100000
-    },
-    {
-      "title": "Cheezburger?",
-      "description": "Can haz?",
-      "homefulProfit": 25,
-      "businessProfit": 100000
-    },
-    {
-      "title": "Rugbrød for Michail",
-      "description": "For educational puposes",
+      "title": "--",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed ut orci aliquam, porta est cursus, lacinia ipsum. Fusce\naliquet, erat vel lacinia tempus, dui ligula aliquet nibh\n, non viverra enim mi eget metus. Nunc et mi at quam\nelementum semper in sed est. Vivamus vitae libero dictum\nnisl tincidunt imperdiet.",
       "homefulProfit": 15,
-      "businessProfit": 100000
+      "businessProfit": 17000
     },
     {
-      "title": "Bacon",
-      "description": "Always important",
-      "homefulProfit": 50,
-      "businessProfit": 100000
+      "title": "--",
+      "description": "Donec ligula nisi, ullamcorper sit amet placerat ultricies,\ntempus ut augue. Vestibulum ante ipsum primis in faucibus\norci luctus et ultrices posuere cubilia Curae; Quisque\ntincidunt libero a ante sollicitudin, vitae viverra diam\ngravida.",
+      "homefulProfit": 13,
+      "businessProfit": 33000
     },
     {
-      "title": "Grethe",
-      "description": "plrp",
-      "homefulProfit": 50,
-      "businessProfit": 100000
+      "title": "--",
+      "description": "Maecenas non laoreet purus, non faucibus sapien. Nunc\nmauris sapien, viverra in blandit in, dictum non metus.\nEtiam posuere urna adipiscing, hendrerit purus in, rhoncus\nmauris. Duis placerat orci metus, in aliquam velit\nscelerisque non.",
+      "homefulProfit": 11,
+      "businessProfit": 92000
     },
     {
-      "title": "Sovs",
-      "description": "BRUN!",
-      "homefulProfit": 50,
-      "businessProfit": 100000
+      "title": "--",
+      "description": "Phasellus malesuada blandit metus non imperdiet.\nDonec cursus, velit a vestibulum pulvinar, nibh orci\niaculis odio, nec tempus orci urna ut tortor. Ut adipiscing\neros eget turpis ullamcorper sollicitudin in et sapien.",
+      "homefulProfit": 12,
+      "businessProfit": 44000
+    },{
+      "title": "--",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed ut orci aliquam, porta est cursus, lacinia ipsum. Fusce\naliquet, erat vel lacinia tempus, dui ligula aliquet nibh\n, non viverra enim mi eget metus. Nunc et mi at quam\nelementum semper in sed est. Vivamus vitae libero dictum\nnisl tincidunt imperdiet.",
+      "homefulProfit": 11,
+      "businessProfit": 54000
     },
     {
-      "title": "Imma fukk u up",
-      "description": "BRUN!",
-      "homefulProfit": 50,
-      "businessProfit": 100000
-    }
+      "title": "--",
+      "description": "Donec ligula nisi, ullamcorper sit amet placerat ultricies,\ntempus ut augue. Vestibulum ante ipsum primis in faucibus\norci luctus et ultrices posuere cubilia Curae; Quisque\ntincidunt libero a ante sollicitudin, vitae viverra diam\ngravida.",
+      "homefulProfit": 14,
+      "businessProfit": 59000
+    },
+    {
+      "title": "--",
+      "description": "Maecenas non laoreet purus, non faucibus sapien. Nunc\nmauris sapien, viverra in blandit in, dictum non metus.\nEtiam posuere urna adipiscing, hendrerit purus in, rhoncus\nmauris. Duis placerat orci metus, in aliquam velit\nscelerisque non.",
+      "homefulProfit": 13,
+      "businessProfit": 81000
+    },
+    {
+      "title": "--",
+      "description": "Phasellus malesuada blandit metus non imperdiet.\nDonec cursus, velit a vestibulum pulvinar, nibh orci\niaculis odio, nec tempus orci urna ut tortor. Ut adipiscing\neros eget turpis ullamcorper sollicitudin in et sapien.",
+      "homefulProfit": 12,
+      "businessProfit": 28000
+    },
   ],
   "badassContracts": [
     {
-      "title": "Vidya gaaaems",
-      "description": "For pley tiemz",
-      "homefulProfit": 10000,
-      "businessProfit": 200000
+      "title": "--",
+      "description": "Cras semper, quam in adipiscing sodales, erat dolor sagittis\nelit, vitae auctor augue sapien eu urna. Donec tempor\nipsum quis scelerisque sodales. Nam aliquam, tortor ac rutrum\nvehicula, lacus leo tempor nunc, eget vehicula nunc turpis\nsed elit.",
+      "homefulProfit": 26,
+      "businessProfit": 98000
+    },
+    {
+      "title": "--",
+      "description": "Aenean varius non felis id pharetra. Sed ac ultrices enim.\nFusce tempor bibendum quam, non eleifend magna.\nMauris eleifend bibendum est eu mattis. Nunc rutrum lacus\nlectus, nec viverra justo posuere id.",
+      "homefulProfit": 27,
+      "businessProfit": 94000
+    },
+    {
+      "title": "--",
+      "description": "Sed id velit eget massa blandit accumsan sit amet vel urna.\nIn ac nunc et erat placerat egestas ut at quam. Mauris\nlibero nisl, luctus eu nunc id, vulputate elementum tortor.\nCras risus nulla, volutpat at diam a, viverra dignissim mi.",
+      "homefulProfit": 28,
+      "businessProfit": 91000
+    },
+    {
+      "title": "--",
+      "description": "Aliquam rutrum nibh eu velit iaculis, sit amet sagittis\nmauris suscipit. Vestibulum turpis eros, sollicitudin non\nlibero egestas, ornare porta quam. Aliquam vitae ante\nrisus. In hac habitasse platea dictumst. Phasellus\nconsectetur diam in enim venenatis, sit amet placerat\nnisl pharetra.",
+      "homefulProfit": 29,
+      "businessProfit": 87000
+    },
+    {
+      "title": "--",
+      "description": "Quisque feugiat accumsan nunc, commodo venenatis neque\ninterdum nec. Pellentesque nec tortor eget risus commodo\ngravida eget at nisi. Nunc a ante pellentesque, mattis\ndolor at, vehicula purus. Integer convallis lacus sed\nest tempor consectetur.",
+      "homefulProfit": 30,
+      "businessProfit": 82000
     }
   ]
 }
