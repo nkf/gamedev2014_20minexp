@@ -66,4 +66,8 @@ public class Fader {
             onComplete();
         });
     }
+
+    public void Clear() {
+        Object.Destroy(_blackScreen);
+    }
 }

@@ -34,19 +34,24 @@ public class TimeWaste : InvokableAction {
 	/**
 	 * Modify this method in a subclass or some shit
 	 */
+    private Fader _fader;
 	protected void PlayCutscene() {
 		// Fade out and in to indicate time spent.
 		AppearanceGameState.INSTANCE.InCutscene = true;
-	    var fader = new Fader();
+	    _fader = new Fader();
 		// Fade to black
 		StartCoroutine(
-			fader.FadeToBlack(
+			_fader.FadeToBlack(
 				2,
-				() => StartCoroutine(fader.FadeInFromBlack(2, () => OnEndCutscene())) // Just fade back in afterwards
+				() => StartCoroutine(_fader.FadeInFromBlack(2, () => OnEndCutscene())) // Just fade back in afterwards
 			)
 		);
 
 	}
+
+    void OnDestroy() {
+        if(_fader != null) _fader.Clear();
+    }
 	/**
 	 * Also modify this, I don't care.
 	 */
