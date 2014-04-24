@@ -37,12 +37,12 @@ public class TimeWaste : InvokableAction {
 	protected void PlayCutscene() {
 		// Fade out and in to indicate time spent.
 		AppearanceGameState.INSTANCE.InCutscene = true;
-
+	    var fader = new Fader();
 		// Fade to black
 		StartCoroutine(
-			Camera.main.FadeToBlack(
+			fader.FadeToBlack(
 				2,
-				() => StartCoroutine(Camera.main.FadeInFromBlack(2, () => OnEndCutscene())) // Just fade back in afterwards
+				() => StartCoroutine(fader.FadeInFromBlack(2, () => OnEndCutscene())) // Just fade back in afterwards
 			)
 		);
 

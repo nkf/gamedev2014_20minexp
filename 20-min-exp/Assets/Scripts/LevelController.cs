@@ -29,20 +29,21 @@ public class LevelController : MonoBehaviour {
 		
 		_loading = true;
 		LevelLoader.Load(levelIndex);
-		StartCoroutine(Camera.main.FadeToBlack(fadeTime, () => {
-			StartCoroutine(TrySwitch());
+	    var fader = CameraUtil.GetFader();
+		StartCoroutine(fader.FadeToBlack(fadeTime, () => {
+			StartCoroutine(TrySwitch(fader));
 			_loading = false;
 		}));
 	}
 
-    IEnumerator TrySwitch() {
+    IEnumerator TrySwitch(Fader fader) {
         while (LevelLoader.Status == LoadStatus.Loading)
 			yield return new WaitForEndOfFrame();
         if (LevelLoader.Status == LoadStatus.Done) {
             LevelLoader.Switch();
             var text = LevelText[_currentLevelIndex][Toolbox.Instance.gameState._dayCounter];
             StartCoroutine(Camera.main.ShowCenterText(text,() => 
-                StartCoroutine(Camera.main.FadeInFromBlack(3.0f, () => { }))
+                StartCoroutine(fader.FadeInFromBlack(3.0f, () => { }))
             ));
         }
     }

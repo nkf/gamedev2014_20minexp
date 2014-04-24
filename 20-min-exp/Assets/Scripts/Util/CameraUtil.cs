@@ -7,20 +7,11 @@ using Object = UnityEngine.Object;
 
 public static class CameraUtil {
 
-	public static GameObject _blackScreen;
-
-    public static IEnumerator FadeToBlack(this Camera camera, float time, Action onComplete) {
-        _blackScreen = GameObject.Instantiate(Resources.Load<GameObject>("BlackScreen")) as GameObject;
-        _blackScreen.transform.position = new Vector3(0.5f, 0.5f);
-        Object.DontDestroyOnLoad(_blackScreen);
-        return FadeTo(_blackScreen.GetComponent<GUITexture>(), time, onComplete);
+    public static Fader GetFader() {
+        return new Fader();
     }
 
-	public static IEnumerator FadeInFromBlack(this Camera camera, float time, Action onComplete) {
-		return FadeFrom(_blackScreen.GetComponent<GUITexture>(), time, onComplete);
-	}
-
-    private static IEnumerator Fader(GUITexture toFade, float time, Action onComplete, Func<float, float, float, float> alphaCalculator, bool destroyBlackScreen) {
+    private static IEnumerator Fader(GUITexture toFade, float time, Action onComplete, Func<float, float, float, float> alphaCalculator) {
         var c = toFade.color;
         var start = Time.time;
         var end = start + time/2; //yeah for some reason we only need half the alpha?
@@ -31,15 +22,14 @@ public static class CameraUtil {
             yield return new WaitForEndOfFrame();
         }
         if (onComplete != null) onComplete();
-		if (destroyBlackScreen) UnityEngine.Object.Destroy(_blackScreen);
     }
 
-    private static IEnumerator FadeTo(GUITexture toFade, float time, Action onComplete) {
-        return Fader(toFade, time, onComplete, Mathf.InverseLerp, false);
+    public static IEnumerator FadeTo(GUITexture toFade, float time, Action onComplete) {
+        return Fader(toFade, time, onComplete, Mathf.InverseLerp);
     }
 
-    private static IEnumerator FadeFrom(GUITexture toFade, float time, Action onComplete) {
-        return Fader(toFade, time, onComplete, (start, end, ttime) => Mathf.InverseLerp(end, start, ttime), true) ;
+    public static IEnumerator FadeFrom(GUITexture toFade, float time, Action onComplete) {
+        return Fader(toFade, time, onComplete, (start, end, ttime) => Mathf.InverseLerp(end, start, ttime)) ;
     }
     
     public static void SwitchTo(this Camera c) {
@@ -59,5 +49,21 @@ public static class CameraUtil {
         yield return new WaitForSeconds(3);
         Toolbox.Instance.gameState.HideCenterText();
         onComplete();
+    }
+}
+public class Fader {
+    public GameObject _blackScreen;
+    public IEnumerator FadeToBlack(float time, Action onComplete) {
+        _blackScreen = GameObject.Instantiate(Resources.Load<GameObject>("BlackScreen")) as GameObject;
+        _blackScreen.transform.position = new Vector3(0.5f, 0.5f);
+        Object.DontDestroyOnLoad(_blackScreen);
+        return CameraUtil.FadeTo(_blackScreen.GetComponent<GUITexture>(), time, onComplete);
+    }
+
+    public IEnumerator FadeInFromBlack(float time, Action onComplete) {
+        return CameraUtil.FadeFrom(_blackScreen.GetComponent<GUITexture>(), time, () => {
+            Object.Destroy(_blackScreen);
+            onComplete();
+        });
     }
 }
