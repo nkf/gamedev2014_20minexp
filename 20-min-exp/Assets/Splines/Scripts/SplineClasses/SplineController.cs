@@ -63,9 +63,13 @@ public class SplineController : MonoBehaviour {
 
 	public bool KeyControl = true;
 
+	public float maxCarSpeed = 0.4f;
+
 	public float pauseTime;
 	float pauseStart = Mathf.Infinity;
 	float resumeSpeed;
+	
+	bool reverse = false;
 
 	void OnGUI() {
 		GUI.Box(new Rect(Screen.width - 75, 25, 75, 20), rigidbody.velocity.ToString());
@@ -109,26 +113,49 @@ public class SplineController : MonoBehaviour {
 		}
 	}
 	void Drive(Vector3 velocity, float input) {
+		
+
 		if(groundNode)
 			horizSpeed = Vector3.Dot(velocity, groundNode.forward.normalized);
 		else if(gravNode)
 			horizSpeed = Vector3.Dot(velocity, gravNode.forward.normalized);
 		else
 			horizSpeed = Vector3.Dot(velocity, Vector3.right.normalized);
-		if(input == 0)
-			Stop(coastForce, horizSpeed);
-		else if((horizSpeed > 1 && input < 0) || (horizSpeed < -1 && input > 0))
-			Stop(stopForce, horizSpeed);
+
+
+		if(horizSpeed > 0) {
+			reverse = false;
+		}
+
+		if (input == 0 && horizSpeed>0) {
+			Stop (coastForce, horizSpeed);
+			//reverseAllowed = false;
+		} else if ((horizSpeed > 1 && input < 0) || (horizSpeed < -1 && input > 0)) {
+			Stop (stopForce, horizSpeed);
+			//reverseAllowed = false;
+		}
 		else {
-			// MODIFIED BY MEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-			// Prevents the follower from rotating 180 degrees when goin backwards.
-			if(input < 0)
-//				goInReverse = true;
-//			else
-				goInReverse = false;
+
+			goInReverse = false;
+
+
+
+			//if (horizSpeed > 0) reverseAllowed = false;
+			//if (horizSpeed == 0) reverseAllowed = true;
+			//if (horizSpeed > 0) reverseAllowed = false;
+
 			if(groundNode) {
-				if(Mathf.Abs(horizSpeed) < maxRunSpeed)
-					horizAcceleration = input * runForce;
+				if(Mathf.Abs(horizSpeed) < maxRunSpeed) {
+
+					if (input > 0) {
+						horizAcceleration = input * runForce;
+					} else if (input < 0) {
+
+						if (reverse) {
+							horizAcceleration = input * runForce;
+						}
+					}
+				}
 			} else {
 				if(Mathf.Abs(horizSpeed) < maxAirSpeed) {
 					horizAcceleration = input * airForce;
@@ -147,8 +174,9 @@ public class SplineController : MonoBehaviour {
 			switch(mode) {
 			case Mode.KEYBOARD:
 				float input = Input.GetAxis("Vertical");
-				if(KeyControl)
-					Drive(rigidbody.velocity, input);
+				if(KeyControl) {
+						Drive(rigidbody.velocity, input);
+				}
 				break;
 			}
 			///*
@@ -157,6 +185,11 @@ public class SplineController : MonoBehaviour {
 			//if(Input.GetKeyDown(KeyCode.B)) {
 			//    //Debug.Break();
 			//}
+
+			if(Input.GetKeyDown(KeyCode.R)) {
+				reverse = !reverse;
+				//Debug.Log(reverse);
+			}
 		}
 	}
 	public virtual void FixedUpdate() {
@@ -417,9 +450,14 @@ public class SplineController : MonoBehaviour {
 		float horizFrameVelocity = 0;
 		switch(mode) {
 		case Mode.KEYBOARD:
-			horizFrameVelocity = (Vector3.Dot(rigidbody.velocity, groundNode.forward.normalized)
-				+ horizAcceleration * Time.fixedDeltaTime)
+			float newSpeed = (Vector3.Dot(rigidbody.velocity, groundNode.forward.normalized)
+			 + horizAcceleration * Time.fixedDeltaTime)
 				* Time.fixedDeltaTime;
+			if (newSpeed < maxCarSpeed) {
+				horizFrameVelocity = newSpeed ;
+			}  else {
+				horizFrameVelocity = maxCarSpeed ;
+			}
 			break;
 		case Mode.AUTO:
 			horizFrameVelocity = (horizSpeed + horizAcceleration * Time.fixedDeltaTime) * Time.fixedDeltaTime * (goInReverse ? -1 : 1);

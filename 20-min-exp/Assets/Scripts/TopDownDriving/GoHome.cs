@@ -23,18 +23,29 @@ public class GoHome : InvokableAction {
 			if (AppearanceGameState.INSTANCE.CurrentTime > AppearanceGameState.INSTANCE.dayLengthInSecs-successBufferInSecs &&
 			    AppearanceGameState.INSTANCE.CurrentTime < AppearanceGameState.INSTANCE.dayLengthInSecs)
 			{
-//				int today = Toolbox.Instance.gameState.DayCounter;
-//				if (today == GameState.APPEARANCES_DAY_1 || GameState.APPEARANCES_DAY_2) {
-				if (LevelLoader.Status == LoadStatus.NotLoading) {
-					Debug.Log ("Waifu not suspect!");
+				Debug.Log ("Waifu not suspect!");
+
+				int today = Toolbox.Instance.gameState.DayCounter;
+				if (today == GameState.APPEARANCES_DAY_1 || today == GameState.APPEARANCES_DAY_2) {
+//				if (LevelLoader.Status == LoadStatus.NotLoading) {
 					Toolbox.Instance.levelController.Load(LevelController.TABLE, 2.0f);
+				} else if (today == GameState.APPEARANCES_DAY_3) {
+					Toolbox.Instance.levelController.Load(LevelController.SELL_STUFF, 2.0f);
+				} else {
+					Toolbox.Instance.levelController.Load(LevelController.TABLE, 2.0f);
+				//	StartCoroutine(Camera.main.ShowCenterText("Faggot.", () => {
+				//		Toolbox.Instance.levelController.Load(LevelController.APPEARANCES, 2.0f);
+			//		}));
 				}
 			}
 			// Player is too early
 			else if (AppearanceGameState.INSTANCE.CurrentTime < AppearanceGameState.INSTANCE.dayLengthInSecs-successBufferInSecs)
 			{
-				Debug.Log ("U WENT HOME EARLY! WAIFU SUSPECTU DESU!");
-				Toolbox.Instance.levelController.ReloadCurrent(2.0f);
+				StartCoroutine(Camera.main.ShowCenterText("You went home too early! Your wife will suspect something is wrong.", () => {
+					Toolbox.Instance.levelController.Load(LevelController.APPEARANCES, 2.0f);
+				}));
+				Debug.Log ("You went home too early! Your wife will suspect something is wrong.");
+
 			}
 			// Actually, this following case is already handled by AppearanceGameState
 			// Player is late.
@@ -48,14 +59,12 @@ public class GoHome : InvokableAction {
 	void OnGUI() {
 		if (!_actionAvailable)
 			return;
-		
-		int pos1Height = 100;
-		int posWidth   = 200;
-		Rect pos1 = new Rect(Screen.width/5, Screen.height/5, posWidth, pos1Height);
-		Rect pos2 = new Rect(Screen.width/5, (Screen.height/5)+pos1Height, posWidth, 20);
+
+		Rect pos1 = new Rect(2*(Screen.width/5), 2*(Screen.height/5), Screen.width/5, Screen.height/5);
+		Rect pos2 = new Rect(2*(Screen.width/5), 3*(Screen.height/5), Screen.width/5, Screen.height/20);
 		
 		GUIHelpers.DrawQuad(pos1, Color.black);
 		GUI.Box(pos1, "Go Home...");
-		GUI.Box(pos2, "Press Enter, to go to waifu.");
+		GUI.Box(pos2, "Press ENTER to return to your family");
 	}
 }

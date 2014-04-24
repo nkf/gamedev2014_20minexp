@@ -20,4 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/sidescroller_proto.unity
   - enabled: 1
-    path: Assets/Appearences.unity
+    path: Assets/Appearences2.unity
+  - enabled: 1
+    path: Assets/HouseSale.unity

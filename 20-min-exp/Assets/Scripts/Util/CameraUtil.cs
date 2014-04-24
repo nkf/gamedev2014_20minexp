@@ -46,7 +46,7 @@ public static class CameraUtil {
 
     public static IEnumerator ShowCenterText(this Camera camera, string text, Action onComplete) {
         Toolbox.Instance.gameState.ShowCenterText(text);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         Toolbox.Instance.gameState.HideCenterText();
         onComplete();
     }

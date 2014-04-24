@@ -36,7 +36,7 @@ public class AppearanceGameState : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Toolbox touch = Toolbox.Instance;
+//		Toolbox touch = Toolbox.Instance;
 
 
 		AppearanceGameState.INSTANCE = this;
@@ -50,8 +50,9 @@ public class AppearanceGameState : MonoBehaviour {
 				_finalTime = CurrentTimeToString;
 				_finalTimeRecorded = true;
 			}
-
-			Toolbox.Instance.levelController.ReloadCurrent(2.0f);
+			Debug.Log ("kokot");
+			//Toolbox.Instance.levelController.ReloadCurrent(2.0f);
+			Toolbox.Instance.levelController.Load(LevelController.APPEARANCES, 5.0f);
 		}
 	}
 

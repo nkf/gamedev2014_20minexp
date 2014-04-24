@@ -34,7 +34,7 @@ public class OfficeWorkController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// TODO: For testing purposes. Can be deleted for final version
-		GameState touchTheSingleton = Toolbox.Instance.gameState;
+//		GameState touchTheSingleton = Toolbox.Instance.gameState;
 
 		if (Toolbox.Instance.gameState.DayCounter == GameState.REGULAR_DAY)
 			InitRegularWorkday();
@@ -195,7 +195,7 @@ public class OfficeWorkController : MonoBehaviour {
 		_spawnPoints = new Transform[sp.Count];
 		sp.CopyTo(_spawnPoints);
 
-		Vector3 derp = _spawnPoints[0].position;
+//		Vector3 derp = _spawnPoints[0].position;
 
 		// Manually create the pink slip (as Contract)
 		Contract pinkSlip = new Contract("Notice", "You're fired!", 0, 0); 
