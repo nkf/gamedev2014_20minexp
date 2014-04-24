@@ -5,46 +5,47 @@ using System.Collections;
 public class LevelController : MonoBehaviour {
 
 
-	private int _currentLevelIndex;
+    private int _currentLevelIndex;
     private bool _loading = false;
 
-	/// <summary>
-	/// Loads the next level in the game. This usually fucks up during testing, when the first scene isn't the table scene.
-	/// </summary>
-	public void LoadNext(float fadeTime = 3.0f) {
-		Load (_currentLevelIndex + 1, fadeTime); // We don't want to increment _currentLevelIndex here, as it is set in Load()
-	}
+    /// <summary>
+    /// Loads the next level in the game. This usually fucks up during testing, when the first scene isn't the table scene.
+    /// </summary>
+    public void LoadNext(float fadeTime = 3.0f) {
+        Load(_currentLevelIndex + 1, fadeTime);
+        // We don't want to increment _currentLevelIndex here, as it is set in Load()
+    }
 
-	public void ReloadCurrent(float fadeTime = 3.0f) {
-		Load (_currentLevelIndex, fadeTime);
-	}
+    public void ReloadCurrent(float fadeTime = 3.0f) {
+        Load(_currentLevelIndex, fadeTime);
+    }
 
-	public void Load(int levelIndex, float fadeTime = 3.0f) {
-		if (_loading)
-			return;
+    public void Load(int levelIndex, float fadeTime = 3.0f) {
+        if (_loading)
+            return;
 
-		Debug.Log ("Loading level: "+_currentLevelIndex);
+        Debug.Log("Loading level: " + _currentLevelIndex);
 
-		_currentLevelIndex = levelIndex;
-		
-		_loading = true;
-		LevelLoader.Load(levelIndex);
-	    var fader = CameraUtil.GetFader();
-		StartCoroutine(fader.FadeToBlack(fadeTime, () => {
-			StartCoroutine(TrySwitch(fader));
-			_loading = false;
-		}));
-	}
+        _currentLevelIndex = levelIndex;
 
-    IEnumerator TrySwitch(Fader fader) {
+        _loading = true;
+        LevelLoader.Load(levelIndex);
+        var fader = CameraUtil.GetFader();
+        StartCoroutine(fader.FadeToBlack(fadeTime, () => {
+            StartCoroutine(TrySwitch(fader));
+            _loading = false;
+        }));
+    }
+
+    private IEnumerator TrySwitch(Fader fader) {
         while (LevelLoader.Status == LoadStatus.Loading)
-			yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
         if (LevelLoader.Status == LoadStatus.Done) {
             LevelLoader.Switch();
             var text = LevelText[_currentLevelIndex][Toolbox.Instance.gameState._dayCounter];
-            StartCoroutine(Camera.main.ShowCenterText(text,() => 
+            StartCoroutine(Camera.main.ShowCenterText(text, () =>
                 StartCoroutine(fader.FadeInFromBlack(3.0f, () => { }))
-            ));
+                ));
         }
     }
 
@@ -58,43 +59,36 @@ public class LevelController : MonoBehaviour {
     public static readonly int APPEARANCES = 6;
     public static readonly int SELL_STUFF = 7;
 
-    public static string[][] LevelText  = new string[8][];
-    public static string[] TabelText    = new string[GameState.TOTAL_DAY_COUNTER];
-    public static string[] HallText     = new string[GameState.TOTAL_DAY_COUNTER];
-    public static string[] RoadText     = new string[GameState.TOTAL_DAY_COUNTER];
-    public static string[] ParkingText  = new string[GameState.TOTAL_DAY_COUNTER];
-    public static string[] OfficeText   = new string[GameState.TOTAL_DAY_COUNTER];
-    public static string[] ShopperText  = new string[GameState.TOTAL_DAY_COUNTER];
-    public static string[] AppText      = new string[GameState.TOTAL_DAY_COUNTER];
-    public static string[] SellText     = new string[GameState.TOTAL_DAY_COUNTER];
+    
+    public static string[] TableText = new string[GameState.TOTAL_DAY_COUNTER];
+    public static string[] HallText = new string[GameState.TOTAL_DAY_COUNTER];
+    public static string[] RoadText = new string[GameState.TOTAL_DAY_COUNTER];
+    public static string[] ParkingText = new string[GameState.TOTAL_DAY_COUNTER];
+    public static string[] OfficeText = new string[GameState.TOTAL_DAY_COUNTER];
+    public static string[] ShopperText = new string[GameState.TOTAL_DAY_COUNTER];
+    public static string[] AppText = new string[GameState.TOTAL_DAY_COUNTER];
+    public static string[] SellText = new string[GameState.TOTAL_DAY_COUNTER];
+    public static string[][] LevelText = { TableText, HallText, RoadText, ParkingText, OfficeText, ShopperText, AppText, SellText };
+
 
     static LevelController() {
-        TabelText   [GameState.REGULAR_DAY]         = "FAMILY BREAKFAST";
-        TabelText   [GameState.FIRING_DAY_MORNING]  = "YOU ARE AT TABLE DAY 2";
-        TabelText   [GameState.FIRING_DAY_AFTERNOON]= "YOU ARE AT TABLE DAY 2 EVENING";
-        TabelText   [GameState.APPEARANCES_DAY_2]   = "YOU ARE AT TABLE DAY 4";
-        TabelText   [GameState.APPEARANCES_DAY_3]   = "YOU ARE AT TABLE DAY 5";
-        HallText    [GameState.REGULAR_DAY]         = "YOU WALK THE HALL DAY 1";
-        HallText    [GameState.FIRING_DAY_MORNING]  = "YOU WALK THE HALL DAY 2";
-        RoadText    [GameState.REGULAR_DAY]         = "YOU ARE ON THE ROAD DAY 1";
-        RoadText    [GameState.FIRING_DAY_MORNING]  = "YOU ARE ON THE ROAD DAY 2";
-        ParkingText [GameState.REGULAR_DAY]         = "PARK THE CAR NIGGA DAY 1";
-        ParkingText [GameState.FIRING_DAY_MORNING]  = "PARK THE CAR NIGGA DAY 2 (SPOILER: YOU ARE FIRED)";
-        OfficeText  [GameState.REGULAR_DAY]         = "HAPPY DAY AT THE OFFICE DAY 1";
-        OfficeText  [GameState.REGULAR_DAY]         = "SHIT DAY AT THE OFFICE DAY 2";
-        ShopperText [GameState.FIRING_DAY_MORNING]  = "SHOP FOR THE BITCHES @ HOME DAY 2";
-        AppText     [GameState.APPEARANCES_DAY_1]   = "YOU GOTTA PRETEND NOW NIGGA DAY 3";
-        AppText     [GameState.APPEARANCES_DAY_2]   = "YOU GOTTA PRETEND NOW NIGGA DAY 4";
-        AppText     [GameState.APPEARANCES_DAY_3]   = "YOU GOTTA PRETEND NOW NIGGA DAY 5";
-        SellText    [GameState.SELL_STUFF_DAY]      = "SELL TILL YO RICH DAY 7";
-
-        LevelText[0] = TabelText;
-        LevelText[1] = HallText;
-        LevelText[2] = RoadText;
-        LevelText[3] = ParkingText;
-        LevelText[4] = OfficeText;
-        LevelText[5] = ShopperText;
-        LevelText[6] = AppText;
-        LevelText[7] = SellText;
+            TableText   [GameState.REGULAR_DAY]         = "FAMILY BREAKFAST";
+            TableText   [GameState.FIRING_DAY_MORNING]  = "ANOTHER MORNING";
+            TableText   [GameState.FIRING_DAY_AFTERNOON]= "THE SAME EVENING";
+            TableText   [GameState.APPEARANCES_DAY_2]   = "";
+            TableText   [GameState.APPEARANCES_DAY_3]   = "";
+            HallText    [GameState.REGULAR_DAY]         = "GET TO THE CAR, GET TO WORK";
+            HallText    [GameState.FIRING_DAY_MORNING]  = "I REPEAT THE SAME ROUTINE";
+            RoadText    [GameState.REGULAR_DAY]         = "JUST GET TO WORK";
+            RoadText    [GameState.FIRING_DAY_MORNING]  = "I THINK I USED TO HAVE A PURPOSE";
+            ParkingText [GameState.REGULAR_DAY]         = "PARK THE CAR STEN, PARK THE CAR.";
+            ParkingText [GameState.FIRING_DAY_MORNING]  = "THAT MIGHT HAVE BEEN A DREAM";
+            OfficeText  [GameState.REGULAR_DAY]         = "";
+            OfficeText  [GameState.REGULAR_DAY]         = "";
+            ShopperText [GameState.FIRING_DAY_MORNING]  = "MIGHT ASWELL USE SOME MONEY";
+            AppText     [GameState.APPEARANCES_DAY_1]   = "THEY CAN'T KNOW THAT IM NO LONGER WORKING";
+            AppText     [GameState.APPEARANCES_DAY_2]   = "I CAN FEEL THEIR EYES ARE WATCHING";
+            AppText     [GameState.APPEARANCES_DAY_3]   = "SOMETIMES I THINK I'M HAPPY HERE";
+            SellText    [GameState.SELL_STUFF_DAY]      = "I CAN TELL YOU EXACTLY HOW IT WILL END";
     }
 }
