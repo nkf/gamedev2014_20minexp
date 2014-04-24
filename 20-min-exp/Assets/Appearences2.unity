@@ -64270,7 +64270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae4c68933bf9469c8aad5e7793b22d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayLengthInSecs: 7200
+  dayLengthInSecs: 10
 --- !u!4 &1192039452
 Transform:
   m_ObjectHideFlags: 0

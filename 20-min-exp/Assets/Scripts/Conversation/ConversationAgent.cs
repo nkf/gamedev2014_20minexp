@@ -120,7 +120,8 @@ public class ConversationAgent : MonoBehaviour {
 
 		// Draw Background
 		Texture2D texture = new Texture2D(1, 1);
-		Color color = new Color(0.2F, 0.3F, 0.4F, 0.5F);
+		Color color = new Color();
+		color = Color.black;
 		texture.SetPixel(0,0, color);
 		texture.Apply();
 		GUI.skin.box.normal.background = texture;
@@ -155,7 +156,7 @@ public class ConversationAgent : MonoBehaviour {
 		// Write Dialogue
 		GUIStyle style = new GUIStyle();
 		style.fontSize = 15;
-		style.alignment = TextAnchor.UpperCenter;
+		style.alignment = TextAnchor.MiddleCenter;
 		style.normal.textColor = Color.white;
 		GUI.Label(position, getCurrentNode().Dialogue, style);
 	}

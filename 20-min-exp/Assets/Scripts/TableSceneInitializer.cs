@@ -29,16 +29,23 @@ public class TableSceneInitializer : MonoBehaviour {
 
 	protected void RegularDayInit() {
 		Debug.Log("Regular day");
-		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "Assets/Test.json";
+		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "Assets/Test2.json";
 
 		// Play dinner camera animation
-		DinnerAnimationFunctions.DINNER_CAMERA.GetComponent<Animator>().SetInteger("CamAnim", 1);
+		DinnerAnimationFunctions.DINNER_CAMERA.GetComponent<Animator>().SetInteger("CamAnim", 2);
 	}
 
 	protected void FiringDayMorningInit() {
 		Debug.Log("Firing day morning");
+
+		//GameObject.FindGameObjectWithTag ("StaticCamera").camera.SwitchTo();
+
+		StaticCamera.STATIC_CAMERA.camera.SwitchTo();
+
+		//DinnerAnimationFunctions.DINNER_CAMERA.GetComponent<Animator>().SetInteger("CamAnim", 0);
+
 		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "Assets/Test2.json";
-		WifeAgent.JANE.GetComponent<WifeAgent>().StartConversation();
+		//WifeAgent.JANE.GetComponent<WifeAgent>().StartConversation();
 	}
 
 	protected void FiringDayAfternoon() {

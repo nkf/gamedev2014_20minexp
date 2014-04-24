@@ -51,7 +51,8 @@ public class GameState : MonoBehaviour {
 	void OnGUI() {
 		// Render monies
 		Vector2 textDimensions = GUI.skin.label.CalcSize( new GUIContent(Toolbox.Instance.gameState.MoneyCounter.ToString()) );
-		Rect moneyGUI = new Rect(2*(Screen.width/2), 0, (Screen.width/2), 20);
+		Rect moneyGUI = new Rect(2*(Screen.width/5), 0, (Screen.width/2), 20);
+		//Rect moneyGUI = new Rect(0, 0, 100, 100);
 		GUIHelpers.DrawQuad(moneyGUI, Color.black);
 		
 		GUIStyle style = new GUIStyle();

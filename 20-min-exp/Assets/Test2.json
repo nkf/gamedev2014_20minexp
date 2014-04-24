@@ -3,28 +3,29 @@
     "AllNodes": [
         {
             "index": 0,
-            "dialogue": "When do you have to leave, darling?",
-            "silentResponse": { "timer": 1000.0, "gotoNode": 4},
-            "answeringAppearanceDelay": 2.0,
-            "nextNodeDelay": 2.0,
+            "dialogue": "Jane: Could you...",
+            "silentResponse": { "timer": 3.0, "gotoNode": 1},
+            "answeringAppearanceDelay": 1000.0,
+            "nextNodeDelay": 0.0,
             "responses": [
-                {"response": "8 o'clock, as always", "timer": 5.0, "gotoNode": 1},
+                {"response": "...", "timer": 5.0, "gotoNode": 1},
                 
             ]
         },
         
         {
             "index": 1,
-            "dialogue": "Of course.",
+            "dialogue": "Jane: ...could you pass me the salt, please?",
             "nextNodeDelay": 2.0,
+	    "answeringAppearanceDelay": 5.0,
             "responses": [
-                {"response": "...", "gotoNode": 3}
+                {"response": "...", "gotoNode": 2},
             ]
         },
         
         {
             "index": 2,
-            "dialogue": "That is indeed a perculiar name!",
+            "dialogue": "...",
             "responses": [
                 {"response": "STFU!", "gotoNode": 3}
             ]
