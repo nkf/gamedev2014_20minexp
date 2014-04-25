@@ -60,10 +60,12 @@ public class ConversationAgent : MonoBehaviour {
 		switch(_state) {
 		case ConversationState.SELECTION_TIME:
 			// Controls
-			if (Input.GetKey(KeyCode.UpArrow) && _highlightedResponse != 0) {
+			if ( (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) &&
+			    _highlightedResponse != 0) {
 				_highlightedResponse--;
 			}
-			if (Input.GetKey (KeyCode.DownArrow) && _highlightedResponse != getCurrentNode().Responses.Length-1) {
+			if ( (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) &&
+			    _highlightedResponse != getCurrentNode().Responses.Length-1) {
 				_highlightedResponse++;
 			}
 			if (Input.GetKeyDown (KeyCode.Return) && !getCurrentNode().IsEndNode) {
