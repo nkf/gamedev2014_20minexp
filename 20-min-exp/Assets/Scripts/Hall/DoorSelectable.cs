@@ -3,8 +3,27 @@ using System.Collections;
 
 public class DoorSelectable : Selectable {
 
+	public static DoorSelectable FRONT_DOOR;
+
+	public bool isOpened = false;
+
+	void Start() {
+		DoorSelectable.FRONT_DOOR = this;
+	}
+
 	public override void Select() {
-	    HallMovement.DoorOpened = true;
-        Destroy(gameObject);
+		if (KeysSelectable.KEYS.isTaken && JacketSelectable.JACKET.isTaken) {
+			DoorSelectable.FRONT_DOOR.isOpened = true;
+        	Destroy(gameObject);
+		}
+		else if (!KeysSelectable.KEYS.isTaken && !JacketSelectable.JACKET.isTaken) {
+			StartCoroutine(Camera.main.ShowCenterText("I am not going anywhere without my coat and keys...", () => {}));
+		}
+		else if (!KeysSelectable.KEYS.isTaken) {
+			StartCoroutine(Camera.main.ShowCenterText("Where are those damn keys?", () => {}));
+		}
+		else if (!JacketSelectable.JACKET.isTaken) {
+			StartCoroutine(Camera.main.ShowCenterText("It is cold outside, I should get my coat.", () => {}));
+		}
 	}
 }
