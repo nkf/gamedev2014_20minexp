@@ -11,6 +11,7 @@ public class CarControl : MonoBehaviour {
         var v = Input.GetAxis("Vertical");
         var a = transform.localEulerAngles;
         var turn = Mathf.InverseLerp(0.5f, 3, rigidbody.velocity.magnitude) * h;
+        if (v < 0) turn = -turn;
         a = new Vector3(a.x, a.y + turn, 0);
         transform.localEulerAngles = a;
         var rotation = transform.rotation;
