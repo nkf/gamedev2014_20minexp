@@ -155,7 +155,6 @@ public class ConversationAgent : MonoBehaviour {
 	}
 
 	protected void RenderDialogue(Rect position) {
-		Debug.Log(getCurrentNode().Dialogue);
 		// Write Dialogue
 		GUIStyle style = new GUIStyle();
 		style.fontSize = 15;

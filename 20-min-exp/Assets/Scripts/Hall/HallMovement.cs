@@ -8,7 +8,11 @@ public class HallMovement : MonoBehaviour {
 	private const float AFTER_STEP = -12.2f;
 	private const float NEXT_TO_WIFE = -5.9f;
 
-	public static bool WifeSatisfied = false;
+	public static bool WifeSatisfied;
+
+	void Start() {
+		WifeSatisfied = false;
+	}
 
 	void Update () {
 

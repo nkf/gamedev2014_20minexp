@@ -67,7 +67,8 @@ public class OfficeWorkController : MonoBehaviour {
 
 	protected void InitRegularWorkday() {
 		// Read in the conversation from the JSON file and initialise the node collection
-		JSONNode node = JSONNode.Parse( File.ReadAllText(@contractPath) );
+		TextAsset txt = (TextAsset) Resources.Load (@contractPath, typeof(TextAsset));
+		JSONNode node = JSONNode.Parse(txt.text);
 		_normalContracts = new List<Contract>();
 		_badassContracts = new List<Contract>();
 		
@@ -200,8 +201,7 @@ public class OfficeWorkController : MonoBehaviour {
 //		Vector3 derp = _spawnPoints[0].position;
 
 		// Manually create the pink slip (as Contract)
-		Contract pinkSlip = new Contract("Notice", "You're fired!", 0, 0); 
-
+		Contract pinkSlip = new Contract("You're fired!", "", 0, 0); 
 		// Spawn new prefab and assign a contract object (with contract content)
 		Transform tra = Instantiate(contractPrefab, _spawnPoints[0].position, Quaternion.identity) as Transform;
 		tra.gameObject.GetComponent<ContractBehaviour>().Contract = pinkSlip;

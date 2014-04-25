@@ -312,7 +312,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400006, guid: 0c335b7fe650d4bdfa780378b59ffde9, type: 2}
   m_PrefabInternal: {fileID: 2096579153}
   m_GameObject: {fileID: 887786787}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: .707106888, y: 0, z: 0, w: .707106769}
   m_LocalPosition: {x: -.387297869, y: 11.8383589, z: .261224747}
   m_LocalScale: {x: .00999999978, y: .00999999978, z: .00999999978}
   m_Children: []
@@ -553,7 +553,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400004, guid: 0c335b7fe650d4bdfa780378b59ffde9, type: 2}
   m_PrefabInternal: {fileID: 2096579153}
   m_GameObject: {fileID: 1226390172}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: .707106888, y: 0, z: 0, w: .707106769}
   m_LocalPosition: {x: -.234966278, y: .518006086, z: .450199604}
   m_LocalScale: {x: .00999999978, y: .00999999978, z: .00999999978}
   m_Children: []
@@ -698,7 +698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b204d177e88d4344afd916a4f1c6ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contractPath: Assets/TestContracts.json
+  contractPath: TestContracts
   contractPrefab: {fileID: 400008, guid: 0c335b7fe650d4bdfa780378b59ffde9, type: 2}
   TimeLimit: 60
   showRedundancyNoticeTime: 5
@@ -738,7 +738,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 0c335b7fe650d4bdfa780378b59ffde9, type: 2}
   m_PrefabInternal: {fileID: 2096579153}
   m_GameObject: {fileID: 1671600432}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: .707106888, y: 0, z: 0, w: .707106769}
   m_LocalPosition: {x: -.440818518, y: .527279973, z: -.36970374}
   m_LocalScale: {x: .00999999978, y: .00999999978, z: .00999999978}
   m_Children: []

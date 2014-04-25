@@ -16,10 +16,11 @@ public class ContractBehaviour : MonoBehaviour {
 			TextMesh businessProfit = transform.Find ("BusinessProfit").gameObject.GetComponent<TextMesh>();
 
 //			title.text = _contract.Title;
-			title.text = "Contract";
+			title.text = Toolbox.Instance.gameState.DayCounter == GameState.REGULAR_DAY ? "Contract" : title.text = _contract.Title;
+
 			descr.text = _contract.Description;
-			businessProfit.text = "Profit: $"+_contract.BusinessProfit.ToString();
-			homeProfit.text     = "Provision: $"+_contract.HomefulProvisionPct.ToString()+"%";
+			businessProfit.text = _contract.BusinessProfit.ToString().Equals("0")      ? "" : "Profit: $"+_contract.BusinessProfit.ToString();;
+			homeProfit.text     = _contract.HomefulProvisionPct.ToString().Equals("0") ?  "" : "Provision: $"+_contract.HomefulProvisionPct.ToString()+"%";;
 		}
 	}
 
