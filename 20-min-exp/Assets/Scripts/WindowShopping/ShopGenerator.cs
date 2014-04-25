@@ -7,15 +7,14 @@ using System.Collections;
 using Random = System.Random;
 
 public class ShopGenerator : MonoBehaviour {
-    private string[] _shopPaths;
+    public GameObject[] Shops;
     public int RandomSeed;
     private Random _rng;
     private Vector3 _currentPos;
 	void Start () {
-	    _shopPaths = ResourceUtil.GetPrefabPaths("ShopPrefabs");
         _rng = new Random(RandomSeed);
 	    _currentPos = transform.position;
-	    for (int i = 0; i < 1000; i++) {
+	    for (int i = 0; i < 100; i++) {
 	        CreateNextShop();
 	    }
 	}
@@ -27,11 +26,11 @@ public class ShopGenerator : MonoBehaviour {
         CreateShopTile(_currentPos);
     }
     private void CreateShopTile(Vector3 pos) {
-        var load = Resources.Load<GameObject>(_shopPaths[_rng.Next(0, _shopPaths.Length)]);
-        var road = (GameObject)Instantiate(load);
-        road.transform.position = pos;
-        road.transform.parent = transform;
-        road.name = "#" + (_shopId++) + " shop (" + load.name + ")";
+        var go = Shops[_rng.Next(0, Shops.Length)];
+        var shop = (GameObject)Instantiate(go);
+        shop.transform.position = pos;
+        shop.transform.parent = transform;
+        shop.name = "#" + (_shopId++) + " shop (" + go.name + ")";
     }
     
 

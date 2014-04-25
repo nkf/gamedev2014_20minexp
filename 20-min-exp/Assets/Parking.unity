@@ -4579,6 +4579,8 @@ MonoBehaviour:
   - M. O'Keefe
   - K. Clarkson
   - N. Danby
+  CarPrefabs:
+  - {fileID: 100006, guid: 75f67b85223062047bf6454d98614a85, type: 2}
 --- !u!4 &1423127977
 Transform:
   m_ObjectHideFlags: 0

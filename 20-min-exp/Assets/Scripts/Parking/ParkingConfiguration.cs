@@ -9,9 +9,12 @@ public class ParkingConfiguration : MonoBehaviour {
     public string[] ParkingNames;
     private static string[] _names;
     public static string MainName;
+    public GameObject[] CarPrefabs;
+    public static GameObject[] Cars;
     void Awake() {
         SpawnPct = (SpawnPercentage/100f);
         MainName = MainCharactersName;
+        Cars = CarPrefabs;
         _names = ParkingNames;
         _names.Shuffle();
     }

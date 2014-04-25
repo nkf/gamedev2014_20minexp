@@ -29,7 +29,6 @@ public class CarSpawn : MonoBehaviour {
     private static int _index;
     // Use this for initialization
 	void Start () {
-        if(_carPaths == null) _carPaths = ResourceUtil.GetPrefabPaths("CarPrefabs");
 	    CreateSpawnPattern();
 	    var pattern = _spawnPattern[_index];
 	    if (pattern == Pattern.Main) {
@@ -44,10 +43,10 @@ public class CarSpawn : MonoBehaviour {
 	    if (_index >= _spawnPattern.Length) _index = 0;
 	}
     private readonly System.Random _rng = new System.Random();
-    private static string[] _carPaths;
     private void SpawnRandomCar() {
-        var load = Resources.Load<GameObject>(_carPaths[_rng.Next(0, _carPaths.Length)]);
-        var car = (GameObject)Instantiate(load);
+        var carPrefabs = ParkingConfiguration.Cars;
+        var go = carPrefabs[_rng.Next(0, carPrefabs.Length)];
+        var car = (GameObject)Instantiate(go);
         var pos = transform.position;
         pos.y +=  0.7f;
         car.transform.position = pos;

@@ -164,6 +164,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoadBufferSize: 100
+  NormalRoads:
+  - {fileID: 100008, guid: f41531433ee228f46a36e0e693dc61bc, type: 2}
+  ExoticRoads:
+  - {fileID: 100022, guid: face862857f801045a7f5721cb78e4c8, type: 2}
+  - {fileID: 100278, guid: dd393c795e8628b43a964644971d6b1a, type: 2}
 --- !u!4 &1145351396
 Transform:
   m_ObjectHideFlags: 0

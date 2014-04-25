@@ -13,17 +13,12 @@ using Random = System.Random;
 public class RoadGenerator : MonoBehaviour {
 
     public int RoadBufferSize;
-
-    private string[] _normalRoadSections;
-    private string[] _exoticRoadSections;
+    public GameObject[] NormalRoads;
+    public GameObject[] ExoticRoads;
     private Random _rng;
     private const int RNGSeed = 100;
     private readonly LinkedList<GameObject> _roadList = new LinkedList<GameObject>(); 
 	void Start () {
-	    var path = Application.dataPath + "/Resources/RoadPrefabs";
-	    var roadPaths = Directory.GetFiles(path).Select(s => CleanPath(s)).Distinct();
-	    _normalRoadSections = roadPaths.Where(s => s.Contains("[n]")).ToArray();
-	    _exoticRoadSections = roadPaths.Where(s => !s.Contains("[n]")).ToArray();
         _rng = new Random(RNGSeed);
 	    for (int i = 0; i < RoadBufferSize; i++) {
 	        SpawnRoad();
@@ -53,14 +48,14 @@ public class RoadGenerator : MonoBehaviour {
         }
     }
 
-    private string getExoticSection() {
-        return _exoticRoadSections[ _rng.Next(0, _exoticRoadSections.Length) ];
+    private GameObject getExoticSection() {
+        return ExoticRoads[ _rng.Next(0, ExoticRoads.Length) ];
     }
-    private string getNormalSection() {
-        return _normalRoadSections[ _rng.Next(0, _normalRoadSections.Length) ];
+    private GameObject getNormalSection() {
+        return NormalRoads[ _rng.Next(0, NormalRoads.Length) ];
     }
     private enum RoadType { Normal, Exotic }
-    private string getSection(RoadType type) {
+    private GameObject getSection(RoadType type) {
         if (type == RoadType.Normal) return getNormalSection();
         if (type == RoadType.Exotic) return getExoticSection();
         return null;
@@ -68,20 +63,13 @@ public class RoadGenerator : MonoBehaviour {
 
     private int roadID = 0;
     private float CreateRoadTile(Vector3 pos, RoadType type) {
-        var load = Resources.Load<GameObject>(getSection(type));
-        var road = (GameObject)Instantiate(load);
+        var g = getSection(type);
+        var road = (GameObject)Instantiate(g);
         road.transform.position = pos;
         road.transform.parent = transform;
-        road.name = "#"+(roadID++)+" road ("+load.name+")";
+        road.name = "#"+(roadID++)+" road ("+g.name+")";
         _roadList.AddLast(road);
         return road.GetComponent<BoxCollider>().bounds.size.z;
     }
 
-    private static string CleanPath(string path) {
-        path = new Uri(path).AbsolutePath;
-        var start = path.IndexOf(@"RoadPrefabs");
-        var end = path.IndexOf(@".prefab");
-        path = path.Substring(start, end - start);
-        return Uri.UnescapeDataString(path);
-    }
 }

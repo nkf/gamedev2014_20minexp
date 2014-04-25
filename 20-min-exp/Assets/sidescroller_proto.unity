@@ -265,6 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2bf6e408862720429e86ececbad0308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Shops:
+  - {fileID: 100002, guid: f202ebc5a61221f44a260b46b45a075b, type: 2}
   RandomSeed: 0
 --- !u!4 &203739306
 Transform:

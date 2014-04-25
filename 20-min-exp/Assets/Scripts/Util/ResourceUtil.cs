@@ -9,7 +9,11 @@ class ResourceUtil {
 
     public static string[] GetPrefabPaths(string folderName) {
         var path = Application.dataPath + "/Resources/" + folderName;
-	    return Directory.GetFiles(path).Select(s => CleanPath(s, folderName)).Distinct().ToArray();
+	    var r = Directory.GetFiles(path).Select(s => CleanPath(s, folderName)).Distinct().ToArray();
+        foreach (string s in r) {
+            Debug.Log(s);
+        }
+        return r;
     }
 
     private static string CleanPath(string path, string folderName) {
