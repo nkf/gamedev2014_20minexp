@@ -13,7 +13,6 @@ public class HallMovement : MonoBehaviour {
 
 	void Update () {
 
-		Debug.Log (transform.position);
 	    var v = Input.GetAxis("Vertical");
 	    var p = transform.position;
 
@@ -29,7 +28,6 @@ public class HallMovement : MonoBehaviour {
 						return;
 		} else if (p.z > NEXT_TO_WIFE) {
 
-			Debug.Log("does it compute");
 			p.z -= (v * Time.deltaTime);
 			if (p.z > 1.0f)
 					return;

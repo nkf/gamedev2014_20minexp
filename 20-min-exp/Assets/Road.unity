@@ -267,11 +267,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 070f1adbb3f3f6c438173b6d61e9f4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 150
+  Speed: 75
   Acceleration: 40
-  DeAcceleration: 120
-  MinSpeed: 100
-  MaxSpeed: 1000
+  DeAcceleration: 100
+  MinSpeed: 50
+  MaxSpeed: 140
   SteeringSpeed: .200000003
   SwayFactor: .0399999991
   EdgeSlowDownThreshold: 2
