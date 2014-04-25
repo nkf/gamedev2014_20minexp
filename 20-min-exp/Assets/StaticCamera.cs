@@ -14,7 +14,7 @@ public class StaticCamera : MonoBehaviour {
 		
 	}
 	
-	public void StartConversation1() {
+	public void StartConversationStatic() {
 		WifeAgent.JANE.GetComponent<WifeAgent>().StartConversation();
 	}
 	

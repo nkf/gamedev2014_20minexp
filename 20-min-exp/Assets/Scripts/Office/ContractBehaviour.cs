@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ContractBehaviour : MonoBehaviour {
@@ -15,10 +15,11 @@ public class ContractBehaviour : MonoBehaviour {
 			TextMesh homeProfit     = transform.Find ("HomefulProfit").gameObject.GetComponent<TextMesh>();
 			TextMesh businessProfit = transform.Find ("BusinessProfit").gameObject.GetComponent<TextMesh>();
 
-			title.text = _contract.Title;
+//			title.text = _contract.Title;
+			title.text = "Contract";
 			descr.text = _contract.Description;
-			businessProfit.text = _contract.BusinessProfit.ToString();
-			homeProfit.text     = _contract.HomefulProfit.ToString();
+			businessProfit.text = "Profit: $"+_contract.BusinessProfit.ToString();
+			homeProfit.text     = "Provision: $"+_contract.HomefulProvisionPct.ToString()+"%";
 		}
 	}
 

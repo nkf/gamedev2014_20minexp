@@ -15,8 +15,8 @@ public class ConversationAgent : MonoBehaviour {
 	
 	public string _conversationPath;	// Relative path to the JSON conversation file
 
-	private int currentNode = 0;		// Index of the current nodes
-	private ConversationNode[] allNodes;// Collection of all the nodes
+	protected int currentNode = 0;		// Index of the current nodes
+	protected ConversationNode[] allNodes;// Collection of all the nodes
 
 	protected bool _conversationIsRunning = false;
 	protected int _highlightedResponse = 0;
@@ -30,6 +30,8 @@ public class ConversationAgent : MonoBehaviour {
 	private float endTimer;				// Used to time the display time of the last conversation dialogue
 	private float nodeTimer;
 	private bool nodeTimerHasBeenSet = false;
+
+	public bool IsRunning { get {return _conversationIsRunning;} }
 
 	// Use this for initialization
 	protected virtual void Start () {
@@ -153,6 +155,7 @@ public class ConversationAgent : MonoBehaviour {
 	}
 
 	protected void RenderDialogue(Rect position) {
+		Debug.Log(getCurrentNode().Dialogue);
 		// Write Dialogue
 		GUIStyle style = new GUIStyle();
 		style.fontSize = 15;
@@ -182,7 +185,7 @@ public class ConversationAgent : MonoBehaviour {
 		} else {
 			style.normal.textColor = Color.white;
 		}
-		GUI.Label(responsePos, getCurrentNode().Responses[i], style);
+		GUI.Label(responsePos, "[ " + getCurrentNode().Responses[i] + " ]", style);
 	}
 
 	public void StartConversation() {
@@ -190,9 +193,11 @@ public class ConversationAgent : MonoBehaviour {
 		// Modifies the path to use the path seperator for the current system
 		_conversationPath = _conversationPath.Replace(@"/", Path.DirectorySeparatorChar.ToString());
 		_conversationPath = _conversationPath.Replace(@"\", Path.DirectorySeparatorChar.ToString());	
-		
+
+		TextAsset txt = (TextAsset)Resources.Load(_conversationPath, typeof(TextAsset));
+
 		// Read in the conversation from the JSON file and initialise the node collection
-		JSONNode node = JSONNode.Parse( File.ReadAllText(@_conversationPath) );
+		JSONNode node = JSONNode.Parse(txt.text);
 		allNodes = new ConversationNode[ node["AllNodes"].Count ];
 		
 		

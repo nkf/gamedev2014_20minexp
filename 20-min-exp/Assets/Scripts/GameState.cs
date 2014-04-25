@@ -51,7 +51,7 @@ public class GameState : MonoBehaviour {
 	void OnGUI() {
 		// Render monies
 		Vector2 textDimensions = GUI.skin.label.CalcSize( new GUIContent(Toolbox.Instance.gameState.MoneyCounter.ToString()) );
-		Rect moneyGUI = new Rect(2*(Screen.width/5), 0, (Screen.width/2), 20);
+		Rect moneyGUI = new Rect(0, 0, Screen.width, 20);
 		//Rect moneyGUI = new Rect(0, 0, 100, 100);
 		GUIHelpers.DrawQuad(moneyGUI, Color.black);
 		
@@ -59,7 +59,7 @@ public class GameState : MonoBehaviour {
 		style.fontSize = 20;
 		style.alignment = TextAnchor.UpperCenter;
 		style.normal.textColor = Color.white;
-		GUI.Label(moneyGUI, Toolbox.Instance.gameState.MoneyCounter.ToString(), style);
+		GUI.Label(moneyGUI, "Bank Balance: $ " + Toolbox.Instance.gameState.MoneyCounter.ToString(), style);
 
 	    if (_showingCenterText) {
 	        GUI.Label(_center, _centerText, new GUIStyle {fontSize = 30, alignment = TextAnchor.MiddleCenter, normal = {textColor = Color.white}});

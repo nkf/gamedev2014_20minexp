@@ -29,40 +29,30 @@ public class TableSceneInitializer : MonoBehaviour {
 
 	protected void RegularDayInit() {
 		Debug.Log("Regular day");
-		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "Assets/Test2.json";
-
-		// Play dinner camera animation
-		DinnerAnimationFunctions.DINNER_CAMERA.GetComponent<Animator>().SetInteger("CamAnim", 2);
+		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "quickEnd";
+		StaticCamera.STATIC_CAMERA.GetComponent<Animator>().enabled = false; //DISI IS HOW YOU DESABLE ANIMATORZ
 	}
 
 	protected void FiringDayMorningInit() {
 		Debug.Log("Firing day morning");
-
-		//GameObject.FindGameObjectWithTag ("StaticCamera").camera.SwitchTo();
-
 		StaticCamera.STATIC_CAMERA.camera.SwitchTo();
-
-		//DinnerAnimationFunctions.DINNER_CAMERA.GetComponent<Animator>().SetInteger("CamAnim", 0);
-
-		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "Assets/Test2.json";
-		//WifeAgent.JANE.GetComponent<WifeAgent>().StartConversation();
+		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "quickEnd";
 	}
 
 	protected void FiringDayAfternoon() {
 		Debug.Log("Firing day afternoon");
-		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "Assets/Test2.json";
-		WifeAgent.JANE.GetComponent<WifeAgent>().StartConversation();
+		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "quickEnd";
 	}
 
 	protected void Appearances1Init() {
 		Debug.Log("Appearences day 1");
-		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "Assets/Test2.json";
+		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "quickEnd";
 		WifeAgent.JANE.GetComponent<WifeAgent>().StartConversation();
 	}
 
 	protected void Appearances2Init() {
 		Debug.Log("Appearences day 2");
-		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "Assets/Test2.json";
+		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "quickEnd";
 		WifeAgent.JANE.GetComponent<WifeAgent>().StartConversation();
 	}
 

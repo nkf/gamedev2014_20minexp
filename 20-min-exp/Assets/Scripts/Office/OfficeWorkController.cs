@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -34,7 +34,7 @@ public class OfficeWorkController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// TODO: For testing purposes. Can be deleted for final version
-//		GameState touchTheSingleton = Toolbox.Instance.gameState;
+		GameState touchTheSingleton = Toolbox.Instance.gameState;
 
 		if (Toolbox.Instance.gameState.DayCounter == GameState.REGULAR_DAY)
 			InitRegularWorkday();
@@ -101,14 +101,7 @@ public class OfficeWorkController : MonoBehaviour {
 		if (_loadNewContracts)
 			LoadContracts();
 
-		if (_normalContracts.Count <= 0) {
-			Debug.Log ("Geemu Ovaa");
-			// If first in-game day, Start new day (with table, and hall, and driving and shit)
-			if (Toolbox.Instance.gameState.DayCounter == GameState.REGULAR_DAY) {
-                Toolbox.Instance.gameState.DayCounter = 1;
-                Toolbox.Instance.levelController.Load(LevelController.TABLE);
-			}
-		}
+
 		
 		// Controls
 		if (Input.GetKeyDown(KeyCode.LeftArrow) && _highlightedContract != 0) {
@@ -118,8 +111,16 @@ public class OfficeWorkController : MonoBehaviour {
 			_highlightedContract++;
 		}
 		if (Input.GetKeyDown(KeyCode.Return)) {
-			if (_normalContracts.Count > 0)
-				SelectContract( _loadedContracts[_highlightedContract].Contract );
+			SelectContract( _loadedContracts[_highlightedContract].Contract );
+
+			if (_normalContracts.Count <= 0) {
+				Debug.Log ("Geemu Ovaa");
+				// If first in-game day, Start new day (with table, and hall, and driving and shit)
+				if (Toolbox.Instance.gameState.DayCounter == GameState.REGULAR_DAY) {
+					Toolbox.Instance.gameState.DayCounter = 1;
+					Toolbox.Instance.levelController.Load(LevelController.TABLE);
+				}
+			}
 		}
 	}
 	
@@ -172,7 +173,8 @@ public class OfficeWorkController : MonoBehaviour {
 	public void SelectContract(Contract contract) {
 		//		_highlightedContract = 0;
 		_loadNewContracts = true;
-		Toolbox.Instance.gameState.MoneyCounter += contract.HomefulProfit;
+		float homefulProfit = (contract.BusinessProfit / 100) * contract.HomefulProvisionPct;
+		Toolbox.Instance.gameState.MoneyCounter += (int) homefulProfit;
 		// TODO: Business profit
 	}
 
@@ -181,7 +183,7 @@ public class OfficeWorkController : MonoBehaviour {
 	//////////////////////
 
 	protected float startTime;
-	public float showRedundancyNoticeTime = 5.0f;
+	public float showRedundancyNoticeTime = 15.0f; //TIME BITCH
 
 	protected void InitLayoffDay() {
 		startTime = Time.time;
