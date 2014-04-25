@@ -193,9 +193,11 @@ public class ConversationAgent : MonoBehaviour {
 		// Modifies the path to use the path seperator for the current system
 		_conversationPath = _conversationPath.Replace(@"/", Path.DirectorySeparatorChar.ToString());
 		_conversationPath = _conversationPath.Replace(@"\", Path.DirectorySeparatorChar.ToString());	
-		
+
+		TextAsset txt = (TextAsset)Resources.Load(_conversationPath, typeof(TextAsset));
+
 		// Read in the conversation from the JSON file and initialise the node collection
-		JSONNode node = JSONNode.Parse( File.ReadAllText(@_conversationPath) );
+		JSONNode node = JSONNode.Parse(txt.text);
 		allNodes = new ConversationNode[ node["AllNodes"].Count ];
 		
 		
