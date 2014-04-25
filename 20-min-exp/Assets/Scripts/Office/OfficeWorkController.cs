@@ -183,7 +183,7 @@ public class OfficeWorkController : MonoBehaviour {
 	//////////////////////
 
 	protected float startTime;
-	public float showRedundancyNoticeTime = 5.0f;
+	public float showRedundancyNoticeTime = 15.0f; //TIME BITCH
 
 	protected void InitLayoffDay() {
 		startTime = Time.time;

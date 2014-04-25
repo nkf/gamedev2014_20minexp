@@ -19,30 +19,10 @@
             "nextNodeDelay": 2.0,
 	    "answeringAppearanceDelay": 5.0,
             "responses": [
-                {"response": "...", "gotoNode": 2},
+                {"response": "...", "gotoNode": 1},
             ]
         },
         
-        {
-            "index": 2,
-            "dialogue": "...",
-            "responses": [
-                {"response": "STFU!", "gotoNode": 3}
-            ]
-        },
 
-        {
-            "index": 3,
-            "dialogue": "Okay, sorry",
-            "responses": []
-        },
-
-        {
-            "index": 4,
-            "dialogue": "Can't talk, muddafukka?",
-            "responses": [
-                {"response": "Blerp!", "gotoNode": 3}
-            ]
-        }
     ]
 }

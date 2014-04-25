@@ -1,0 +1,100 @@
+{
+    "ConversationName": "Breakfast Table",
+    "AllNodes": [
+
+	{
+            "index": 0,
+            "dialogue": "Dialogue appears here. Select an answer with the arrow keys from the options above and confirm by pressing Enter",
+            
+            "answeringAppearanceDelay": 0.0,
+            "nextNodeDelay": 0.0,
+            "responses": [
+                {"response": "Got it", "gotoNode": 6},
+		{"response": "Piece of cake", "gotoNode": 6},
+                
+            ]
+        },
+
+        {
+            "index": 6,
+            "dialogue": "Jane: Could you...",
+            "silentResponse": { "timer": 3.0, "gotoNode": 1},
+            "answeringAppearanceDelay": 1000.0,
+            "nextNodeDelay": 5.0,
+            "responses": [
+                {"response": "...", "gotoNode": 1},
+                
+            ]
+        },
+        
+        {
+            "index": 1,
+            "dialogue": "Jane: ...could you pass me the salt, please?",
+            "nextNodeDelay": 0.0,
+	    "answeringAppearanceDelay": 5.0,
+            "responses": [
+                {"response": "...", "gotoNode": 2},
+            ]
+        },
+
+	{
+            "index": 2,
+            "dialogue": "Jane: ...",
+            "nextNodeDelay": 0.0,
+	    "silentResponse": { "timer": 6.0, "gotoNode": 3},
+	    "answeringAppearanceDelay": 11.0,
+            "responses": [
+                {"response": "...", "gotoNode": 3},
+            ]
+        },
+        
+	{
+            "index": 3,
+            "dialogue": "Jane: When do you have to be at work today?",
+            "nextNodeDelay": 0.0,
+	    "answeringAppearanceDelay": 11.0,
+            "responses": [
+                {"response": "8am, as always.", "gotoNode": 4},
+		{"response": "What's with the questions?", "gotoNode": 5},
+            ]
+        },
+	
+	{
+	    "index": 4,
+            "dialogue": "Jane: Of course...",
+            "nextNodeDelay": 0.0,
+	    "answeringAppearanceDelay": 5.0,
+            "responses": [
+                {"response": "...", "gotoNode": 7},
+            ]
+	},
+	
+	{
+	    "index": 5,
+            "dialogue": "Jane: I'm sorry, never mind...",,
+            "nextNodeDelay": 0.0,
+	    "answeringAppearanceDelay": 5.0,
+            "responses": [
+                {"response": "...", "gotoNode": 7},
+            ]
+	},
+
+	{
+	    "index": 7,
+            "dialogue": "Jane: How is the toast?",
+            "nextNodeDelay": 0.0,
+	    "answeringAppearanceDelay": 11.0,
+            "responses": [
+                {"response": "*Clears throat* It's ok", "gotoNode": 8},
+            ]
+	},
+
+	{
+	    "index": 8,
+            "dialogue": "Jane: I'm glad...",
+            "nextNodeDelay": 0.0,
+	    "answeringAppearanceDelay": 0.0,
+        
+	},
+    ]
+}
