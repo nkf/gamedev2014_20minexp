@@ -21,21 +21,16 @@ AnimationClip:
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
-      - time: 3.8166666
+      - time: 5
         value: {x: -14.6116295, y: 1.9281081, z: .195429519}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: -1082130432
+        tangentMode: 0
       - time: 14
-        value: {x: -11.3866081, y: 2.14895725, z: .0955413505}
+        value: {x: -11.3866081, y: 1.85485435, z: .0955413505}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 646357924
-      - time: 20
-        value: {x: -11.3866081, y: 2.14895725, z: .0955413505}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 646127960
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: 
@@ -50,7 +45,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 20
+    m_StopTime: 14
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -73,17 +68,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - time: 3.8166666
+      - time: 5
         value: -14.6116295
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       - time: 14
-        value: -11.3866081
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - time: 20
         value: -11.3866081
         inSlope: 0
         outSlope: 0
@@ -102,18 +92,13 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - time: 3.8166666
+      - time: 5
         value: 1.9281081
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       - time: 14
-        value: 2.14895725
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - time: 20
-        value: 2.14895725
+        value: 1.85485435
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -131,17 +116,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - time: 3.8166666
+      - time: 5
         value: .195429519
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       - time: 14
-        value: .0955413505
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - time: 20
         value: .0955413505
         inSlope: 0
         outSlope: 0
@@ -154,7 +134,7 @@ AnimationClip:
     script: {fileID: 0}
   m_EulerEditorCurves: []
   m_Events:
-  - time: 16.0166664
+  - time: .433333337
     functionName: StartConversation1
     data: 
     objectReferenceParameter: {fileID: 0}

@@ -157,7 +157,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 364640557}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: .707106888, y: 0, z: 0, w: .707106769}
   m_LocalPosition: {x: 0, y: 4.04068708, z: 4.81687493e-07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -468,6 +468,7 @@ MonoBehaviour:
   contractPath: Assets/TestContracts.json
   contractPrefab: {fileID: 400008, guid: 0c335b7fe650d4bdfa780378b59ffde9, type: 2}
   TimeLimit: 60
+  showRedundancyNoticeTime: 5
 --- !u!4 &1653460173
 Transform:
   m_ObjectHideFlags: 0
@@ -612,7 +613,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2110584723}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: .707106888, y: 0, z: 0, w: .707106769}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []

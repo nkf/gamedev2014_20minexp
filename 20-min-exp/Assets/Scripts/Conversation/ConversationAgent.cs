@@ -182,7 +182,7 @@ public class ConversationAgent : MonoBehaviour {
 		} else {
 			style.normal.textColor = Color.white;
 		}
-		GUI.Label(responsePos, getCurrentNode().Responses[i], style);
+		GUI.Label(responsePos, "[ " + getCurrentNode().Responses[i] + " ]", style);
 	}
 
 	public void StartConversation() {
