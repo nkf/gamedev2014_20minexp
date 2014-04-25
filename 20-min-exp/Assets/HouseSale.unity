@@ -84,6 +84,7 @@ GameObject:
   - 4: {fileID: 22536902}
   - 33: {fileID: 22536904}
   - 23: {fileID: 22536903}
+  - 64: {fileID: 22536905}
   m_Layer: 0
   m_Name: OuterHalfWall
   m_TagString: Untagged
@@ -131,6 +132,19 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 1533947928}
   m_GameObject: {fileID: 22536901}
+  m_Mesh: {fileID: 4300024, guid: a3525729897feae42893ce81e797e18a, type: 3}
+--- !u!64 &22536905
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 22536901}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300024, guid: a3525729897feae42893ce81e797e18a, type: 3}
 --- !u!1 &40783240
 GameObject:
@@ -873,6 +887,7 @@ GameObject:
   - 4: {fileID: 299384883}
   - 33: {fileID: 299384885}
   - 23: {fileID: 299384884}
+  - 64: {fileID: 299384886}
   m_Layer: 0
   m_Name: RoomsWall
   m_TagString: Untagged
@@ -920,6 +935,19 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 1533947928}
   m_GameObject: {fileID: 299384882}
+  m_Mesh: {fileID: 4300008, guid: a3525729897feae42893ce81e797e18a, type: 3}
+--- !u!64 &299384886
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 299384882}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300008, guid: a3525729897feae42893ce81e797e18a, type: 3}
 --- !u!1 &315307869
 GameObject:
@@ -1366,6 +1394,7 @@ GameObject:
   - 4: {fileID: 476074264}
   - 33: {fileID: 476074266}
   - 23: {fileID: 476074265}
+  - 64: {fileID: 476074267}
   m_Layer: 0
   m_Name: SouthWall
   m_TagString: Untagged
@@ -1413,6 +1442,19 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 1533947928}
   m_GameObject: {fileID: 476074263}
+  m_Mesh: {fileID: 4300004, guid: a3525729897feae42893ce81e797e18a, type: 3}
+--- !u!64 &476074267
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 476074263}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300004, guid: a3525729897feae42893ce81e797e18a, type: 3}
 --- !u!1 &504460947
 GameObject:
@@ -1805,6 +1847,7 @@ GameObject:
   - 33: {fileID: 589190813}
   - 23: {fileID: 589190812}
   - 95: {fileID: 589190811}
+  - 65: {fileID: 589190814}
   m_Layer: 0
   m_Name: Fridge
   m_TagString: Untagged
@@ -1870,6 +1913,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1533947928}
   m_GameObject: {fileID: 589190809}
   m_Mesh: {fileID: 4300000, guid: 8f2f62c607e56e74c848cfa71dcfc7da, type: 3}
+--- !u!65 &589190814
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 589190809}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .83243376, y: .474487454, z: 1.7500037}
+  m_Center: {x: -.416217357, y: .237243727, z: .875001848}
 --- !u!1 &604581270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1977,6 +2032,7 @@ GameObject:
   - 4: {fileID: 631681182}
   - 33: {fileID: 631681184}
   - 23: {fileID: 631681183}
+  - 64: {fileID: 631681185}
   m_Layer: 0
   m_Name: RoomDoor001
   m_TagString: Untagged
@@ -2024,6 +2080,19 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 1533947928}
   m_GameObject: {fileID: 631681181}
+  m_Mesh: {fileID: 4300110, guid: a3525729897feae42893ce81e797e18a, type: 3}
+--- !u!64 &631681185
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 631681181}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300110, guid: a3525729897feae42893ce81e797e18a, type: 3}
 --- !u!1 &670496077
 GameObject:
@@ -2369,6 +2438,7 @@ GameObject:
   - 4: {fileID: 805694228}
   - 33: {fileID: 805694230}
   - 23: {fileID: 805694229}
+  - 64: {fileID: 805694231}
   m_Layer: 0
   m_Name: WestWall
   m_TagString: Untagged
@@ -2416,6 +2486,19 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 1533947928}
   m_GameObject: {fileID: 805694227}
+  m_Mesh: {fileID: 4300006, guid: a3525729897feae42893ce81e797e18a, type: 3}
+--- !u!64 &805694231
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 805694227}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300006, guid: a3525729897feae42893ce81e797e18a, type: 3}
 --- !u!1 &822583426
 GameObject:
@@ -2586,6 +2669,7 @@ GameObject:
   - 4: {fileID: 855351950}
   - 33: {fileID: 855351952}
   - 23: {fileID: 855351951}
+  - 64: {fileID: 855351953}
   m_Layer: 0
   m_Name: FacadeWall
   m_TagString: Untagged
@@ -2634,6 +2718,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1533947928}
   m_GameObject: {fileID: 855351949}
   m_Mesh: {fileID: 4300002, guid: a3525729897feae42893ce81e797e18a, type: 3}
+--- !u!64 &855351953
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 855351949}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 4300002, guid: a3525729897feae42893ce81e797e18a, type: 3}
 --- !u!1 &893183110
 GameObject:
   m_ObjectHideFlags: 0
@@ -2644,6 +2741,7 @@ GameObject:
   - 4: {fileID: 893183111}
   - 33: {fileID: 893183113}
   - 23: {fileID: 893183112}
+  - 64: {fileID: 893183114}
   m_Layer: 0
   m_Name: RoomDoor002
   m_TagString: Untagged
@@ -2691,6 +2789,19 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 1533947928}
   m_GameObject: {fileID: 893183110}
+  m_Mesh: {fileID: 4300114, guid: a3525729897feae42893ce81e797e18a, type: 3}
+--- !u!64 &893183114
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 893183110}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300114, guid: a3525729897feae42893ce81e797e18a, type: 3}
 --- !u!1 &905305878
 GameObject:
@@ -3090,6 +3201,7 @@ GameObject:
   - 4: {fileID: 977615435}
   - 33: {fileID: 977615437}
   - 23: {fileID: 977615436}
+  - 64: {fileID: 977615438}
   m_Layer: 0
   m_Name: RoomDoor
   m_TagString: Untagged
@@ -3137,6 +3249,19 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 1533947928}
   m_GameObject: {fileID: 977615434}
+  m_Mesh: {fileID: 4300074, guid: a3525729897feae42893ce81e797e18a, type: 3}
+--- !u!64 &977615438
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 977615434}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300074, guid: a3525729897feae42893ce81e797e18a, type: 3}
 --- !u!1 &981449390
 GameObject:
@@ -3291,6 +3416,7 @@ GameObject:
   - 4: {fileID: 1027377518}
   - 33: {fileID: 1027377520}
   - 23: {fileID: 1027377519}
+  - 65: {fileID: 1027377521}
   m_Layer: 0
   m_Name: LeftCupboard
   m_TagString: Untagged
@@ -3341,6 +3467,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1533947928}
   m_GameObject: {fileID: 1027377517}
   m_Mesh: {fileID: 4300156, guid: a3525729897feae42893ce81e797e18a, type: 3}
+--- !u!65 &1027377521
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1027377517}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.36983371, y: .726405501, z: .900000274}
+  m_Center: {x: -1.18491757, y: .336797714, z: .449999958}
 --- !u!1 &1063760738
 GameObject:
   m_ObjectHideFlags: 0
@@ -3411,7 +3549,6 @@ GameObject:
   - 23: {fileID: 1072923267}
   - 95: {fileID: 1072923266}
   - 64: {fileID: 1072923269}
-  - 114: {fileID: 1072923270}
   m_Layer: 0
   m_Name: tennis-racket
   m_TagString: Untagged
@@ -3488,18 +3625,6 @@ MeshCollider:
   m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 4db9f0d34792abb468aefeeeb740eabd, type: 3}
---- !u!114 &1072923270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1072923264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78e82cdf175790d43832482e754998b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SellPrice: 500
 --- !u!1 &1073255398
 GameObject:
   m_ObjectHideFlags: 0
@@ -4440,6 +4565,7 @@ GameObject:
   - 4: {fileID: 1318835666}
   - 33: {fileID: 1318835668}
   - 23: {fileID: 1318835667}
+  - 65: {fileID: 1318835669}
   m_Layer: 0
   m_Name: RightCupboard
   m_TagString: Untagged
@@ -4490,6 +4616,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1533947928}
   m_GameObject: {fileID: 1318835665}
   m_Mesh: {fileID: 4300168, guid: a3525729897feae42893ce81e797e18a, type: 3}
+--- !u!65 &1318835669
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1318835665}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .726405203, y: 2.55728507, z: .900000215}
+  m_Center: {x: -.33679834, y: -1.27856004, z: .450000107}
 --- !u!1 &1325877807
 GameObject:
   m_ObjectHideFlags: 0
@@ -4674,6 +4812,7 @@ GameObject:
   - 4: {fileID: 1367939414}
   - 33: {fileID: 1367939416}
   - 23: {fileID: 1367939415}
+  - 65: {fileID: 1367939417}
   m_Layer: 0
   m_Name: LeftDoor
   m_TagString: Untagged
@@ -4724,6 +4863,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1533947928}
   m_GameObject: {fileID: 1367939413}
   m_Mesh: {fileID: 4300006, guid: 8f2f62c607e56e74c848cfa71dcfc7da, type: 3}
+--- !u!65 &1367939417
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1367939413}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .397405356, y: .133278862, z: 1.73453677}
+  m_Center: {x: -.20947054, y: -.0685736388, z: .874941945}
 --- !u!1 &1383340513
 GameObject:
   m_ObjectHideFlags: 0
@@ -4797,6 +4948,7 @@ GameObject:
   - 4: {fileID: 1433725962}
   - 33: {fileID: 1433725964}
   - 23: {fileID: 1433725963}
+  - 65: {fileID: 1433725965}
   m_Layer: 0
   m_Name: SinkCupboard
   m_TagString: Untagged
@@ -4857,6 +5009,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1533947928}
   m_GameObject: {fileID: 1433725961}
   m_Mesh: {fileID: 4300138, guid: a3525729897feae42893ce81e797e18a, type: 3}
+--- !u!65 &1433725965
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1433725961}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .819999993, y: .74000001, z: .902094841}
+  m_Center: {x: -.602305055, y: .0787977204, z: .448952854}
 --- !u!1 &1474725831
 GameObject:
   m_ObjectHideFlags: 0
@@ -5355,6 +5519,7 @@ GameObject:
   - 4: {fileID: 1591156179}
   - 33: {fileID: 1591156181}
   - 23: {fileID: 1591156180}
+  - 64: {fileID: 1591156182}
   m_Layer: 0
   m_Name: EntryDoor
   m_TagString: Untagged
@@ -5403,6 +5568,19 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 1533947928}
   m_GameObject: {fileID: 1591156178}
+  m_Mesh: {fileID: 4300066, guid: a3525729897feae42893ce81e797e18a, type: 3}
+--- !u!64 &1591156182
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1591156178}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300066, guid: a3525729897feae42893ce81e797e18a, type: 3}
 --- !u!1 &1616299760
 GameObject:
@@ -5545,6 +5723,7 @@ GameObject:
   - 4: {fileID: 1625456017}
   - 33: {fileID: 1625456019}
   - 23: {fileID: 1625456018}
+  - 64: {fileID: 1625456020}
   m_Layer: 0
   m_Name: InnerHalfWall
   m_TagString: Untagged
@@ -5592,6 +5771,19 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 1533947928}
   m_GameObject: {fileID: 1625456016}
+  m_Mesh: {fileID: 4300022, guid: a3525729897feae42893ce81e797e18a, type: 3}
+--- !u!64 &1625456020
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1625456016}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300022, guid: a3525729897feae42893ce81e797e18a, type: 3}
 --- !u!1 &1672730175
 GameObject:
@@ -5989,6 +6181,7 @@ GameObject:
   - 4: {fileID: 1794385864}
   - 33: {fileID: 1794385866}
   - 23: {fileID: 1794385865}
+  - 65: {fileID: 1794385867}
   m_Layer: 0
   m_Name: RightDoor
   m_TagString: Untagged
@@ -6038,6 +6231,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1533947928}
   m_GameObject: {fileID: 1794385863}
   m_Mesh: {fileID: 4300002, guid: 8f2f62c607e56e74c848cfa71dcfc7da, type: 3}
+--- !u!65 &1794385867
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1794385863}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .397404581, y: .11552465, z: 1.73453331}
+  m_Center: {x: .198701367, y: -.0577623323, z: .867266655}
 --- !u!1 &1796119747
 GameObject:
   m_ObjectHideFlags: 0
@@ -6794,6 +6999,7 @@ GameObject:
   - 4: {fileID: 1950252188}
   - 33: {fileID: 1950252190}
   - 23: {fileID: 1950252189}
+  - 64: {fileID: 1950252191}
   m_Layer: 0
   m_Name: KitchenWall
   m_TagString: Untagged
@@ -6841,6 +7047,19 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 1533947928}
   m_GameObject: {fileID: 1950252187}
+  m_Mesh: {fileID: 4300018, guid: a3525729897feae42893ce81e797e18a, type: 3}
+--- !u!64 &1950252191
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1950252187}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300018, guid: a3525729897feae42893ce81e797e18a, type: 3}
 --- !u!1 &1955018388
 GameObject:
@@ -7306,7 +7525,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: .300000012
+  near clip plane: .00999999978
   far clip plane: 1000
   field of view: 60
   orthographic: 0
