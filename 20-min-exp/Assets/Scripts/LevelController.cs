@@ -87,8 +87,8 @@ public class LevelController : MonoBehaviour {
             OfficeText  [GameState.REGULAR_DAY]         = "WORK WORK?";
             ShopperText [GameState.FIRING_DAY_MORNING]  = "MIGHT ASWELL USE SOME MONEY";
             AppText     [GameState.APPEARANCES_DAY_1]   = "THEY CAN'T KNOW THAT IM NO LONGER WORKING";
-            AppText     [GameState.APPEARANCES_DAY_2]   = "I CAN FEEL THEIR EYES ARE WATCHING";
-            AppText     [GameState.APPEARANCES_DAY_3]   = "SOMETIMES I THINK I'M HAPPY HERE";
+            AppText     [GameState.APPEARANCES_DAY_2]   = "A FEW WEEKS LATER";
+            AppText     [GameState.APPEARANCES_DAY_3]   = "LATER THAT MONTH";
             SellText    [GameState.SELL_STUFF_DAY]      = "I CAN TELL YOU EXACTLY HOW IT WILL END";
     }
 }
