@@ -5,7 +5,13 @@ using System.Collections;
 using Object = UnityEngine.Object;
 
 public static class CameraUtil {
+	/// <summary>
+	/// Whether the game is currently in the middle of fading
+	/// </summary>
 	public static bool IsFading = false;
+	/// <summary>
+	/// Whether the game is currently fading or is faded to black
+	/// </summary>
 	public static bool IsFaded = false;
 
     public static Fader GetFader() {

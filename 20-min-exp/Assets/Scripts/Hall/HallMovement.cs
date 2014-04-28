@@ -7,6 +7,7 @@ public class HallMovement : MonoBehaviour {
     private const float IN_FRONT_OF_CAR = -25.5f;
 	private const float AFTER_STEP = -12.2f;
 	private const float NEXT_TO_WIFE = -5.9f;
+	private const float WALL = -1.7191f;
 
 	public static bool WifeSatisfied;
 
@@ -26,19 +27,20 @@ public class HallMovement : MonoBehaviour {
 			return;
 
 		// Go between door and start position
-		if (p.z > IN_FRONT_OF_DOOR && p.z < 1.0f && WifeSatisfied) {
-				p.z -= (v * Time.deltaTime);
-				if (p.z > 1.0f)
-					return;
-				if (p.z < IN_FRONT_OF_DOOR &&
-			    	!DoorSelectable.FRONT_DOOR.isOpened)
-					return;
+		if (p.z > IN_FRONT_OF_DOOR && p.z < 1.0f && WifeSatisfied) 
+		{
+			p.z -= (v * Time.deltaTime);
+			if (p.z > 1.0f)
+				return;
+			if (p.z < IN_FRONT_OF_DOOR &&
+		    	!DoorSelectable.FRONT_DOOR.isOpened)
+				return;
 		} else if (DoorSelectable.FRONT_DOOR.isOpened && p.z > IN_FRONT_OF_CAR) {
 			// Go outside
 				p.z -= (v * Time.deltaTime * 2);
 				if (p.z < IN_FRONT_OF_CAR)
 					return;
-		} else if (p.z > NEXT_TO_WIFE) {
+		} else if (p.z > NEXT_TO_WIFE && p.z < WALL) {
 			// Be stopped by wife
 			p.z -= (v * Time.deltaTime);
 			if (p.z > 1.0f)
