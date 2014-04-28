@@ -20,9 +20,15 @@ public class Car : MonoBehaviour {
 	/// </summary>
 	/// <param name="enable">If set to <c>true</c> enable.</param>
 	public void SetControls(bool enable) {
-		if (enable)
+		if (enable) {
 			_splineController.mode = SplineController.Mode.KEYBOARD;
-		else
+
+		}
+		else {
 			_splineController.mode = SplineController.Mode.AUTO;
+			_splineController.horizAcceleration = 0;
+			_splineController.horizSpeed = 0;
+		}
+
 	}
 }
