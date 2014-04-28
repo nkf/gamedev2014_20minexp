@@ -10,7 +10,6 @@ public class OfficeWorkController : MonoBehaviour {
 	// Managed in Unity UI
 	public string contractPath;
 	public Transform contractPrefab;
-	public int TimeLimit; // How long should the "game" run, before it ends?
 
 	// Everything else
 	protected List<Contract>  _normalContracts;
@@ -53,7 +52,9 @@ public class OfficeWorkController : MonoBehaviour {
 
 
 	void OnGUI() {
-		// TODO: Remove on level load
+		if (CameraUtil.IsFaded)
+			return;
+
 		if (Toolbox.Instance.gameState.DayCounter == GameState.REGULAR_DAY) {
 			Vector3 pos = Camera.main.WorldToScreenPoint( _loadedContracts[_highlightedContract].transform.position );
 			Rect selectionPos = new Rect(pos.x, Screen.height-pos.y, 20, 20);
@@ -102,7 +103,9 @@ public class OfficeWorkController : MonoBehaviour {
 		if (_loadNewContracts)
 			LoadContracts();
 
-
+		// Disable controls during fade in
+		if (CameraUtil.IsFaded)
+			return;
 		
 		// Controls
 		if (Input.GetKeyDown(KeyCode.LeftArrow) && _highlightedContract != 0) {
@@ -184,7 +187,7 @@ public class OfficeWorkController : MonoBehaviour {
 	//////////////////////
 
 	protected float startTime;
-	public float showRedundancyNoticeTime = 25.0f; //TIME BITCH
+	public float showRedundancyNoticeTime = 25.0f;
 
 	protected void InitLayoffDay() {
 		startTime = Time.time;
