@@ -74,19 +74,19 @@ public class LevelController : MonoBehaviour {
     static LevelController() {
             TableText   [GameState.REGULAR_DAY]         = "FAMILY BREAKFAST";
             TableText   [GameState.FIRING_DAY_MORNING]  = "ANOTHER MORNING";
-            TableText   [GameState.FIRING_DAY_AFTERNOON]= "THE SAME EVENING";
+            TableText   [GameState.FIRING_DAY_AFTERNOON]= "THAT SAME EVENING";
             TableText   [GameState.APPEARANCES_DAY_2]   = "";
             TableText   [GameState.APPEARANCES_DAY_3]   = "";
-            HallText    [GameState.REGULAR_DAY]         = "GET TO THE CAR, GET TO WORK";
+            HallText    [GameState.REGULAR_DAY]         = "YOU'RE LATE, GET TO WORK";
             HallText    [GameState.FIRING_DAY_MORNING]  = "I REPEAT THE SAME ROUTINE";
-            RoadText    [GameState.REGULAR_DAY]         = "JUST GET TO WORK";
+            RoadText    [GameState.REGULAR_DAY]         = "THE COMUTE";
             RoadText    [GameState.FIRING_DAY_MORNING]  = "I THINK I USED TO HAVE A PURPOSE";
-            ParkingText [GameState.REGULAR_DAY]         = "PARK THE CAR STEN, PARK THE CAR.";
+            ParkingText [GameState.REGULAR_DAY]         = "PARK THE CAR, HENRY STEIN, PARK THE CAR.";
             ParkingText [GameState.FIRING_DAY_MORNING]  = "THAT MIGHT HAVE BEEN A DREAM";
             OfficeText  [GameState.REGULAR_DAY]         = "WORK WORK?";
             OfficeText  [GameState.REGULAR_DAY]         = "WORK WORK?";
-            ShopperText [GameState.FIRING_DAY_MORNING]  = "MIGHT ASWELL USE SOME MONEY";
-            AppText     [GameState.APPEARANCES_DAY_1]   = "THEY CAN'T KNOW THAT IM NO LONGER WORKING";
+            ShopperText [GameState.FIRING_DAY_MORNING]  = "NOTHING'S GONNA CHANGE MY WORLD";
+            AppText     [GameState.APPEARANCES_DAY_1]   = "THEY CAN'T KNOW THAT I'M NO LONGER WORKING";
             AppText     [GameState.APPEARANCES_DAY_2]   = "A FEW WEEKS LATER";
             AppText     [GameState.APPEARANCES_DAY_3]   = "LATER THAT MONTH";
             SellText    [GameState.SELL_STUFF_DAY]      = "I CAN TELL YOU EXACTLY HOW IT WILL END";

@@ -184,7 +184,7 @@ public class OfficeWorkController : MonoBehaviour {
 	//////////////////////
 
 	protected float startTime;
-	public float showRedundancyNoticeTime = 15.0f; //TIME BITCH
+	public float showRedundancyNoticeTime = 25.0f; //TIME BITCH
 
 	protected void InitLayoffDay() {
 		startTime = Time.time;
@@ -209,6 +209,6 @@ public class OfficeWorkController : MonoBehaviour {
 
 	protected void UpdateLayoffDay() {
 		if ((Time.time - startTime) > showRedundancyNoticeTime)
-			Toolbox.Instance.levelController.Load (LevelController.WINDOW_SHOPPER, 5.0f);
+			Toolbox.Instance.levelController.Load (LevelController.WINDOW_SHOPPER, 15.0f);
 	}
 }

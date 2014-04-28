@@ -21,6 +21,11 @@ AnimationClip:
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
+      - time: 149.883331
+        value: {x: -13.4378843, y: 1.85249197, z: .07002455}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 1954047310
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: 
@@ -35,7 +40,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 2.75
+    m_StopTime: 149.883331
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -58,6 +63,11 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
+      - time: 149.883331
+        value: -13.4378843
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.x
@@ -68,6 +78,11 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
+        value: 1.85249197
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 149.883331
         value: 1.85249197
         inSlope: 0
         outSlope: 0
@@ -86,6 +101,11 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
+      - time: 149.883331
+        value: .07002455
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.z
@@ -94,7 +114,7 @@ AnimationClip:
     script: {fileID: 0}
   m_EulerEditorCurves: []
   m_Events:
-  - time: 2.75
+  - time: 7.08333349
     functionName: StartConversationStatic
     data: 
     objectReferenceParameter: {fileID: 0}

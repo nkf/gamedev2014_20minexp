@@ -38,7 +38,7 @@ public class SideScrollController : MonoBehaviour {
         RotateWheels(Speed*WheelRotationFactor);
 
 		//TODO: Find another way and condition to get to the next level 
-		if ((Time.time - startTime) > 20.0f && !isLoading) {
+		if ((Time.time - startTime) > 27.0f && !isLoading) {
 			// Increase because we want to load the afternoon table scene, which is actually on the same ingame day as the morning table scene before getting fired
 			Toolbox.Instance.levelController.Load(LevelController.TABLE);
             Toolbox.Instance.gameState.DayCounter++;

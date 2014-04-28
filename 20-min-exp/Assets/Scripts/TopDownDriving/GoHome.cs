@@ -64,7 +64,7 @@ public class GoHome : InvokableAction {
 		Rect pos2 = new Rect(2*(Screen.width/5), 3*(Screen.height/5), Screen.width/5, Screen.height/20);
 		
 		GUIHelpers.DrawQuad(pos1, Color.black);
-		GUI.Box(pos1, "Go Home...");
-		GUI.Box(pos2, "Press ENTER to return to your family");
+		GUI.Box(pos1, "Go Home...\n\n Return home in about 8 hours, so that \n your family thinks you've been to work \n You can spend time on the road or in \n different venues around the neighborhood");
+		GUI.Box(pos2, "Press ENTER to go home now");
 	}
 }

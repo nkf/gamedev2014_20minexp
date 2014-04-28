@@ -3,15 +3,14 @@
     "AllNodes": [
         {
             "index": 0,
-            "dialogue": "Jane: Buy some milk",
+            "dialogue": "Jane: Have a nice day at work, darling",
             "responses": [
-                {"response": "...", "gotoNode": 1},
                 {"response": "...", "gotoNode": 1},
             ]
         },
         {
             "index": 1,
-            "dialogue": "Jane: And onions",
+            "dialogue": "Jane: Oh, and buy some milk, please",
             "responses": []
         }
     ]

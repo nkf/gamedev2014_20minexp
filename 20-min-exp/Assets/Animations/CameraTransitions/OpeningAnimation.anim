@@ -45,7 +45,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 14
+    m_StopTime: 14.916667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -134,7 +134,7 @@ AnimationClip:
     script: {fileID: 0}
   m_EulerEditorCurves: []
   m_Events:
-  - time: .433333337
+  - time: 14.916667
     functionName: StartConversation1
     data: 
     objectReferenceParameter: {fileID: 0}

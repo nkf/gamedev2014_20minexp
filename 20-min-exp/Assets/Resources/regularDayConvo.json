@@ -18,7 +18,7 @@
         {
             "index": 6,
             "dialogue": "Jane: Could you...",
-            "silentResponse": { "timer": 3.0, "gotoNode": 1},
+            "silentResponse": { "timer": 7.0, "gotoNode": 1},
             "answeringAppearanceDelay": 1000.0,
             "nextNodeDelay": 5.0,
             "responses": [
@@ -40,7 +40,7 @@
 	{
             "index": 2,
             "dialogue": "Jane: ...",
-            "nextNodeDelay": 0.0,
+            "nextNodeDelay": 4.0,
 	    "silentResponse": { "timer": 6.0, "gotoNode": 3},
 	    "answeringAppearanceDelay": 11.0,
             "responses": [
@@ -52,7 +52,7 @@
             "index": 3,
             "dialogue": "Jane: When do you have to be at work today?",
             "nextNodeDelay": 0.0,
-	    "answeringAppearanceDelay": 11.0,
+	    "answeringAppearanceDelay": 4.0,
             "responses": [
                 {"response": "8am, as always.", "gotoNode": 4},
 		{"response": "What's with the questions?", "gotoNode": 5},
@@ -62,8 +62,8 @@
 	{
 	    "index": 4,
             "dialogue": "Jane: Of course...",
-            "nextNodeDelay": 0.0,
-	    "answeringAppearanceDelay": 5.0,
+            "nextNodeDelay": 2.0,
+	    "answeringAppearanceDelay": 7.0,
             "responses": [
                 {"response": "...", "gotoNode": 7},
             ]
@@ -72,8 +72,8 @@
 	{
 	    "index": 5,
             "dialogue": "Jane: I'm sorry, never mind...",,
-            "nextNodeDelay": 0.0,
-	    "answeringAppearanceDelay": 5.0,
+            "nextNodeDelay": 2.5,
+	    "answeringAppearanceDelay": 7.0,
             "responses": [
                 {"response": "...", "gotoNode": 7},
             ]
@@ -82,19 +82,18 @@
 	{
 	    "index": 7,
             "dialogue": "Jane: How is the toast?",
-            "nextNodeDelay": 0.0,
-	    "answeringAppearanceDelay": 11.0,
+            "nextNodeDelay": 3.0,
+	    "answeringAppearanceDelay": 3.0,
             "responses": [
-                {"response": "*Clears throat* It's ok", "gotoNode": 8},
+                {"response": "It's fine", "gotoNode": 8},
             ]
 	},
 
 	{
 	    "index": 8,
             "dialogue": "Jane: I'm glad...",
-            "nextNodeDelay": 0.0,
-	    "answeringAppearanceDelay": 0.0,
-        
+            "nextNodeDelay": 3.0,
+	    "answeringAppearanceDelay": 8.0,
 	},
     ]
 }

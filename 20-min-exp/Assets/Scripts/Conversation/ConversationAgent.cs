@@ -166,7 +166,7 @@ public class ConversationAgent : MonoBehaviour {
 	}
 
 	protected void RenderAnswer(int i, int height) {
-		int dialogueOffset = 15; // Offsets the responses in the y-direction so they don't clash with the displayed dialogue.
+		int dialogueOffset = 115; // Offsets the responses in the y-direction so they don't clash with the displayed dialogue.
 
 		Rect responsePos = new Rect(0, Screen.height-height+(i*15)+dialogueOffset, Screen.width, 15);
 	

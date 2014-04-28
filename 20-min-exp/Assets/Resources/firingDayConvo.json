@@ -1,0 +1,25 @@
+{
+    "ConversationName": "Breakfast Table",
+    "AllNodes": [
+
+	{
+            "index": 0,
+            "dialogue": "Jane: Henry, could you pass the salt?",
+            
+            "answeringAppearanceDelay": 4.0,
+            "nextNodeDelay": 0.0,
+            "responses": [
+                {"response": "...", "gotoNode": 1},                
+            ]
+        },
+
+        {
+            "index": 1,
+            "dialogue": "Jane: ...",
+            "silentResponse": { "timer": 3.0, "gotoNode": 1},
+            "answeringAppearanceDelay": 4.0,
+            "nextNodeDelay": 0.0,
+            
+        },
+    ]
+}

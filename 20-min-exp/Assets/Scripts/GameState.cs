@@ -15,7 +15,7 @@ public class GameState : MonoBehaviour {
     
 	public int MoneyCounter { get; set; }
 
-	public int _dayCounter = FIRING_DAY_MORNING;
+	public int _dayCounter = REGULAR_DAY;
 	public int DayCounter   { get {return _dayCounter;} set {_dayCounter = value;} }
 
     // Use this for initialization

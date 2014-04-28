@@ -74,7 +74,7 @@ public class TimeWaste : InvokableAction {
 		Rect pos2 = new Rect(2*(Screen.width/5), 3*(Screen.height/5), Screen.width/5, Screen.height/20);
 
 		GUIHelpers.DrawQuad(pos1, Color.black);
-		GUI.Box(pos1, "Jay's Billiards & Sports Bar \n mullimahuthut \n whutevs");
+		GUI.Box(pos1, "\nJay's Billiards & Sports Bar \n\n You can spend an hour here for $1000");
 		GUI.Box(pos2, "Press ENTER to enter");
 	}
 }
