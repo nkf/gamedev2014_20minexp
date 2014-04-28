@@ -5,6 +5,9 @@ public class TableSceneInitializer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Screen.showCursor = false;
+		Screen.lockCursor = true;
+
 		int today = Toolbox.Instance.gameState.DayCounter;
 
 		if (today == GameState.REGULAR_DAY)

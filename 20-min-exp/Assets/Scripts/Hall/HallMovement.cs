@@ -11,6 +11,8 @@ public class HallMovement : MonoBehaviour {
 	public static bool WifeSatisfied;
 
 	void Start() {
+		Screen.lockCursor = true;
+		Screen.showCursor = false;
 		WifeSatisfied = false;
 	}
 
@@ -53,7 +55,9 @@ public class HallMovement : MonoBehaviour {
 
 		if (p.z < AFTER_STEP) {
 			p.y = 1.68f;
-		} else p.y = 2.2f;
-			transform.position = p;
-		}
+		} else
+			p.y = 2.2f;
+
+		transform.position = p;
+	}
 }

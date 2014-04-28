@@ -5,12 +5,17 @@ using System.Collections;
 using Object = UnityEngine.Object;
 
 public static class CameraUtil {
+	public static bool IsFading = false;
+	public static bool IsFaded = false;
 
     public static Fader GetFader() {
         return new Fader();
     }
 
     private static IEnumerator Fader(GUITexture toFade, float time, Action onComplete, Func<float, float, float, float> alphaCalculator) {
+		if (alphaCalculator == Mathf.InverseLerp)
+			IsFaded = true;
+		IsFading = true;
         var c = toFade.color;
         var start = Time.time;
         var end = start + time;
@@ -21,6 +26,9 @@ public static class CameraUtil {
             toFade.color = newColor;
             yield return new WaitForEndOfFrame();
         }
+		IsFading = false;
+		if (alphaCalculator != Mathf.InverseLerp)
+			IsFaded = false;
         if (onComplete != null) onComplete();
     }
 
@@ -54,6 +62,7 @@ public static class CameraUtil {
 public class Fader {
     public GameObject _blackScreen;
     public IEnumerator FadeToBlack(float time, Action onComplete) {
+		;
         _blackScreen = GameObject.Instantiate(Resources.Load<GameObject>("BlackScreen")) as GameObject;
         _blackScreen.transform.position = new Vector3(0.5f, 0.5f);
         Object.DontDestroyOnLoad(_blackScreen);

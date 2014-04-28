@@ -6,6 +6,9 @@ public class SideScrollController : MonoBehaviour {
 
     private GameObject[] _wheels;
 	void Start () {
+		Screen.lockCursor = false;
+		Screen.showCursor = false;
+	
 		_wheels = GameObject.FindGameObjectsWithTag("Wheel");
 		startTime = Time.time;
 	}

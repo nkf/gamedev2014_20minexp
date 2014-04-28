@@ -8,6 +8,8 @@ public class FPS_Movement : MonoBehaviour {
     private GameObject _head;
 	// Use this for initialization
 	void Start () {
+		Screen.showCursor = false;
+		Screen.lockCursor = true;
 	    _head = GetComponentInChildren<MouseLook>().gameObject;
 	}
 	

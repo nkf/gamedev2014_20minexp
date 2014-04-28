@@ -4,15 +4,17 @@ using System.Linq;
 using UnityEngine;
 using System.Collections;
 
+public enum SelectionType {
+	MOUSE, MIDDLE_SCREEN
+}
+
 public class LookSelect : MonoBehaviour {
 
-    public enum Selection {
-        Mouse, MiddleScreen
-    }
+    
 
     public float SelectionDistance;
     public Shader Target;
-    public Selection SelectionMethod;
+    public SelectionType SelectionMethod;
     public float FadeInTime = 0.5f;
     public float FadeOutTime = 0.25f;
     private const string Outline = "_OutlineColor";
@@ -22,7 +24,7 @@ public class LookSelect : MonoBehaviour {
     private Selectable _currentSelection;
 	void Update () {
 	    Ray ray;
-	    if (SelectionMethod == Selection.MiddleScreen) {
+	    if (SelectionMethod == SelectionType.MIDDLE_SCREEN) {
 	        ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2f, Screen.height/2f));
 	    } else { //Selection.Mouse
 	        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -92,4 +94,18 @@ public class LookSelect : MonoBehaviour {
     private static Color SetAlpha(Color c, float alpha) {
         return new Color(c.r, c.g, c.b, alpha);
     }
+
+	void OnGUI() {
+		if (CameraUtil.IsFaded)
+			return;
+
+		switch(SelectionMethod) { 
+		case SelectionType.MIDDLE_SCREEN:
+			GUIHelpers.DrawCrossHair(SelectionType.MIDDLE_SCREEN);
+			break;
+		case SelectionType.MOUSE:
+			GUIHelpers.DrawCrossHair(SelectionType.MOUSE);
+			break;
+		}
+	}
 }
