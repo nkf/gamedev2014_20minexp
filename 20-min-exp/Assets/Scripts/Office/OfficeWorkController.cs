@@ -108,10 +108,13 @@ public class OfficeWorkController : MonoBehaviour {
 			return;
 		
 		// Controls
-		if (Input.GetKeyDown(KeyCode.LeftArrow) && _highlightedContract != 0) {
+		var h = Input.GetAxis("Horizontal");
+//		if (Input.GetKeyDown(KeyCode.LeftArrow) && _highlightedContract != 0) {
+		if (h < 0 && _highlightedContract != 0) {
 			_highlightedContract--;
 		}
-		if (Input.GetKeyDown(KeyCode.RightArrow) && _highlightedContract != _loadedContracts.Length-1) {
+//		if (Input.GetKeyDown(KeyCode.RightArrow) && _highlightedContract != _loadedContracts.Length-1) {
+		if (h > 0 && _highlightedContract != _loadedContracts.Length-1) {
 			_highlightedContract++;
 		}
 		if (Input.GetKeyDown(KeyCode.Return)) {
