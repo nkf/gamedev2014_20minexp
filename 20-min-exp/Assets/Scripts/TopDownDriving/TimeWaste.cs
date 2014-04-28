@@ -36,7 +36,7 @@ public class TimeWaste : InvokableAction {
 	}
 
 	/**
-	 * Modify this method in a subclass or some shit
+	 * Modify this method in a subclass if you want
 	 */
     private Fader _fader;
 	protected void PlayCutscene() {

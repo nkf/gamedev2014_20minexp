@@ -16,7 +16,8 @@ public abstract class InvokableAction : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collider) {
-		if (collider.gameObject.Equals(Car.PLAYER.gameObject)) {
+		if (collider.gameObject.Equals(Car.PLAYER.gameObject) &&
+		    !CameraUtil.IsFaded) {
 			_actionAvailable = true;
 		}
 	}
