@@ -50,7 +50,7 @@ public class AppearanceGameState : MonoBehaviour {
 				_finalTime = CurrentTimeToString;
 				_finalTimeRecorded = true;
 			}
-			Debug.Log ("kokot");
+
 			//Toolbox.Instance.levelController.ReloadCurrent(2.0f);
 			Toolbox.Instance.levelController.Load(LevelController.APPEARANCES, 5.0f);
 		}
@@ -64,7 +64,7 @@ public class AppearanceGameState : MonoBehaviour {
 		} else {
 			int gameOverBoxWidth = Screen.width/2;
 			Rect centerPos = new Rect((Screen.width/2)-(gameOverBoxWidth/2), Screen.height/2, gameOverBoxWidth, 40);
-			GUI.Box(centerPos, "YOU ARE LOSER! WIFE BECAME SUSPECTUOUS! NOW YOU RETRY GAME! \n TIME SPENT: "+_finalTime);
+			GUI.Box(centerPos, "You went home too late, and your wife became suspicious! \n Time Spent: "+_finalTime);
 		}
 	}
 
