@@ -32,6 +32,7 @@ public class ConversationAgent : MonoBehaviour {
 	private bool nodeTimerHasBeenSet = false;
 
 	public bool IsRunning { get {return _conversationIsRunning;} }
+	public ConversationNode CurrentNode { get { return allNodes[currentNode]; } }
 
 	// Use this for initialization
 	protected virtual void Start () {
@@ -45,14 +46,14 @@ public class ConversationAgent : MonoBehaviour {
 			return;
 
 		// Check whether conversation should skip ahead if no answer is selected
-		if (getCurrentNode().SilentResponse > 0.0) {
+		if (CurrentNode.SilentResponse > 0.0) {
 			if (!nodeTimerHasBeenSet) {
 				nodeTimer = Time.time;
 				nodeTimerHasBeenSet = true;
 			}
 
-			if (Time.time - nodeTimer > getCurrentNode().SilentResponse) {
-				currentNode = getCurrentNode().SilentGoto;
+			if (Time.time - nodeTimer > CurrentNode.SilentResponse) {
+				currentNode = CurrentNode.SilentGoto;
 				nodeTimerHasBeenSet = false;
 			}
 		}
@@ -65,26 +66,26 @@ public class ConversationAgent : MonoBehaviour {
 				_highlightedResponse--;
 			}
 			if ( (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) &&
-			    _highlightedResponse != getCurrentNode().Responses.Length-1) {
+			    _highlightedResponse != CurrentNode.Responses.Length-1) {
 				_highlightedResponse++;
 			}
-			if (Input.GetKeyDown (KeyCode.Return) && !getCurrentNode().IsEndNode) {
+			if (Input.GetKeyDown (KeyCode.Return) && !CurrentNode.IsEndNode) {
 				//_highlightedResponse = 0;
 				_state = ConversationState.AWKWARD;
 				endTimer = Time.time;
-				if (getCurrentNode().IsEndNode)
+				if (CurrentNode.IsEndNode)
 					endTimer = Time.time;
 			}
 
 			int endConvoNodeDisplayTime = 3;
-			if (getCurrentNode().IsEndNode &&
+			if (CurrentNode.IsEndNode &&
 			    (Time.time - endTimer) > endConvoNodeDisplayTime)
 				StopConversation();
 
 			break;
 
 		case ConversationState.AWKWARD:
-			if (Time.time - endTimer > getCurrentNode().AnsweringDelay) {
+			if (Time.time - endTimer > CurrentNode.AnsweringDelay) {
 				endTimer = Time.time;
 				_state = ConversationState.DIALOGUE_PAUSE;
 				SelectResponse(_highlightedResponse);
@@ -96,7 +97,7 @@ public class ConversationAgent : MonoBehaviour {
 				endTimerHasBeenSet = true;
 			}
 
-			if ((Time.time - endTimer) > getCurrentNode().AnswerAppearanceDelay) {
+			if ((Time.time - endTimer) > CurrentNode.AnswerAppearanceDelay) {
 				_state = ConversationState.SELECTION_TIME;
 				endTimerHasBeenSet = false;
 			}
@@ -107,7 +108,7 @@ public class ConversationAgent : MonoBehaviour {
 				endTimerHasBeenSet = true;
 			}
 
-			if ((Time.time - endTimer) > getCurrentNode().NextNodeDelay) {
+			if ((Time.time - endTimer) > CurrentNode.NextNodeDelay) {
 				_state = ConversationState.ANSWERING_APPERANCE_DELAY;
 				endTimerHasBeenSet = false;
 			}
@@ -115,39 +116,37 @@ public class ConversationAgent : MonoBehaviour {
 		}
 	}
 
+
+	protected int dialogueFontSize = 15;
 	void OnGUI() {
 		if (!_conversationIsRunning)
 			return;
 
 		int barHeight = (Screen.height/5);
 		Rect posBackground  = new Rect(0, Screen.height-barHeight, Screen.width, barHeight);
-
+		Rect posDialogue = new Rect(posBackground.x, posBackground.y, posBackground.width, posBackground.height);
+		posDialogue.y += posDialogue.height/10; 
 		// Draw Background
-		Texture2D texture = new Texture2D(1, 1);
-		Color color = new Color();
-		color = Color.black;
-		texture.SetPixel(0,0, color);
-		texture.Apply();
-		GUI.skin.box.normal.background = texture;
-		GUI.Box(posBackground, GUIContent.none);
+		Color color = Color.black;
+		GUIHelpers.DrawQuad(posBackground, color);
 
 
 		switch(_state) {
 		case ConversationState.SELECTION_TIME:
-			RenderDialogue(posBackground);
+			RenderDialogue(posDialogue);
 			// Write responses
-			string[] responses = getCurrentNode().Responses;
+			string[] responses = CurrentNode.Responses;
 			for(int i = 0; i < responses.Length; i++) {
-				RenderAnswer(i, barHeight);
+				RenderAnswer(i, barHeight, posDialogue.y+15);
 			}
 			break;
 
 		case ConversationState.AWKWARD:
-			RenderDialogue(posBackground);
-			RenderAnswer(_highlightedResponse, barHeight);
+			RenderDialogue(posDialogue);
+			RenderAnswer(_highlightedResponse, barHeight, posDialogue.y+posDialogue.height);
 			break;
 		case ConversationState.ANSWERING_APPERANCE_DELAY:
-			RenderDialogue(posBackground);
+			RenderDialogue(posDialogue);
 			// Don't render responses
 			break;
 		case ConversationState.DIALOGUE_PAUSE:
@@ -159,34 +158,29 @@ public class ConversationAgent : MonoBehaviour {
 	protected void RenderDialogue(Rect position) {
 		// Write Dialogue
 		GUIStyle style = new GUIStyle();
-		style.fontSize = 15;
-		style.alignment = TextAnchor.MiddleCenter;
+		style.fontSize = dialogueFontSize;
+		style.alignment = TextAnchor.UpperCenter;
 		style.normal.textColor = Color.white;
-		GUI.Label(position, getCurrentNode().Dialogue, style);
+		GUI.Label(position, CurrentNode.Dialogue, style);
 	}
 
-	protected void RenderAnswer(int i, int height) {
-		int dialogueOffset = 115; // Offsets the responses in the y-direction so they don't clash with the displayed dialogue.
-
-		Rect responsePos = new Rect(0, Screen.height-height+(i*15)+dialogueOffset, Screen.width, 15);
+	protected void RenderAnswer(int i, int height, float dialogueOffset) {
+		int dialogueOffsetInt = (int) dialogueOffset; // Offsets the responses in the y-direction so they don't clash with the displayed dialogue.
+		Rect responsePos = new Rect(0, (i*dialogueFontSize)+dialogueOffsetInt+5, Screen.width, dialogueFontSize);
 	
 		if (i == _highlightedResponse) {
-			Texture2D texture = new Texture2D(1, 1);
-			texture.SetPixel(0,0, Color.white);
-			texture.Apply();
-			GUI.skin.box.normal.background = texture;
-			GUI.Box(responsePos, GUIContent.none);
+			GUIHelpers.DrawQuad(responsePos, Color.white);
 		}
 	
 		GUIStyle style = new GUIStyle();
-		style.fontSize = 15;
+		style.fontSize = dialogueFontSize;
 		style.alignment = TextAnchor.UpperCenter;
 		if (i == _highlightedResponse) {
 			style.normal.textColor = Color.black;
 		} else {
 			style.normal.textColor = Color.white;
 		}
-		GUI.Label(responsePos, "[ " + getCurrentNode().Responses[i] + " ]", style);
+		GUI.Label(responsePos, "[ " + CurrentNode.Responses[i] + " ]", style);
 	}
 
 	public void StartConversation() {
@@ -242,16 +236,12 @@ public class ConversationAgent : MonoBehaviour {
 		Restart();
 	}
 
-	public ConversationNode getCurrentNode() {
-		return allNodes[currentNode];
-	}
-
 	public void Restart() {
 		currentNode = 0;
 	}
 	
 	public void SelectResponse(int responseIndex) {
-		currentNode = getCurrentNode().NodeLinks[responseIndex];
+		currentNode = CurrentNode.NodeLinks[responseIndex];
 		_highlightedResponse = 0;
 	}
 }
