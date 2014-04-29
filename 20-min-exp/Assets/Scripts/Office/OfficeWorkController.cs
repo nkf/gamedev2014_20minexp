@@ -121,7 +121,9 @@ public class OfficeWorkController : MonoBehaviour {
 			SelectContract( _loadedContracts[_highlightedContract].Contract );
 
 			if (_normalContracts.Count <= 0) {
+#if DEBUG
 				Debug.Log ("Geemu Ovaa");
+#endif
 				// If first in-game day, Start new day (with table, and hall, and driving and shit)
 				if (Toolbox.Instance.gameState.DayCounter == GameState.REGULAR_DAY) {
 					Toolbox.Instance.gameState.DayCounter = 1;

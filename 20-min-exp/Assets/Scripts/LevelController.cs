@@ -24,8 +24,9 @@ public class LevelController : MonoBehaviour {
         if (_loading)
             return;
 
+#if DEBUG
         Debug.Log("Loading level: " + _currentLevelIndex);
-
+#endif
         _currentLevelIndex = levelIndex;
 
         _loading = true;

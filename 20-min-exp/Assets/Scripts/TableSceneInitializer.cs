@@ -31,37 +31,49 @@ public class TableSceneInitializer : MonoBehaviour {
 	}
 
 	protected void RegularDayInit() {
+#if DEBUG
 		Debug.Log("Regular day");
+#endif
 		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "regularDayConvo";
 		StaticCamera.STATIC_CAMERA.GetComponent<Animator>().enabled = false; //DISI IS HOW YOU DESABLE ANIMATORZ
 	}
 
 	protected void FiringDayMorningInit() {
+#if DEBUG
 		Debug.Log("Firing day morning");
+#endif
 		StaticCamera.STATIC_CAMERA.camera.SwitchTo();
 		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "firingDayConvo";
 	}
 
 	protected void FiringDayAfternoon() {
+#if DEBUG
 		Debug.Log("Firing day afternoon");
+#endif	
 		StaticCamera.STATIC_CAMERA.camera.SwitchTo();
 		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "firingNightConvo";
 	}
 
 	protected void Appearances1Init() {
+#if DEBUG
 		Debug.Log("Appearences day 1");
+#endif
 		StaticCamera.STATIC_CAMERA.camera.SwitchTo();
 		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "app1";
 	}
 
 	protected void Appearances2Init() {
+#if DEBUG
 		Debug.Log("Appearences day 2");
+#endif
 		StaticCamera.STATIC_CAMERA.camera.SwitchTo();
 		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "app2";
 	}
 
 	protected void Appearances3Init() {
+#if DEBUG
 		Debug.Log("Appearences day 3");
+#endif
 		StaticCamera.STATIC_CAMERA.camera.SwitchTo();
 
 		// Disable Jane because homeful guy is lonely

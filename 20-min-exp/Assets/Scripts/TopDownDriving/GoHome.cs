@@ -23,8 +23,9 @@ public class GoHome : InvokableAction {
 			if (AppearanceGameState.INSTANCE.CurrentTime > AppearanceGameState.INSTANCE.dayLengthInSecs-successBufferInSecs &&
 			    AppearanceGameState.INSTANCE.CurrentTime < AppearanceGameState.INSTANCE.dayLengthInSecs)
 			{
+#if DEBUG
 				Debug.Log ("Waifu not suspect!");
-
+#endif
 				int today = Toolbox.Instance.gameState.DayCounter;
 				if (today == GameState.APPEARANCES_DAY_1 || today == GameState.APPEARANCES_DAY_2) {
 //				if (LevelLoader.Status == LoadStatus.NotLoading) {
@@ -44,14 +45,17 @@ public class GoHome : InvokableAction {
 				StartCoroutine(Camera.main.ShowCenterText("You went home too early! Your wife will suspect something is wrong.", () => {
 					Toolbox.Instance.levelController.Load(LevelController.APPEARANCES, 2.0f);
 				}));
+#if DEBUG
 				Debug.Log ("You went home too early! Your wife will suspect something is wrong.");
-
+#endif
 			}
 			// Actually, this following case is already handled by AppearanceGameState
 			// Player is late.
 //			else if (AppearanceGameState.INSTANCE.CurrentTime > AppearanceGameState.INSTANCE.dayLengthInSecs)
 //			{
+//#if DEBUG
 //				Debug.Log ("U LATE! WAIFU THINK U AFFAIR!");
+//#endif
 //			}
 		}
 	}

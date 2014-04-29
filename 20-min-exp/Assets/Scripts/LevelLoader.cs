@@ -37,7 +37,9 @@ public class LevelLoader {
 
     private static bool _Load(Func<AsyncOperation> getLoadJob) {
         if(_currentLoadJob != null) {
+#if DEBUG
             Debug.Log("Could not load a new level, because a level is already loading");
+#endif
             return false;
         }
         _currentLoadJob = getLoadJob();
@@ -51,7 +53,9 @@ public class LevelLoader {
             _currentLoadJob.allowSceneActivation = true;
             _currentLoadJob = null;
         } else {
+#if DEBUG
             Debug.Log("Could not switch because no scene was loaded.");
+#endif
         }
         
     }
