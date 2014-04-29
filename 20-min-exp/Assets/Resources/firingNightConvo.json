@@ -1,55 +1,63 @@
 {
-    "ConversationName": "Breakfast Table",
-    "AllNodes": [
-
-	{
-            "index": 0,
-            "dialogue": "Jane: How was work?",
-            
-            "answeringAppearanceDelay": 4.0,
-            "nextNodeDelay": 0.0,
-            "responses": [
-                {"response": "Very good. I signed a really profitable contract today.", "gotoNode": 1},                
-            ]
-        },
-
+  "ConversationName": "Breakfast Table",
+  "AllNodes": [
+    {
+      "index": 0,
+      "dialogue": "Jane: How was work?",
+      "answeringAppearanceDelay": 4.0,
+      "nextNodeDelay": 0.0,
+      "responses": [
         {
-            "index": 1,
-            "dialogue": "Jane: Excelent! That explains all the gifts... Very thoughtful of you, thank you.",
-            "answeringAppearanceDelay": 4.0,
-            "nextNodeDelay": 0.0,
-            "responses": [
-                {"response": "...", "gotoNode": 2},                
-            ]
-        },
-
-	{
-            "index": 2,
-            "dialogue": "Jane: Geoffrey! Say thank you to your father!",
-            "silentResponse": { "timer": 7.0, "gotoNode": 3},
-            "answeringAppearanceDelay": 10.0,
-            "nextNodeDelay": 3.0,
-            "responses": [
-                {"response": "...", "gotoNode": 3},                
-            ]
-        },
-
-	{
-            "index": 3,
-            "dialogue": "Geoff: Thank's, dad...",
-            "answeringAppearanceDelay": 3.0,
-            "nextNodeDelay": 3.0,
-            "responses": [
-                {"response": "It's alright, son", "gotoNode": 4},                
-            ]
-        },
-
-	{
-            "index": 4,
-            "dialogue": "...",
-            "answeringAppearanceDelay": 2.0,
-            "nextNodeDelay": 3.0,
-            
-        },
-    ]
+          "response": "Very good. I signed a really profitable contract today.",
+          "gotoNode": 1
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "dialogue": "Jane: Excellent! That explains all the gifts... Very thoughtful of you, thank you.",
+      "answeringAppearanceDelay": 4.0,
+      "nextNodeDelay": 0.0,
+      "responses": [
+        {
+          "response": "...",
+          "gotoNode": 2
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "dialogue": "Jane: Geoffrey! Say thank you to your father!",
+      "silentResponse": {
+        "timer": 7.0,
+        "gotoNode": 3
+      },
+      "answeringAppearanceDelay": 10.0,
+      "nextNodeDelay": 3.0,
+      "responses": [
+        {
+          "response": "...",
+          "gotoNode": 3
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "dialogue": "Geoff: Thanks, dad...",
+      "answeringAppearanceDelay": 3.0,
+      "nextNodeDelay": 3.0,
+      "responses": [
+        {
+          "response": "You're welcome, son",
+          "gotoNode": 4
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "dialogue": "...",
+      "answeringAppearanceDelay": 2.0,
+      "nextNodeDelay": 3.0
+    }
+  ]
 }

@@ -1,18 +1,24 @@
 {
-    "ConversationName": "Wife in the hall",
-    "AllNodes": [
+  "ConversationName": "Wife in the hall",
+  "AllNodes": [
+    {
+      "index": 0,
+      "dialogue": "Jane: Bye, dear...",
+      "responses": [
         {
-            "index": 0,
-            "dialogue": "Jane: Bye, dear...",
-            "responses": [
-                {"response": "Get out of the way, I'm late already", "gotoNode": 1},
-                {"response": "Bye", "gotoNode": 1},
-            ]
+          "response": "Get out of the way, I'm late already",
+          "gotoNode": 1
         },
         {
-            "index": 1,
-            "dialogue": "Jane: Don't forget your keys!",
-            "responses": []
+          "response": "Bye",
+          "gotoNode": 1
         }
-    ]
+      ]
+    },
+    {
+      "index": 1,
+      "dialogue": "Jane: Don't forget your keys!",
+      "responses": []
+    }
+  ]
 }
