@@ -35,15 +35,15 @@ public class GameState : MonoBehaviour {
 
     // Use this for initialization
 	void Start () {
-	    _moneyCounter = 50000;
-	    _renderMoney = _moneyCounter;
+	    _moneyCounter = 48320;
+	    _renderMoney = 0;
 	    StartCoroutine(MoneyDecay());
 	}
 
     IEnumerator MoneyDecay() {
         while (true) {
             yield return new WaitForSeconds(1f);
-            _moneyCounter-=Random.Range(2,7);
+            _moneyCounter -= Random.Range(2,7);
         }
     }
 
@@ -80,7 +80,7 @@ public class GameState : MonoBehaviour {
         GUIHelpers.DrawQuad(moneyGUI, Color.black);
         GUI.Label(moneyGUI, moneyText, style);
         //Draw money additions.
-	    var moneyDrawOffset = Screen.width/2f + moneyTextDimensions.x; //the text is centered in the middle of the screen.
+	    var moneyDrawOffset = Screen.width/2f + moneyTextDimensions.x; //the money text is centered in the middle of the screen.
 	    foreach (var moneyAddition in _moneyAdditions) {
 	        var positive = Mathf.Sign(moneyAddition.Amount) > 0;
 	        var addText =  positive ? "+" + moneyAddition.Amount : "" + moneyAddition.Amount;

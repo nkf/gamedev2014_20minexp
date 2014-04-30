@@ -163,7 +163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db79e9effdf6cb42af679c492b9f5d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoadBufferSize: 100
+  RoadBufferSize: 5
+  StartRoads:
+  - {fileID: 100014, guid: 117a8a8a1db55534eb8bdc86004138a5, type: 2}
+  StartRoadAmount: 10
   NormalRoads:
   - {fileID: 100008, guid: f41531433ee228f46a36e0e693dc61bc, type: 2}
   ExoticRoads:
@@ -256,8 +259,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1847829388}
-  m_LocalRotation: {x: .233275637, y: 0, z: 0, w: .972410679}
-  m_LocalPosition: {x: 0, y: 5.69999981, z: 0}
+  m_LocalRotation: {x: .233445361, y: 0, z: 0, w: .972369909}
+  m_LocalPosition: {x: -11, y: 5.69999981, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -272,51 +275,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 070f1adbb3f3f6c438173b6d61e9f4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 75
-  Acceleration: 40
-  DeAcceleration: 100
-  MinSpeed: 50
+  EndAtRoadNumber: 50
+  Acceleration: 30
+  DeAcceleration: 80
+  MinSpeed: 30
   MaxSpeed: 140
-  SteeringSpeed: .200000003
+  SteeringSpeed: .100000001
   SwayFactor: .0399999991
   EdgeSlowDownThreshold: 2
   EdgePadding: 1
---- !u!1 &2061750111
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 2061750113}
-  - 114: {fileID: 2061750112}
-  m_Layer: 0
-  m_Name: SceneLoader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2061750112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2061750111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa48576b45dd5e4ea3c55f7cbe5096e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RunTime: 20
---- !u!4 &2061750113
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2061750111}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
