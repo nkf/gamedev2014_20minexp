@@ -21,7 +21,8 @@ public class ParkingConfiguration : MonoBehaviour {
 
     private static int _index;
     public static string GetRandomName() {
-        if (_index <= _names.Length) _index = 0; 
+        Debug.Log(_index);
+        if (_index >= _names.Length) _index = 0; 
         return _names[_index++];
     }
     

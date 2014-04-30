@@ -58,6 +58,37 @@ public static class CameraUtil {
         if(al != null) al.enabled = true;
     }
 
+    private static bool _shaking = false;
+    public static IEnumerator Shake(this Camera c, float maxAngle, float shakeDuration, float totalDuration) {
+        if (_shaking) yield break;
+        _shaking = true;
+        var p = c.transform.position;
+        var a = c.transform.localEulerAngles;
+        var center = a.y;
+        var start = Time.time;
+        var sign = +1;
+        var angle = 0f;
+        while (start + totalDuration > Time.time) {
+            angle = sign > 0
+                ? UnityEngine.Random.Range(center, maxAngle)
+                : UnityEngine.Random.Range(-maxAngle, center);
+            c.Dislocate(angle);
+            sign = -sign;
+            yield return new WaitForSeconds(shakeDuration);
+        }
+        c.transform.localEulerAngles = a;
+        _shaking = false;
+    }
+    private static void Dislocate(this Camera c, float degrees) {
+        Debug.Log("shake shake shake? " + degrees);
+        var p = c.transform.position;
+        var a = c.transform.localEulerAngles;
+        p.x += degrees/100f;
+        a.y += degrees;
+        c.transform.position = p;
+        c.transform.localEulerAngles = a;
+    }
+
     public static IEnumerator ShowCenterText(this Camera camera, string text, Action onComplete) {
         Toolbox.Instance.gameState.ShowCenterText(text);
         yield return new WaitForSeconds(5);
