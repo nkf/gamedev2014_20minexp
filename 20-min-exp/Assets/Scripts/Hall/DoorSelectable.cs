@@ -12,9 +12,9 @@ public class DoorSelectable : Selectable {
 	}
 
 	public override void Select() {
-		if (KeysSelectable.KEYS.isTaken && JacketSelectable.JACKET.isTaken) {
-			DoorSelectable.FRONT_DOOR.isOpened = true;
-        	Destroy(gameObject);
+		if (KeysSelectable.KEYS.isTaken && JacketSelectable.JACKET.isTaken && !isOpened) {
+			FRONT_DOOR.isOpened = true;
+		    animation.Play();
 		}
 		else if (!KeysSelectable.KEYS.isTaken && !JacketSelectable.JACKET.isTaken) {
 			StartCoroutine(Camera.main.ShowCenterText("I am not going anywhere without my coat and keys...", () => {}));
