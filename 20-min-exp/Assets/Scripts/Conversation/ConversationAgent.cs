@@ -11,7 +11,7 @@ using SimpleJSON;
 /// </summary>
 public class ConversationAgent : MonoBehaviour {
 
-	protected enum ConversationState { AWKWARD, SELECTION_TIME, ANSWERING_APPERANCE_DELAY, DIALOGUE_PAUSE };
+	protected enum ConversationState { DIALOGUE_PAUSE, RENDERING_DIALOGUE, ANSWERING_APPERANCE_DELAY, SELECTION_TIME, AWKWARD };
 	
 	public string _conversationPath;	// Relative path to the JSON conversation file
 
@@ -36,7 +36,7 @@ public class ConversationAgent : MonoBehaviour {
 
 	// Use this for initialization
 	protected virtual void Start () {
-
+		lastTick = Time.time;
 	}
 
 	bool endTimerHasBeenSet = false;
@@ -45,22 +45,47 @@ public class ConversationAgent : MonoBehaviour {
 		if (!_conversationIsRunning)
 			return;
 
-		// Check whether conversation should skip ahead if no answer is selected
-		if (CurrentNode.SilentResponse > 0.0) {
-			if (!nodeTimerHasBeenSet) {
-				nodeTimer = Time.time;
-				nodeTimerHasBeenSet = true;
-			}
-
-			if (Time.time - nodeTimer > CurrentNode.SilentResponse) {
-				currentNode = CurrentNode.SilentGoto;
-				nodeTimerHasBeenSet = false;
-			}
-		}
-
 		switch(_state) {
+		case ConversationState.DIALOGUE_PAUSE:
+			// Pause between two conversation nodes
+			if (!endTimerHasBeenSet) {
+				endTimer = Time.time;
+				endTimerHasBeenSet = true;
+			}
+			
+			if ((Time.time - endTimer) > CurrentNode.NextNodeDelay) {
+				_state = ConversationState.RENDERING_DIALOGUE;
+				endTimerHasBeenSet = false;
+				lastTick = Time.time;
+			}
+			break;
+		case ConversationState.RENDERING_DIALOGUE:
+			int derp = (int) ((Time.time-lastTick) * charsPerSec);
+
+			if (derp > CurrentNode.Dialogue.Length || // The dialogue has finished rendering, or...
+			    Input.GetKeyDown(KeyCode.Return))     // ...The player wants to skip the JRPG thang?
+			{
+				_state = ConversationState.ANSWERING_APPERANCE_DELAY;
+				lastTick = -1000; // minus a lot, because if lastTick = 0 the time difference may not be big enough to cause the entire string to be rendered.
+			}
+			break;
+		case ConversationState.ANSWERING_APPERANCE_DELAY:
+			// Wait before showing the responses and start listening for player input
+			if (!endTimerHasBeenSet) {
+				endTimer = Time.time;
+				endTimerHasBeenSet = true;
+			}
+
+
+
+			if ((Time.time - endTimer) > CurrentNode.AnswerAppearanceDelay) {
+				_state = ConversationState.SELECTION_TIME;
+				endTimerHasBeenSet = false;
+			}
+			break;
 		case ConversationState.SELECTION_TIME:
 			// Controls
+			// This state will wait for player input
 			if ( (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) &&
 			    _highlightedResponse != 0) {
 				_highlightedResponse--;
@@ -70,49 +95,43 @@ public class ConversationAgent : MonoBehaviour {
 				_highlightedResponse++;
 			}
 			if (Input.GetKeyDown (KeyCode.Return) && !CurrentNode.IsEndNode) {
-				//_highlightedResponse = 0;
+				// When player selects a response, transition to the AWKWARD state.
 				_state = ConversationState.AWKWARD;
-				endTimer = Time.time;
+				lastTick = Time.time;
 				if (CurrentNode.IsEndNode)
 					endTimer = Time.time;
 			}
 
+			// Check whether conversation should skip ahead if no answer is selected
+			if (CurrentNode.SilentResponse > 0.0) {
+				if (!nodeTimerHasBeenSet) {
+					nodeTimer = Time.time;
+					nodeTimerHasBeenSet = true;
+				}
+				
+				if (Time.time - nodeTimer > CurrentNode.SilentResponse) {
+					nodeTimerHasBeenSet = false;
+					GoToNode(CurrentNode.SilentGoto);
+				}
+			}
+
 			int endConvoNodeDisplayTime = 3;
-			if (CurrentNode.IsEndNode &&
+			if (CurrentNode.IsEndNode && CurrentNode.SilentResponse <= 0.0 &&
 			    (Time.time - endTimer) > endConvoNodeDisplayTime)
 				StopConversation();
 
 			break;
-
 		case ConversationState.AWKWARD:
+			// The AWKWARD state will wait awkwardly after the player selects a response before actually selecting the response and moving to next node
+			// When the waiting time is 0, the response will be selected instantly. That is why SELECTION_TIME doesn't select responses directly.
 			if (Time.time - endTimer > CurrentNode.AnsweringDelay) {
 				endTimer = Time.time;
 				_state = ConversationState.DIALOGUE_PAUSE;
+				lastTick = Time.time;
 				SelectResponse(_highlightedResponse);
 			}
 			break;
-		case ConversationState.ANSWERING_APPERANCE_DELAY:
-			if (!endTimerHasBeenSet) {
-				endTimer = Time.time;
-				endTimerHasBeenSet = true;
-			}
-
-			if ((Time.time - endTimer) > CurrentNode.AnswerAppearanceDelay) {
-				_state = ConversationState.SELECTION_TIME;
-				endTimerHasBeenSet = false;
-			}
-			break;
-		case ConversationState.DIALOGUE_PAUSE:
-			if (!endTimerHasBeenSet) {
-				endTimer = Time.time;
-				endTimerHasBeenSet = true;
-			}
-
-			if ((Time.time - endTimer) > CurrentNode.NextNodeDelay) {
-				_state = ConversationState.ANSWERING_APPERANCE_DELAY;
-				endTimerHasBeenSet = false;
-			}
-			break;
+		
 		}
 	}
 
@@ -132,6 +151,20 @@ public class ConversationAgent : MonoBehaviour {
 
 
 		switch(_state) {
+		case ConversationState.DIALOGUE_PAUSE:
+			// Don't anything but the conversation background
+			break;
+		case ConversationState.RENDERING_DIALOGUE:
+			RenderDialogue(posDialogue);
+			break;
+		case ConversationState.ANSWERING_APPERANCE_DELAY:
+			RenderDialogue(posDialogue);
+			// Don't render responses
+			break;
+		case ConversationState.AWKWARD:
+			RenderDialogue(posDialogue);
+			RenderAnswer(_highlightedResponse, barHeight, posDialogue.y+posDialogue.height);
+			break;
 		case ConversationState.SELECTION_TIME:
 			RenderDialogue(posDialogue);
 			// Write responses
@@ -140,28 +173,23 @@ public class ConversationAgent : MonoBehaviour {
 				RenderAnswer(i, barHeight, posDialogue.y+15);
 			}
 			break;
-
-		case ConversationState.AWKWARD:
-			RenderDialogue(posDialogue);
-			RenderAnswer(_highlightedResponse, barHeight, posDialogue.y+posDialogue.height);
-			break;
-		case ConversationState.ANSWERING_APPERANCE_DELAY:
-			RenderDialogue(posDialogue);
-			// Don't render responses
-			break;
-		case ConversationState.DIALOGUE_PAUSE:
-			// Don't anything but the conversation background
-			break;
 		}
 	}
 
+	protected float lastTick;
+	public int charsPerSec = 105;
 	protected void RenderDialogue(Rect position) {
+		int derp = (int) ((Time.time-lastTick) * charsPerSec);
+
 		// Write Dialogue
 		GUIStyle style = new GUIStyle();
 		style.fontSize = dialogueFontSize;
 		style.alignment = TextAnchor.UpperCenter;
 		style.normal.textColor = Color.white;
-		GUI.Label(position, CurrentNode.Dialogue, style);
+		if (derp <= CurrentNode.Dialogue.Length)
+			GUI.Label(position, CurrentNode.Dialogue.Substring(0, derp), style);
+		else
+			GUI.Label(position, CurrentNode.Dialogue, style);
 	}
 
 	protected void RenderAnswer(int i, int height, float dialogueOffset) {
@@ -227,6 +255,7 @@ public class ConversationAgent : MonoBehaviour {
 
 		// Then set the conversation as running
 		_conversationIsRunning = true;
+		lastTick = Time.time;
 		//SimplePlayer.PLAYER.SwitchState(PlayerState.IN_CONVERSATION);
 	}
 
@@ -241,7 +270,13 @@ public class ConversationAgent : MonoBehaviour {
 	}
 	
 	public void SelectResponse(int responseIndex) {
-		currentNode = CurrentNode.NodeLinks[responseIndex];
+		GoToNode (CurrentNode.NodeLinks[responseIndex]);
 		_highlightedResponse = 0;
+	}
+
+	protected void GoToNode(int index) {
+		currentNode = index;
+		lastTick = Time.time;
+		_state = ConversationState.DIALOGUE_PAUSE;
 	}
 }

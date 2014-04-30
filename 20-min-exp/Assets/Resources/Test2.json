@@ -7,28 +7,23 @@
       "silentResponse": {
         "timer": 3.0,
         "gotoNode": 1
-      },
-      "answeringAppearanceDelay": 1000.0,
+      },  
       "nextNodeDelay": 0.0,
-      "responses": [
-        {
-          "response": "...",
-          "timer": 5.0,
-          "gotoNode": 1
-        }
-      ]
     },
     {
       "index": 1,
       "dialogue": "Jane: ...could you pass me the salt, please?",
-      "nextNodeDelay": 2.0,
-      "answeringAppearanceDelay": 5.0,
+      "answeringAppearanceDelay": 2.0,
       "responses": [
         {
           "response": "...",
-          "gotoNode": 1
+          "gotoNode": 2
         }
       ]
+    },
+    {
+      "index": 2,
+      "dialogue": "Jane: PLEEEEEASE, SALT, PLEEEEEASE"
     }
   ]
 }
