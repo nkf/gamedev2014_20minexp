@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GoHome : InvokableAction {
 
-	public float successBufferInSecs; // Buffer which allows the player go home a little early
+	public float successBufferInRealTimeSecs; // Buffer which allows the player go home a little early
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +21,7 @@ public class GoHome : InvokableAction {
 
 			// Player has returned home in time without suspiciating das waifu
 			if (AppearanceGameState.INSTANCE.CurrentTimeLeft > 0 &&
-			    AppearanceGameState.INSTANCE.CurrentTimeLeft < successBufferInSecs)
+			    AppearanceGameState.INSTANCE.CurrentTimeLeft < successBufferInRealTimeSecs)
 			{
 #if DEBUG
 				Debug.Log ("Waifu not suspect!");
@@ -34,13 +34,10 @@ public class GoHome : InvokableAction {
 					Toolbox.Instance.levelController.Load(LevelController.SELL_STUFF, 2.0f);
 				} else {
 					Toolbox.Instance.levelController.Load(LevelController.TABLE, 2.0f);
-				//	StartCoroutine(Camera.main.ShowCenterText("Faggot.", () => {
-				//		Toolbox.Instance.levelController.Load(LevelController.APPEARANCES, 2.0f);
-			//		}));
 				}
 			}
 			// Player is too early
-			else if (AppearanceGameState.INSTANCE.CurrentTimeLeft < successBufferInSecs)
+			else if (AppearanceGameState.INSTANCE.CurrentTimeLeft > successBufferInRealTimeSecs)
 			{
 				StartCoroutine(Camera.main.ShowCenterText("You went home too early! Your wife will suspect something is wrong.", () => {
 					Toolbox.Instance.levelController.Load(LevelController.APPEARANCES, 2.0f);
@@ -49,26 +46,39 @@ public class GoHome : InvokableAction {
 				Debug.Log ("You went home too early! Your wife will suspect something is wrong.");
 #endif
 			}
-			// Actually, this following case is already handled by AppearanceGameState
-			// Player is late.
-//			else if (AppearanceGameState.INSTANCE.CurrentTime > AppearanceGameState.INSTANCE.dayLengthInSecs)
-//			{
-//#if DEBUG
-//				Debug.Log ("U LATE! WAIFU THINK U AFFAIR!");
-//#endif
-//			}
 		}
 	}
 
-	void OnGUI() {
-		if (!_actionAvailable)
+	protected float colorBump = 0.3f;
+	public override void OnTriggerEnter(Collider collider) {
+		if (!collider.gameObject.name.Equals ("Follower"))
 			return;
 
-		Rect pos1 = new Rect(2*(Screen.width/5), 2*(Screen.height/5), Screen.width/5, Screen.height/5);
-		Rect pos2 = new Rect(2*(Screen.width/5), 3*(Screen.height/5), Screen.width/5, Screen.height/20);
-		
-		GUIHelpers.DrawQuad(pos1, Color.black);
-		GUI.Box(pos1, "Go Home...\n\n Return home in about 8 hours, so that \n your family thinks you've been to work \n You can spend time on the road or in \n different venues around the neighborhood");
-		GUI.Box(pos2, "Press ENTER to go home now");
+		base.OnTriggerEnter(collider);
+	
+		var structure = this.transform.parent.transform.parent;
+		foreach (Transform child in structure.transform) {
+			foreach (Material mat in child.renderer.materials) {
+				mat.color = new Color(mat.color.r+colorBump, mat.color.g+colorBump, mat.color.b+colorBump, mat.color.a);
+			}
+		}
+
+
 	}
+
+	public override void OnTriggerExit(Collider collider) {
+		if (!collider.gameObject.name.Equals ("Follower"))
+			return;
+
+		base.OnTriggerExit(collider);
+
+		var structure = this.transform.parent.transform.parent;
+		foreach (Transform child in structure.transform) {
+			foreach (Material mat in child.renderer.materials) {
+				mat.color = new Color(mat.color.r-colorBump, mat.color.g-colorBump, mat.color.b-colorBump, mat.color.a);
+			}
+		}
+	}
+
+
 }
