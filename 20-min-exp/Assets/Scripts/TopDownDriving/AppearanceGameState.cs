@@ -13,21 +13,24 @@ public class AppearanceGameState : MonoBehaviour {
 	protected bool _inCutscene = false;
 	public bool InCutscene { get { return _inCutscene; } set {_inCutscene = value; } }
 
-	public float CurrentTime {
-		get { return Time.time-dayTimeStart; }
+	public float CurrentTimeLeft {
+		get { return (dayTimeStart + dayLengthInSecs) - Time.time; }
 	}
 
 	public bool IsLate {
-		get { return CurrentTime > dayLengthInSecs; }
+		get { return CurrentTimeLeft < 0; }
 	}
 
 	protected string CurrentTimeToString {
 		get {
-			TimeSpan t = TimeSpan.FromSeconds( CurrentTime );
-			return string.Format("{0:D2}h:{1:D2}m:{2:D2}s", 
-			                     t.Hours, 
-			                     t.Minutes, 
-			                     t.Seconds);
+			TimeSpan t = TimeSpan.FromSeconds( CurrentTimeLeft );
+//			int fastSecs = (int) ((t.Milliseconds/10) * (100/60));
+			return string.Format("{0:D2}h:{1:D2}m", 
+//			                     t.Hours, 
+			                     t.Minutes,
+			                     t.Seconds
+//			                     fastSecs // To make it look like actual seconds (0-60 scale)
+			                     );
 		}
 	}
 

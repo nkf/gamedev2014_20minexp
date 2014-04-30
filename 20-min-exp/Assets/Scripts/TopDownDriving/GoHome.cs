@@ -20,8 +20,8 @@ public class GoHome : InvokableAction {
 			Car.PLAYER.SetControls(false);
 
 			// Player has returned home in time without suspiciating das waifu
-			if (AppearanceGameState.INSTANCE.CurrentTime > AppearanceGameState.INSTANCE.dayLengthInSecs-successBufferInSecs &&
-			    AppearanceGameState.INSTANCE.CurrentTime < AppearanceGameState.INSTANCE.dayLengthInSecs)
+			if (AppearanceGameState.INSTANCE.CurrentTimeLeft > 0 &&
+			    AppearanceGameState.INSTANCE.CurrentTimeLeft < successBufferInSecs)
 			{
 #if DEBUG
 				Debug.Log ("Waifu not suspect!");
@@ -40,7 +40,7 @@ public class GoHome : InvokableAction {
 				}
 			}
 			// Player is too early
-			else if (AppearanceGameState.INSTANCE.CurrentTime < AppearanceGameState.INSTANCE.dayLengthInSecs-successBufferInSecs)
+			else if (AppearanceGameState.INSTANCE.CurrentTimeLeft < successBufferInSecs)
 			{
 				StartCoroutine(Camera.main.ShowCenterText("You went home too early! Your wife will suspect something is wrong.", () => {
 					Toolbox.Instance.levelController.Load(LevelController.APPEARANCES, 2.0f);
