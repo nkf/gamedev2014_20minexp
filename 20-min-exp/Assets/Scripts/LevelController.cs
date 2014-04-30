@@ -43,7 +43,7 @@ public class LevelController : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         if (LevelLoader.Status == LoadStatus.Done) {
             LevelLoader.Switch();
-            var text = LevelText[_currentLevelIndex][Toolbox.Instance.gameState._dayCounter];
+            var text = LevelText[_currentLevelIndex][Toolbox.Instance.gameState.DayCounter];
             StartCoroutine(Camera.main.ShowCenterText(text, () =>
                 StartCoroutine(fader.FadeInFromBlack(3.0f, () => { }))
                 ));

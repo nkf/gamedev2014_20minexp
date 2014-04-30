@@ -30,13 +30,14 @@ public class GameState : MonoBehaviour {
         }
     }
 
-    public int _dayCounter = REGULAR_DAY;
-	public int DayCounter   { get {return _dayCounter;} set {_dayCounter = value;} }
+    private int _dayCounter = REGULAR_DAY;
+	public int DayCounter { get {return _dayCounter;} set {_dayCounter = value;} }
+    public string CharacterName { get; set; }
 
     // Use this for initialization
 	void Start () {
 	    _moneyCounter = 48320;
-	    _renderMoney = 0;
+	    _renderMoney = _moneyCounter;
 	    StartCoroutine(MoneyDecay());
 	}
 
@@ -107,8 +108,5 @@ public class GameState : MonoBehaviour {
             Amount = n, 
             ExpirationTime = Time.time+2f
         });
-    }
-    private string additionString() {
-        return _moneyAdditions.Aggregate("[", (current, ma) => current + "("+ ma.Amount + "," + ma.ExpirationTime + ") ") + "]";
     }
 }

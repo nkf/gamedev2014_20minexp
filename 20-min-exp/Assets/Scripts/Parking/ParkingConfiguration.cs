@@ -20,10 +20,30 @@ public class ParkingConfiguration : MonoBehaviour {
     }
 
     private static int _index;
-    public static string GetRandomName() {
-        Debug.Log(_index);
+    private static string GetRandomName() {
         if (_index >= _names.Length) _index = 0; 
         return _names[_index++];
     }
-    
+
+
+    private static Spot[] _spawnPattern;
+    public static void CreateSpawnPattern() {
+        _spawnPattern = new Spot[CarSpawn.All.Count];
+        var cap = (int)Mathf.Floor(SpawnPct * CarSpawn.All.Count);
+        for(int i = 0; i < CarSpawn.All.Count; i++) {
+            var name = GetRandomName();
+            if (i < cap) _spawnPattern[i] = new Spot { Name = name, Taken = true };
+            else         _spawnPattern[i] = new Spot { Name = name, Taken = false };
+        }
+        _spawnPattern.Shuffle();
+    }
+    public struct Spot {
+        public bool Taken;
+        public string Name;
+    }
+
+    public static Spot GetSpotSpawn(int index) {
+        if(_spawnPattern == null) CreateSpawnPattern();
+        return _spawnPattern[index];
+    }
 }

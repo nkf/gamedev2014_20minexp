@@ -15,7 +15,7 @@ public class CarControl : MonoBehaviour {
         a = new Vector3(a.x, a.y + turn, 0);
         transform.localEulerAngles = a;
         var rotation = transform.rotation;
-        var force = rotation * Vector3.forward * Speed * Time.deltaTime;
+        var force = (rotation * Vector3.forward) * Speed * Time.deltaTime;
         rigidbody.AddForce(force * v);
     }
     /*

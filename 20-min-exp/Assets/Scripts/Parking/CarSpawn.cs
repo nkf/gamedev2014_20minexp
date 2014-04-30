@@ -1,46 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using System.Collections;
 
 public class CarSpawn : MonoBehaviour {
 
-    private static readonly List<CarSpawn> All = new List<CarSpawn>();
+    public static readonly List<CarSpawn> All = new List<CarSpawn>();
     void Awake() {
         All.Add(this);
     }
-    private enum Pattern {
-        Free, Taken, Main
-    }
-    private static Pattern[] _spawnPattern; 
-    private static void CreateSpawnPattern() {
-        if (_spawnPattern != null) return;
-        _spawnPattern = new Pattern[All.Count];
-        var cap = (int)Mathf.Floor(ParkingConfiguration.SpawnPct*All.Count);
-        for (int i = 0; i < All.Count; i++) {
-            if(i < cap) _spawnPattern[i] = Pattern.Taken;
-            if(i == cap) _spawnPattern[i] = Pattern.Main;
-            if(i > cap) _spawnPattern[i] = Pattern.Free;
-        }
-        _spawnPattern.Shuffle();
+
+    void OnDestroy() {
+        All.Remove(this);
     }
 
     private static int _index;
-    // Use this for initialization
+
+    private TextMesh _name;
 	void Start () {
-	    CreateSpawnPattern();
-	    var pattern = _spawnPattern[_index];
-	    if (pattern == Pattern.Main) {
-	        var playerName = Toolbox.Instance.gameState.DayCounter == GameState.FIRING_DAY_MORNING ? "" : ParkingConfiguration.MainName;
-	        GetComponentInChildren<TextMesh>().text = playerName;
-	    } else {
-	        if(pattern == Pattern.Taken) SpawnRandomCar();
-	        GetComponentInChildren<TextMesh>().text = ParkingConfiguration.GetRandomName();
+	    _name = GetComponentsInChildren<TextMesh>().First(t => t.name == "Name");
+	    var spot = ParkingConfiguration.GetSpotSpawn(_index);
+	    if (spot.Taken) {
+	        SpawnRandomCar();
 	        GetComponent<BoxCollider>().enabled = false;
 	    }
+
+	    if (spot.Name == Toolbox.Instance.gameState.CharacterName) { //character name will be set on the 2nd day.
+	        _name.text = "";
+	    } else {
+            GetComponent<ParkingCheck>().SetName(spot.Name);
+            _name.text = spot.Name;
+	    }
 	    _index++;
-	    if (_index >= _spawnPattern.Length) _index = 0;
+	    if (_index >= All.Count) _index = 0;
 	}
     private readonly System.Random _rng = new System.Random();
     private void SpawnRandomCar() {
