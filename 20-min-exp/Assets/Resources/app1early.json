@@ -1,0 +1,27 @@
+{
+  "ConversationName": "Breakfast Table",
+  "AllNodes": [
+    {
+      "index": 0,
+      "dialogue": "Jane: You got home early...",
+      "answeringAppearanceDelay": 4.0,
+      "nextNodeDelay": 0.0,
+      "responses": [
+        {
+          "response": "Yeah, there were not much to do at office today...",
+          "gotoNode": 1
+        },
+        {
+          "response": "Something came up, and then I did not go back to the office afterwards.",
+          "gotoNode": 1
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "dialogue": "Jane: I see...",
+      "answeringAppearanceDelay": 4.0,
+      "nextNodeDelay": 2.0
+    }
+  ]
+}

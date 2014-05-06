@@ -54,8 +54,10 @@ public class AppearanceGameState : MonoBehaviour {
 				_finalTimeRecorded = true;
 			}
 
+			Toolbox.Instance.gameState.HenryCameHome = HENRY_CAME_HOME.LATE;
+
 			//Toolbox.Instance.levelController.ReloadCurrent(2.0f);
-			Toolbox.Instance.levelController.Load(LevelController.APPEARANCES, 5.0f);
+			Toolbox.Instance.levelController.Load(LevelController.TABLE, 5.0f);
 		}
 	}
 

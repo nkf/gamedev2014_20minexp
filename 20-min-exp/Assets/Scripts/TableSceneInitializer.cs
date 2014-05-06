@@ -58,16 +58,39 @@ public class TableSceneInitializer : MonoBehaviour {
 #if DEBUG
 		Debug.Log("Appearences day 1");
 #endif
+		switch(Toolbox.Instance.gameState.HenryCameHome) {
+		case HENRY_CAME_HOME.EARLY:
+			WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "app1early";
+			break;
+		case HENRY_CAME_HOME.ON_TIME:
+			WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "app1onTime";
+			break;
+		case HENRY_CAME_HOME.LATE:
+			WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "app1late";
+			break;
+		}
+
 		StaticCamera.STATIC_CAMERA.camera.SwitchTo();
-		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "app1";
+
 	}
 
 	protected void Appearances2Init() {
 #if DEBUG
 		Debug.Log("Appearences day 2");
 #endif
+		switch(Toolbox.Instance.gameState.HenryCameHome) {
+		case HENRY_CAME_HOME.EARLY:
+			WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "app2early";
+			break;
+		case HENRY_CAME_HOME.ON_TIME:
+			WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "app2onTime";
+			break;
+		case HENRY_CAME_HOME.LATE:
+			WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "app2late";
+			break;
+		}
+
 		StaticCamera.STATIC_CAMERA.camera.SwitchTo();
-		WifeAgent.JANE.GetComponent<WifeAgent>()._conversationPath = "app2";
 	}
 
 	protected void Appearances3Init() {

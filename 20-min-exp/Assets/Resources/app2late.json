@@ -1,0 +1,43 @@
+{
+  "ConversationName": "Breakfast Table",
+  "AllNodes": [
+    {
+      "index": 0,
+      "dialogue": "Jane: You got home late again. Are you having an affair?",
+      "answeringAppearanceDelay": 4.0,
+      "nextNodeDelay": 0.0,
+      "responses": [
+        {
+          "response": "How can you even say that?",
+          "gotoNode": 1
+        },
+        {
+          "response": "What!? God, no, woman!",
+          "gotoNode": 1
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "dialogue": "Jane: I'm asking because I was at the bank yesterday and we're seriously low on money... I think you are buying expensive gifts for some bimbo slut.",
+      "answeringAppearanceDelay": 4.0,
+      "nextNodeDelay": 0.0,
+      "responses": [
+        {
+          "response": "I'm not seeing anyone else! And don't worry about the money, I got that.",
+          "gotoNode": 2
+        },
+        {
+          "response": "The money is not your problem. Now let me eat.",
+          "gotoNode": 2
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "dialogue": "Jane: ...",
+      "answeringAppearanceDelay": 4.0,
+      "nextNodeDelay": 1.0
+    }
+  ]
+}

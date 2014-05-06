@@ -1,0 +1,30 @@
+{
+    "ConversationName": "Breakfast Table",
+    "AllNodes": [
+
+	{
+            "index": 0,
+            "dialogue": "Jane: Why were you so late to day?",
+            "answeringAppearanceDelay": 4.0,
+            "nextNodeDelay": 0.0,
+            "responses": [
+              {"response": "I had to do some overtime.", "gotoNode": 1},
+		      {"response": "I just had a quick after hour drink, get off my back, will you?", "gotoNode": 2},
+            ]
+        },
+
+        {
+            "index": 1,
+            "dialogue": "Jane: I see...",
+            "answeringAppearanceDelay": 4.0,
+            "nextNodeDelay": 0.0,
+        },
+
+        {
+            "index": 2,
+            "dialogue": "Jane: I'm sorry.",
+            "answeringAppearanceDelay": 4.0,
+            "nextNodeDelay": 0.0,
+        },
+    ]
+}

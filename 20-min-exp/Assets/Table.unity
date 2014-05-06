@@ -5195,7 +5195,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400036, guid: 433f750fb7b05cc4b921c0e8431bce28, type: 2}
   m_PrefabInternal: {fileID: 504536418}
   m_GameObject: {fileID: 416412102}
-  m_LocalRotation: {x: .282923639, y: -.016800167, z: -.0204373319, w: .958777487}
+  m_LocalRotation: {x: .282923669, y: -.0168001689, z: -.0204373337, w: .958777547}
   m_LocalPosition: {x: .0013243854, y: .0857538879, z: -.000913776457}
   m_LocalScale: {x: .999999762, y: 1, z: .999999702}
   m_Children:
@@ -5965,7 +5965,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6cebb922a7e0147b079219d4400c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _conversationPath: Assets/Test2.json
+  textBubble: {fileID: 1022315555}
+  henryBubble: {fileID: 644472161}
+  _conversationPath: Test2
+  charsPerSec: 50
 --- !u!1 &496923784
 GameObject:
   m_ObjectHideFlags: 0
@@ -9291,7 +9294,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 644472160}
   - 33: {fileID: 644472163}
-  - 23: {fileID: 644472162}
   - 114: {fileID: 644472161}
   m_Layer: 0
   m_Name: TextBubble
@@ -9299,7 +9301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &644472160
 Transform:
   m_ObjectHideFlags: 0
@@ -9311,6 +9313,7 @@ Transform:
   m_LocalScale: {x: 1, y: .400000006, z: 1}
   m_Children:
   - {fileID: 1171337735}
+  - {fileID: 1180838372}
   m_Father: {fileID: 1493526929}
 --- !u!114 &644472161
 MonoBehaviour:
@@ -9324,27 +9327,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Size: .899999976
---- !u!23 &644472162
-Renderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 644472159}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 2100000, guid: c3f481abc5c0f1445978e8ca08dabdf9, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortingLayerID: 0
 --- !u!33 &644472163
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -13972,7 +13954,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1022315554}
   - 33: {fileID: 1022315557}
-  - 23: {fileID: 1022315556}
   - 114: {fileID: 1022315555}
   m_Layer: 0
   m_Name: TextBubble
@@ -13980,7 +13961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1022315554
 Transform:
   m_ObjectHideFlags: 0
@@ -13992,6 +13973,7 @@ Transform:
   m_LocalScale: {x: 1, y: .400000006, z: 1}
   m_Children:
   - {fileID: 154535691}
+  - {fileID: 1262442103}
   m_Father: {fileID: 494165119}
 --- !u!114 &1022315555
 MonoBehaviour:
@@ -14005,27 +13987,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Size: .899999976
---- !u!23 &1022315556
-Renderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1022315553}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 2100000, guid: c3f481abc5c0f1445978e8ca08dabdf9, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortingLayerID: 0
 --- !u!33 &1022315557
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -15363,12 +15324,12 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1171337734}
-  m_Text: This is a super long response wow, this response is just so long.
+  m_Text: What the fuck
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
   m_Anchor: 4
-  m_Alignment: 0
+  m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 80
   m_FontStyle: 0
@@ -15482,6 +15443,62 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 188414318}
+--- !u!1 &1180838371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1180838372}
+  - 33: {fileID: 1180838374}
+  - 23: {fileID: 1180838373}
+  m_Layer: 0
+  m_Name: Bubble
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1180838372
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1180838371}
+  m_LocalRotation: {x: 0, y: -8.94069458e-08, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 644472160}
+--- !u!23 &1180838373
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1180838371}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: c3f481abc5c0f1445978e8ca08dabdf9, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!33 &1180838374
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1180838371}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1185489016
 GameObject:
   m_ObjectHideFlags: 0
@@ -17633,6 +17650,22 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .999337435
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 2c67517272614af409b5d9676aa20332, type: 2}
+      propertyPath: charsPerSec
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 2c67517272614af409b5d9676aa20332, type: 2}
+      propertyPath: textBubble
+      value: 
+      objectReference: {fileID: 1022315555}
+    - target: {fileID: 11400000, guid: 2c67517272614af409b5d9676aa20332, type: 2}
+      propertyPath: henryBubble
+      value: 
+      objectReference: {fileID: 644472161}
+    - target: {fileID: 11400000, guid: 2c67517272614af409b5d9676aa20332, type: 2}
+      propertyPath: _conversationPath
+      value: Test2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c67517272614af409b5d9676aa20332, type: 2}
   m_RootGameObject: {fileID: 494165118}
@@ -17756,7 +17789,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400068, guid: 2c67517272614af409b5d9676aa20332, type: 2}
   m_PrefabInternal: {fileID: 1242823178}
   m_GameObject: {fileID: 1255284332}
-  m_LocalRotation: {x: -.0494942553, y: -.033054661, z: .0154826334, w: .998107195}
+  m_LocalRotation: {x: -.0494942591, y: -.0330546647, z: .0154826343, w: .998107255}
   m_LocalPosition: {x: 5.96046448e-08, y: .278607398, z: 8.94069672e-08}
   m_LocalScale: {x: .99999994, y: 1, z: .99999994}
   m_Children:
@@ -17823,6 +17856,62 @@ MeshFilter:
   m_PrefabInternal: {fileID: 202026461}
   m_GameObject: {fileID: 1258378410}
   m_Mesh: {fileID: 4300044, guid: a3525729897feae42893ce81e797e18a, type: 3}
+--- !u!1 &1262442102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1262442103}
+  - 33: {fileID: 1262442105}
+  - 23: {fileID: 1262442104}
+  m_Layer: 0
+  m_Name: Bubble
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1262442103
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1262442102}
+  m_LocalRotation: {x: 0, y: -2.98023224e-07, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1022315554}
+--- !u!23 &1262442104
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1262442102}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: c3f481abc5c0f1445978e8ca08dabdf9, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!33 &1262442105
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1262442102}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1264254355
 GameObject:
   m_ObjectHideFlags: 0
@@ -21487,7 +21576,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400088, guid: 2c67517272614af409b5d9676aa20332, type: 2}
   m_PrefabInternal: {fileID: 1242823178}
   m_GameObject: {fileID: 1491217031}
-  m_LocalRotation: {x: -.0147774136, y: .0179376509, z: .167225912, w: .985644639}
+  m_LocalRotation: {x: -.0147774145, y: .0179376528, z: .167225927, w: .985644698}
   m_LocalPosition: {x: -.00189270452, y: .0242251363, z: -5.58793545e-08}
   m_LocalScale: {x: 1.00000012, y: 1.00000024, z: 1}
   m_Children:
@@ -23148,7 +23237,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400062, guid: bb6749886d98ad9419f4d6437a630e17, type: 2}
   m_PrefabInternal: {fileID: 1286739118}
   m_GameObject: {fileID: 1634270547}
-  m_LocalRotation: {x: .191047251, y: -.053204596, z: .168410465, w: .965561032}
+  m_LocalRotation: {x: .191047266, y: -.0532045998, z: .16841048, w: .965561092}
   m_LocalPosition: {x: .00208839495, y: .0151808262, z: .00336925918}
   m_LocalScale: {x: 1.00000012, y: .99999994, z: 1}
   m_Children:
@@ -25118,7 +25207,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e725ea9888e142c4b9116ff94dca9c7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textBubble: {fileID: 0}
+  henryBubble: {fileID: 0}
   _conversationPath: 
+  charsPerSec: 105
   HallCamera: {fileID: 0}
 --- !u!1 &1790522433
 GameObject:

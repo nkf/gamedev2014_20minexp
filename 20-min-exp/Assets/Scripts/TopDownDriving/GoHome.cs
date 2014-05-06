@@ -26,6 +26,8 @@ public class GoHome : InvokableAction {
 #if DEBUG
 				Debug.Log ("Waifu not suspect!");
 #endif
+				Toolbox.Instance.gameState.HenryCameHome = HENRY_CAME_HOME.ON_TIME;
+
 				int today = Toolbox.Instance.gameState.DayCounter;
 				if (today == GameState.APPEARANCES_DAY_1 || today == GameState.APPEARANCES_DAY_2) {
 //				if (LevelLoader.Status == LoadStatus.NotLoading) {
@@ -39,8 +41,11 @@ public class GoHome : InvokableAction {
 			// Player is too early
 			else if (AppearanceGameState.INSTANCE.CurrentTimeLeft > successBufferInRealTimeSecs)
 			{
+				Toolbox.Instance.gameState.HenryCameHome = HENRY_CAME_HOME.EARLY;
+
 				StartCoroutine(Camera.main.ShowCenterText("You went home too early! Your wife will suspect something is wrong.", () => {
-					Toolbox.Instance.levelController.Load(LevelController.APPEARANCES, 2.0f);
+					Toolbox.Instance.levelController.Load(LevelController.TABLE);
+//					Toolbox.Instance.levelController.Load(LevelController.APPEARANCES, 2.0f);
 				}));
 #if DEBUG
 				Debug.Log ("You went home too early! Your wife will suspect something is wrong.");

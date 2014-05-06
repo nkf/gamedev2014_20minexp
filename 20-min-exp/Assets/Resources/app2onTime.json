@@ -16,10 +16,6 @@
     {
       "index": 1,
       "dialogue": "Jane: Listen, Henry, is something wrong? I was at the bank yesterday and we're seriously low on money...",
-      "silentResponse": {
-        "timer": 3.0,
-        "gotoNode": 1
-      },
       "answeringAppearanceDelay": 4.0,
       "nextNodeDelay": 0.0,
       "responses": [

@@ -6,6 +6,10 @@ using UnityEngine;
 using System.Collections;
 using Random = UnityEngine.Random;
 
+public enum HENRY_CAME_HOME {
+	EARLY, ON_TIME, LATE
+}
+
 public class GameState : MonoBehaviour {
 
 	public static readonly int REGULAR_DAY          = 0;
@@ -17,6 +21,8 @@ public class GameState : MonoBehaviour {
 	public static readonly int SELL_STUFF_DAY       = 6;
 
     public static readonly int TOTAL_DAY_COUNTER    = 7;
+
+	public HENRY_CAME_HOME HenryCameHome = HENRY_CAME_HOME.ON_TIME;
 
     private int _moneyCounter;
     private int _renderMoney;
@@ -30,7 +36,7 @@ public class GameState : MonoBehaviour {
         }
     }
 
-    private int _dayCounter = REGULAR_DAY;
+    private int _dayCounter = APPEARANCES_DAY_1;
 	public int DayCounter { get {return _dayCounter;} set {_dayCounter = value;} }
     public string CharacterName { get; set; }
 

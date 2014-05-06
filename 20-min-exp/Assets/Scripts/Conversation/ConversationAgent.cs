@@ -11,12 +11,16 @@ using SimpleJSON;
 /// </summary>
 public class ConversationAgent : MonoBehaviour {
 
+	public SpeechBubble textBubble;
+	public SpeechBubble henryBubble;
+
 	protected enum ConversationState { DIALOGUE_PAUSE, RENDERING_DIALOGUE, ANSWERING_APPERANCE_DELAY, SELECTION_TIME, AWKWARD };
 	
 	public string _conversationPath;	// Relative path to the JSON conversation file
 
 	protected int currentNode = 0;		// Index of the current nodes
 	protected ConversationNode[] allNodes;// Collection of all the nodes
+	protected string _previousResponse = null;
 
 	protected bool _conversationIsRunning = false;
 	protected int _highlightedResponse = 0;
@@ -36,7 +40,19 @@ public class ConversationAgent : MonoBehaviour {
 
 	// Use this for initialization
 	protected virtual void Start () {
-		lastTick = Time.time;
+		// Get reference to Agent's SpeechBubble
+//		foreach (Transform child in transform)
+//			if (child.name.Equals("TextBubble"))
+//				textBubble = (SpeechBubble) child.GetComponent<SpeechBubble>();
+//
+//		// Get reference to Henry's SpeechBubble
+//		GameObject henry = GameObject.Find("Henry");
+//		foreach (Transform child in henry.transform)
+//			if (child.name.Equals("TextBubble"))
+//				henryBubble = (SpeechBubble) child.GetComponent<SpeechBubble>();
+
+		lastDialogueTick = Time.time;
+
 	}
 
 	bool endTimerHasBeenSet = false;
@@ -55,18 +71,19 @@ public class ConversationAgent : MonoBehaviour {
 			
 			if ((Time.time - endTimer) > CurrentNode.NextNodeDelay) {
 				_state = ConversationState.RENDERING_DIALOGUE;
+				textBubble.gameObject.SetActive(true);
 				endTimerHasBeenSet = false;
-				lastTick = Time.time;
+				lastDialogueTick = Time.time;
 			}
 			break;
 		case ConversationState.RENDERING_DIALOGUE:
-			int derp = (int) ((Time.time-lastTick) * charsPerSec);
+			int derp = (int) ((Time.time-lastDialogueTick) * charsPerSec);
 
 			if (derp > CurrentNode.Dialogue.Length || // The dialogue has finished rendering, or...
 			    Input.GetKeyDown(KeyCode.Return))     // ...The player wants to skip the JRPG thang?
 			{
 				_state = ConversationState.ANSWERING_APPERANCE_DELAY;
-				lastTick = -1000; // minus a lot, because if lastTick = 0 the time difference may not be big enough to cause the entire string to be rendered.
+				lastDialogueTick = -1000; // minus a lot, because if lastTick = 0 the time difference may not be big enough to cause the entire string to be rendered.
 			}
 			break;
 		case ConversationState.ANSWERING_APPERANCE_DELAY:
@@ -75,8 +92,6 @@ public class ConversationAgent : MonoBehaviour {
 				endTimer = Time.time;
 				endTimerHasBeenSet = true;
 			}
-
-
 
 			if ((Time.time - endTimer) > CurrentNode.AnswerAppearanceDelay) {
 				_state = ConversationState.SELECTION_TIME;
@@ -95,9 +110,10 @@ public class ConversationAgent : MonoBehaviour {
 				_highlightedResponse++;
 			}
 			if (Input.GetKeyDown (KeyCode.Return) && !CurrentNode.IsEndNode) {
-				// When player selects a response, transition to the AWKWARD state.
+				// When player selects a response, transition to the AWKWARD state, where the response will eventually be chosen after awkward silence
 				_state = ConversationState.AWKWARD;
-				lastTick = Time.time;
+				henryBubble.gameObject.SetActive(true);
+				lastDialogueTick = Time.time;
 				if (CurrentNode.IsEndNode)
 					endTimer = Time.time;
 			}
@@ -125,9 +141,12 @@ public class ConversationAgent : MonoBehaviour {
 			// The AWKWARD state will wait awkwardly after the player selects a response before actually selecting the response and moving to next node
 			// When the waiting time is 0, the response will be selected instantly. That is why SELECTION_TIME doesn't select responses directly.
 			if (Time.time - endTimer > CurrentNode.AnsweringDelay) {
+				textBubble.gameObject.SetActive(false);
+
+
 				endTimer = Time.time;
 				_state = ConversationState.DIALOGUE_PAUSE;
-				lastTick = Time.time;
+				lastDialogueTick = Time.time;
 				SelectResponse(_highlightedResponse);
 			}
 			break;
@@ -153,6 +172,7 @@ public class ConversationAgent : MonoBehaviour {
 		switch(_state) {
 		case ConversationState.DIALOGUE_PAUSE:
 			// Don't anything but the conversation background
+			RenderPreviousResponse();
 			break;
 		case ConversationState.RENDERING_DIALOGUE:
 			RenderDialogue(posDialogue);
@@ -160,10 +180,6 @@ public class ConversationAgent : MonoBehaviour {
 		case ConversationState.ANSWERING_APPERANCE_DELAY:
 			RenderDialogue(posDialogue);
 			// Don't render responses
-			break;
-		case ConversationState.AWKWARD:
-			RenderDialogue(posDialogue);
-			RenderAnswer(_highlightedResponse, barHeight, posDialogue.y+posDialogue.height);
 			break;
 		case ConversationState.SELECTION_TIME:
 			RenderDialogue(posDialogue);
@@ -173,13 +189,29 @@ public class ConversationAgent : MonoBehaviour {
 				RenderAnswer(i, barHeight, posDialogue.y+15);
 			}
 			break;
+		case ConversationState.AWKWARD:
+			RenderDialogue(posDialogue);
+			RenderAnswer(_highlightedResponse, barHeight, posDialogue.y+posDialogue.height);
+			break;
 		}
 	}
 
-	protected float lastTick;
+	protected void RenderPreviousResponse() {
+		// Render the previous player response (if any) in bubble in scene 
+		if (_previousResponse == null)
+			return;
+
+		int derp2 = (int) ((Time.time-lastResponseTick) * charsPerSec);
+		if (derp2 <= _previousResponse.Length)
+			henryBubble.SetText(_previousResponse.Substring(0, derp2));
+		else
+			henryBubble.SetText(_previousResponse);
+	}
+
+	protected float lastDialogueTick = 0;
 	public int charsPerSec = 105;
 	protected void RenderDialogue(Rect position) {
-		int derp = (int) ((Time.time-lastTick) * charsPerSec);
+		int derp = (int) ((Time.time-lastDialogueTick) * charsPerSec);
 
 		// Write Dialogue
 		GUIStyle style = new GUIStyle();
@@ -187,17 +219,20 @@ public class ConversationAgent : MonoBehaviour {
 		style.alignment = TextAnchor.UpperCenter;
 		style.normal.textColor = Color.white;
 		if (derp <= CurrentNode.Dialogue.Length)
-			GUI.Label(position, CurrentNode.Dialogue.Substring(0, derp), style);
+			textBubble.SetText(CurrentNode.Dialogue.Substring(0, derp));
 		else
-			GUI.Label(position, CurrentNode.Dialogue, style);
+			textBubble.SetText(CurrentNode.Dialogue);
 	}
 
+	protected float lastResponseTick = 0;
 	protected void RenderAnswer(int i, int height, float dialogueOffset) {
 		int dialogueOffsetInt = (int) dialogueOffset; // Offsets the responses in the y-direction so they don't clash with the displayed dialogue.
 		Rect responsePos = new Rect(0, (i*dialogueFontSize)+dialogueOffsetInt+5, Screen.width, dialogueFontSize);
+//		String response = CurrentNode.Responses[i];
 	
 		if (i == _highlightedResponse) {
 			GUIHelpers.DrawQuad(responsePos, Color.white);
+//			response = "-> "+response+" <-"; 
 		}
 	
 		GUIStyle style = new GUIStyle();
@@ -209,6 +244,8 @@ public class ConversationAgent : MonoBehaviour {
 			style.normal.textColor = Color.white;
 		}
 		GUI.Label(responsePos, "[ " + CurrentNode.Responses[i] + " ]", style);
+
+//		henryBubble.SetText(henryBubble.Text + "\n"+response);
 	}
 
 	public void StartConversation() {
@@ -255,7 +292,8 @@ public class ConversationAgent : MonoBehaviour {
 
 		// Then set the conversation as running
 		_conversationIsRunning = true;
-		lastTick = Time.time;
+		lastDialogueTick = Time.time;
+		textBubble.gameObject.SetActive(true);
 		//SimplePlayer.PLAYER.SwitchState(PlayerState.IN_CONVERSATION);
 	}
 
@@ -263,6 +301,9 @@ public class ConversationAgent : MonoBehaviour {
 		_conversationIsRunning = false;
 		//SimplePlayer.PLAYER.SwitchState(PlayerState.PLAYING);
 		Restart();
+
+		textBubble.gameObject.SetActive(false);
+		henryBubble.gameObject.SetActive(false);
 	}
 
 	public void Restart() {
@@ -270,13 +311,16 @@ public class ConversationAgent : MonoBehaviour {
 	}
 	
 	public void SelectResponse(int responseIndex) {
+		_previousResponse = CurrentNode.Responses[responseIndex];
+		lastResponseTick = Time.time;
+
 		GoToNode (CurrentNode.NodeLinks[responseIndex]);
 		_highlightedResponse = 0;
 	}
 
 	protected void GoToNode(int index) {
 		currentNode = index;
-		lastTick = Time.time;
+		lastDialogueTick = Time.time;
 		_state = ConversationState.DIALOGUE_PAUSE;
 	}
 }

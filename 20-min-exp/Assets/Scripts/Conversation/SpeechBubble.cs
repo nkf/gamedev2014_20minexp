@@ -5,9 +5,17 @@ using System.Collections;
 public class SpeechBubble : MonoBehaviour {
 
     private TextMesh _textMesh;
+	protected GameObject _bubble;
     public float Size;
+
+	public string Text { get { return _textMesh.text; } }
+
 	void Start () {
 	    _textMesh = GetComponentInChildren<TextMesh>();
+		foreach (Transform child in transform)
+			if (child.name.Equals ("Bubble"))
+			    _bubble = child.gameObject;
+
         SetText(_textMesh.text);
 	}
 	
@@ -26,6 +34,7 @@ public class SpeechBubble : MonoBehaviour {
         var newString = "";
         var testString = "";
  
+		int noOfLines = 1;
         foreach (var word in words) {
             testString = testString + word + " ";
             textObj.text = testString;
@@ -38,10 +47,23 @@ public class SpeechBubble : MonoBehaviour {
             if (textSize > desiredWidthOfMesh) {
                 testString = word + " ";
                 newString = newString + "\n" + word + " ";
+				noOfLines++;
             } else {
                 newString = newString + word + " ";
             }
         }
+
+		// Adjust height
+		// NOTE: Totally hacky, ugly, not precise solution, though
+		if (_bubble != null) {
+			float padding = 0.15f;
+			Vector3 newScale = new Vector3(transform.localScale.x,
+			                               ((_textMesh.fontSize * (_textMesh.transform.localScale.y/10))*noOfLines)+padding,
+			                               transform.localScale.z);
+
+			_bubble.transform.localScale = newScale;
+		}
+
         return newString;
     }
 }

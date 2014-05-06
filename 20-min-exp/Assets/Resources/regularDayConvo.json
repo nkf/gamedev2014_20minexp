@@ -24,7 +24,7 @@
         "timer": 7.0,
         "gotoNode": 1
       },
-      "answeringAppearanceDelay": 1000.0,
+      "answeringAppearanceDelay": 3.0,
       "nextNodeDelay": 5.0,
       "responses": [
         {
