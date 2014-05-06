@@ -69,7 +69,7 @@ public class AppearanceGameState : MonoBehaviour {
 		} else {
 			int gameOverBoxWidth = Screen.width/2;
 			Rect centerPos = new Rect((Screen.width/2)-(gameOverBoxWidth/2), Screen.height/2, gameOverBoxWidth, 40);
-			GUI.Box(centerPos, "You went home too late, and your wife became suspicious! \n Time Spent: "+_finalTime);
+			Toolbox.Instance.gameState.ShowCenterText("You went home too late, and your wife became suspicious! \n Time Spent: "+_finalTime);
 		}
 	}
 

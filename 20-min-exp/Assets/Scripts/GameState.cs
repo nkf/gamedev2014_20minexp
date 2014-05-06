@@ -36,7 +36,7 @@ public class GameState : MonoBehaviour {
         }
     }
 
-    private int _dayCounter = APPEARANCES_DAY_1;
+    private int _dayCounter = REGULAR_DAY;
 	public int DayCounter { get {return _dayCounter;} set {_dayCounter = value;} }
     public string CharacterName { get; set; }
 
