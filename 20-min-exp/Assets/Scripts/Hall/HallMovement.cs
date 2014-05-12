@@ -45,6 +45,7 @@ public class HallMovement : MonoBehaviour {
 			p.z -= (v * Time.deltaTime);
 			if (p.z > 1.0f)
 					return;
+			// Be stopped by wife
 			if (p.z < NEXT_TO_WIFE && !WifeSatisfied)
 			{
 				if (!WifeHallAgent.JANE.IsRunning) {
@@ -53,6 +54,10 @@ public class HallMovement : MonoBehaviour {
 				return;
 			}
 
+		}
+		// Prevent getting stuck in wall. THE MOST BROKEN CODE IN THE WORLD!!!!
+		else if (p.z > WALL && v > 0) {
+			p.z -= (v * Time.deltaTime);
 		}
 
 		if (p.z < AFTER_STEP) {
