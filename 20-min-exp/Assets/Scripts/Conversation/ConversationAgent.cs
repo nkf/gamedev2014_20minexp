@@ -38,21 +38,24 @@ public class ConversationAgent : MonoBehaviour {
 	public bool IsRunning { get {return _conversationIsRunning;} }
 	public ConversationNode CurrentNode { get { return allNodes[currentNode]; } }
 
+	protected float lastDialogueTick = 0;
+	protected int dialogueLengthToRender           { get { return (int) ((Time.time-lastDialogueTick) * charsPerSec); } }
+	protected bool HasRenderedCompleteDialogueLine { get { return dialogueLengthToRender > CurrentNode.Dialogue.Length; } }
+
+	protected float lastResponseTick = 0;
+	protected int responseLengthToRender           { get { return (int) ((Time.time - lastResponseTick) * charsPerSec); } }
+	protected bool HasRenderedCompleteResponseLine {
+		get {
+			if (_previousResponse == null)
+				return false;
+			else
+				return responseLengthToRender > _previousResponse.Length;
+		}
+	}
+
 	// Use this for initialization
 	protected virtual void Start () {
-		// Get reference to Agent's SpeechBubble
-//		foreach (Transform child in transform)
-//			if (child.name.Equals("TextBubble"))
-//				textBubble = (SpeechBubble) child.GetComponent<SpeechBubble>();
-//
-//		// Get reference to Henry's SpeechBubble
-//		GameObject henry = GameObject.Find("Henry");
-//		foreach (Transform child in henry.transform)
-//			if (child.name.Equals("TextBubble"))
-//				henryBubble = (SpeechBubble) child.GetComponent<SpeechBubble>();
-
 		lastDialogueTick = Time.time;
-
 	}
 
 	bool endTimerHasBeenSet = false;
@@ -63,13 +66,15 @@ public class ConversationAgent : MonoBehaviour {
 
 		switch(_state) {
 		case ConversationState.DIALOGUE_PAUSE:
+			Debug.Log ("DialoguePause");
 			// Pause between two conversation nodes
 			if (!endTimerHasBeenSet) {
 				endTimer = Time.time;
 				endTimerHasBeenSet = true;
 			}
 			
-			if ((Time.time - endTimer) > CurrentNode.NextNodeDelay) {
+			if (HasRenderedCompleteDialogueLine &&
+				(Time.time - endTimer) > CurrentNode.NextNodeDelay) {
 				_state = ConversationState.RENDERING_DIALOGUE;
 				textBubble.gameObject.SetActive(true);
 				endTimerHasBeenSet = false;
@@ -77,9 +82,8 @@ public class ConversationAgent : MonoBehaviour {
 			}
 			break;
 		case ConversationState.RENDERING_DIALOGUE:
-			int derp = (int) ((Time.time-lastDialogueTick) * charsPerSec);
-
-			if (derp > CurrentNode.Dialogue.Length || // The dialogue has finished rendering, or...
+			Debug.Log ("RenderingDialogue");
+			if (HasRenderedCompleteDialogueLine ||
 			    Input.GetKeyDown(KeyCode.Return))     // ...The player wants to skip the JRPG thang?
 			{
 				_state = ConversationState.ANSWERING_APPERANCE_DELAY;
@@ -87,18 +91,21 @@ public class ConversationAgent : MonoBehaviour {
 			}
 			break;
 		case ConversationState.ANSWERING_APPERANCE_DELAY:
+			Debug.Log ("AnsweringDelay");
 			// Wait before showing the responses and start listening for player input
 			if (!endTimerHasBeenSet) {
 				endTimer = Time.time;
 				endTimerHasBeenSet = true;
 			}
 
-			if ((Time.time - endTimer) > CurrentNode.AnswerAppearanceDelay) {
+			if (HasRenderedCompleteDialogueLine &&
+				(Time.time - endTimer) > CurrentNode.AnswerAppearanceDelay) {
 				_state = ConversationState.SELECTION_TIME;
 				endTimerHasBeenSet = false;
 			}
 			break;
 		case ConversationState.SELECTION_TIME:
+			Debug.Log ("SelectionTime");
 			// Controls
 			// This state will wait for player input
 			if ( (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) &&
@@ -140,7 +147,9 @@ public class ConversationAgent : MonoBehaviour {
 		case ConversationState.AWKWARD:
 			// The AWKWARD state will wait awkwardly after the player selects a response before actually selecting the response and moving to next node
 			// When the waiting time is 0, the response will be selected instantly. That is why SELECTION_TIME doesn't select responses directly.
-			if (Time.time - endTimer > CurrentNode.AnsweringDelay) {
+			Debug.Log("Awkward");
+			if (
+				Time.time - endTimer > CurrentNode.AnsweringDelay) {
 				textBubble.gameObject.SetActive(false);
 
 
@@ -161,13 +170,14 @@ public class ConversationAgent : MonoBehaviour {
 			return;
 
 		int barHeight = (Screen.height/5);
-		Rect posBackground  = new Rect(0, Screen.height-barHeight, Screen.width, barHeight);
-		Rect posDialogue = new Rect(posBackground.x, posBackground.y, posBackground.width, posBackground.height);
-		posDialogue.y += posDialogue.height/10; 
-		// Draw Background
-		Color color = Color.black;
-		GUIHelpers.DrawQuad(posBackground, color);
-
+		Rect posBackground  = new Rect(0,
+		                               Screen.height - (CurrentNode.Responses.Length*dialogueFontSize)-10,  // -10 because screen.height is apparrently not exactly screen height
+		                               Screen.width,
+		                               barHeight);
+		Rect posDialogue = new Rect(posBackground.x,
+		                            posBackground.y+(posBackground.y/10),
+		                            posBackground.width,
+		                            posBackground.height);
 
 		switch(_state) {
 		case ConversationState.DIALOGUE_PAUSE:
@@ -176,22 +186,26 @@ public class ConversationAgent : MonoBehaviour {
 			break;
 		case ConversationState.RENDERING_DIALOGUE:
 			RenderDialogue(posDialogue);
+			RenderPreviousResponse();
 			break;
 		case ConversationState.ANSWERING_APPERANCE_DELAY:
 			RenderDialogue(posDialogue);
+			RenderPreviousResponse();
 			// Don't render responses
 			break;
 		case ConversationState.SELECTION_TIME:
 			RenderDialogue(posDialogue);
 			// Write responses
 			string[] responses = CurrentNode.Responses;
+			RenderAnswerBox(posBackground);
 			for(int i = 0; i < responses.Length; i++) {
-				RenderAnswer(i, barHeight, posDialogue.y+15);
+				RenderAnswer(i, posBackground.y);
 			}
 			break;
 		case ConversationState.AWKWARD:
 			RenderDialogue(posDialogue);
-			RenderAnswer(_highlightedResponse, barHeight, posDialogue.y+posDialogue.height);
+			RenderAnswerBox(posBackground);
+			RenderAnswer(_highlightedResponse, posDialogue.y+posDialogue.height);
 			break;
 		}
 	}
@@ -201,31 +215,27 @@ public class ConversationAgent : MonoBehaviour {
 		if (_previousResponse == null)
 			return;
 
-		int derp2 = (int) ((Time.time-lastResponseTick) * charsPerSec);
-		if (derp2 <= _previousResponse.Length)
-			henryBubble.SetText(_previousResponse.Substring(0, derp2));
+		if (!HasRenderedCompleteResponseLine)
+			henryBubble.SetText(_previousResponse.Substring(0, responseLengthToRender));
 		else
 			henryBubble.SetText(_previousResponse);
 	}
 
-	protected float lastDialogueTick = 0;
 	public int charsPerSec = 105;
 	protected void RenderDialogue(Rect position) {
-		int derp = (int) ((Time.time-lastDialogueTick) * charsPerSec);
-
 		// Write Dialogue
 		GUIStyle style = new GUIStyle();
 		style.fontSize = dialogueFontSize;
 		style.alignment = TextAnchor.UpperCenter;
 		style.normal.textColor = Color.white;
-		if (derp <= CurrentNode.Dialogue.Length)
-			textBubble.SetText(CurrentNode.Dialogue.Substring(0, derp));
+
+		if (!HasRenderedCompleteDialogueLine)
+			textBubble.SetText(CurrentNode.Dialogue.Substring(0, dialogueLengthToRender));
 		else
 			textBubble.SetText(CurrentNode.Dialogue);
 	}
-
-	protected float lastResponseTick = 0;
-	protected void RenderAnswer(int i, int height, float dialogueOffset) {
+	
+	protected void RenderAnswer(int i, float dialogueOffset) {
 		int dialogueOffsetInt = (int) dialogueOffset; // Offsets the responses in the y-direction so they don't clash with the displayed dialogue.
 		Rect responsePos = new Rect(0, (i*dialogueFontSize)+dialogueOffsetInt+5, Screen.width, dialogueFontSize);
 //		String response = CurrentNode.Responses[i];
@@ -246,6 +256,12 @@ public class ConversationAgent : MonoBehaviour {
 		GUI.Label(responsePos, "[ " + CurrentNode.Responses[i] + " ]", style);
 
 //		henryBubble.SetText(henryBubble.Text + "\n"+response);
+	}
+
+	protected void RenderAnswerBox(Rect posBackground) {
+		// Draw Background
+		Color color = Color.black;
+		GUIHelpers.DrawQuad(posBackground, color);
 	}
 
 	public void StartConversation() {
