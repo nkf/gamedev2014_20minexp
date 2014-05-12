@@ -20,10 +20,6 @@
     {
       "index": 6,
       "dialogue": "Jane: Could you...",
-      "silentResponse": {
-        "timer": 7.0,
-        "gotoNode": 1
-      },
       "answeringAppearanceDelay": 3.0,
       "nextNodeDelay": 5.0,
       "responses": [
@@ -49,10 +45,6 @@
       "index": 2,
       "dialogue": "Jane: ...",
       "nextNodeDelay": 4.0,
-      "silentResponse": {
-        "timer": 6.0,
-        "gotoNode": 3
-      },
       "answeringAppearanceDelay": 11.0,
       "responses": [
         {

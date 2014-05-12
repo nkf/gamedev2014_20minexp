@@ -16,10 +16,6 @@
     {
       "index": 1,
       "dialogue": "Jane: ...",
-      "silentResponse": {
-        "timer": 3.0,
-        "gotoNode": 1
-      },
       "answeringAppearanceDelay": 4.0,
       "nextNodeDelay": 0.0
     }

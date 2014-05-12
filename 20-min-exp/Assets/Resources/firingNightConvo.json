@@ -28,10 +28,6 @@
     {
       "index": 2,
       "dialogue": "Jane: Geoffrey! Say thank you to your father!",
-      "silentResponse": {
-        "timer": 7.0,
-        "gotoNode": 3
-      },
       "answeringAppearanceDelay": 10.0,
       "nextNodeDelay": 3.0,
       "responses": [
