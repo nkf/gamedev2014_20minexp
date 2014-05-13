@@ -94,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -.440983176, y: .527310371, z: -.260868311}
+  m_LocalPosition: {x: -.440983176, y: .527310371, z: -.290071249}
   m_LocalScale: {x: .0100000007, y: .00999999978, z: .0100000007}
   m_Children: []
   m_Father: {fileID: 400008}
@@ -104,7 +104,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: .707106888, y: 0, z: 0, w: .707106769}
   m_LocalPosition: {x: -.440818518, y: .527279973, z: -.36970374}
   m_LocalScale: {x: .00999999978, y: .00999999978, z: .00999999978}
   m_Children: []
@@ -115,7 +115,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: .707106888, y: 0, z: 0, w: .707106769}
   m_LocalPosition: {x: -.234966278, y: .518006086, z: .450199604}
   m_LocalScale: {x: .00999999978, y: .00999999978, z: .00999999978}
   m_Children: []
@@ -126,8 +126,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: -.387297869, y: 11.8383589, z: .261224747}
+  m_LocalRotation: {x: .707106888, y: 0, z: 0, w: .707106769}
+  m_LocalPosition: {x: -.418732762, y: 11.8383589, z: .197234392}
   m_LocalScale: {x: .00999999978, y: .00999999978, z: .00999999978}
   m_Children: []
   m_Father: {fileID: 400008}
@@ -158,7 +158,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: d16e6fc365fa01c448502ff5a2c05815, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -179,7 +179,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: d16e6fc365fa01c448502ff5a2c05815, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -200,7 +200,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: d16e6fc365fa01c448502ff5a2c05815, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -221,7 +221,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: d16e6fc365fa01c448502ff5a2c05815, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -284,10 +284,10 @@ TextMesh:
   m_Anchor: 0
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 100
+  m_FontSize: 75
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: d16e6fc365fa01c448502ff5a2c05815, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4278190080
@@ -305,10 +305,10 @@ TextMesh:
   m_Anchor: 0
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 100
+  m_FontSize: 75
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: d16e6fc365fa01c448502ff5a2c05815, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4278190080
@@ -329,7 +329,7 @@ TextMesh:
   m_FontSize: 100
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: d16e6fc365fa01c448502ff5a2c05815, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4278190080
@@ -341,16 +341,16 @@ TextMesh:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_Text: Hello World
-  m_OffsetZ: 0
+  m_OffsetZ: 15
   m_CharacterSize: 1
-  m_LineSpacing: 1
+  m_LineSpacing: 2
   m_Anchor: 0
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 30
+  m_FontSize: 35
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: d16e6fc365fa01c448502ff5a2c05815, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4278190080
