@@ -28,30 +28,18 @@
     {
       "index": 2,
       "dialogue": "Geoffrey! Say thank you to your father!",
-      "answeringAppearanceDelay": 10.0,
+      "answeringAppearanceDelay": 0.0,
       "nextNodeDelay": 3.0,
       "responses": [
         {
-          "response": "...",
+          "response": "Don't worry about it...",
           "gotoNode": 3
         }
       ]
     },
     {
       "index": 3,
-      "dialogue": "Geoff: Thanks, dad...",
-      "answeringAppearanceDelay": 3.0,
-      "nextNodeDelay": 3.0,
-      "responses": [
-        {
-          "response": "You're welcome, son",
-          "gotoNode": 4
-        }
-      ]
-    },
-    {
-      "index": 4,
-      "dialogue": "...",
+      "dialogue": "Well, I for one, am very thankful.",
       "answeringAppearanceDelay": 2.0,
       "nextNodeDelay": 3.0
     }

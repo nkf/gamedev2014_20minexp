@@ -77,6 +77,7 @@ public class ConversationAgent : MonoBehaviour {
 				(Time.time - endTimer) > CurrentNode.NextNodeDelay) {
 				_state = ConversationState.RENDERING_DIALOGUE;
 				textBubble.gameObject.SetActive(true);
+				henryBubble.gameObject.SetActive(false);
 				endTimerHasBeenSet = false;
 				lastDialogueTick = Time.time;
 			}
@@ -169,9 +170,9 @@ public class ConversationAgent : MonoBehaviour {
 		if (!_conversationIsRunning)
 			return;
 
-		int barHeight = (Screen.height/5);
+		int barHeight = (Screen.height/6);
 		Rect posBackground  = new Rect(0,
-		                               Screen.height - (CurrentNode.Responses.Length*dialogueFontSize)-10,  // -10 because screen.height is apparrently not exactly screen height
+		                               Screen.height - /*(CurrentNode.Responses.Length*dialogueFontSize) -*/ barHeight,  // -10 because screen.height is apparrently not exactly screen height
 		                               Screen.width,
 		                               barHeight);
 		Rect posDialogue = new Rect(posBackground.x,

@@ -30,6 +30,9 @@ public class OfficeWorkController : MonoBehaviour {
 	// _currentBlocker will decrease for each contract loaded, and not for each iteration of contract loading...
 	// which means that _blocker should AT least be larger than the total number of contracts displayed at a time. Preferably larger.
 
+	AudioSource audioSourceSignature;
+	AudioSource audioSourceShuffle;
+
 	// Use this for initialization
 	void Start () {
 		// TODO: For testing purposes. Can be deleted for final version
@@ -39,6 +42,13 @@ public class OfficeWorkController : MonoBehaviour {
 			InitRegularWorkday();
 		else if (Toolbox.Instance.gameState.DayCounter == GameState.FIRING_DAY_MORNING)
 			InitLayoffDay();
+
+		foreach(AudioSource aus in GetComponents<AudioSource>()) {
+			if (aus.clip.name.Equals("Signature")) {
+				audioSourceSignature = aus;
+			} else if (aus.clip.name.Equals("Paper_shuffle"))
+				audioSourceShuffle = aus;
+		}
 	
 	}
 
@@ -112,10 +122,14 @@ public class OfficeWorkController : MonoBehaviour {
 //		if (Input.GetKeyDown(KeyCode.LeftArrow) && _highlightedContract != 0) {
 		if (h < 0 && _highlightedContract != 0) {
 			_highlightedContract--;
+			if (!audioSourceShuffle.isPlaying)
+				audioSourceShuffle.Play ();
 		}
 //		if (Input.GetKeyDown(KeyCode.RightArrow) && _highlightedContract != _loadedContracts.Length-1) {
 		if (h > 0 && _highlightedContract != _loadedContracts.Length-1) {
 			_highlightedContract++;
+			if (!audioSourceShuffle.isPlaying)
+				audioSourceShuffle.Play ();
 		}
 		if (Input.GetKeyDown(KeyCode.Return)) {
 			SelectContract( _loadedContracts[_highlightedContract].Contract );
@@ -185,6 +199,8 @@ public class OfficeWorkController : MonoBehaviour {
 		float homefulProfit = (contract.BusinessProfit / 100) * contract.HomefulProvisionPct;
 		Toolbox.Instance.gameState.MoneyCounter += (int) homefulProfit;
 		// TODO: Business profit
+
+		audioSourceSignature.Play();
 	}
 
 	//////////////////////

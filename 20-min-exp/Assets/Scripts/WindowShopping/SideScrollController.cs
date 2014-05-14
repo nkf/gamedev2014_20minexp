@@ -4,6 +4,9 @@ using System.Collections;
 
 public class SideScrollController : MonoBehaviour {
 
+	public static bool HasBoughtStuff = false;
+	public static SideScrollController CONTROLLER;
+
     private GameObject[] _wheels;
 	void Start () {
 		Screen.lockCursor = false;
@@ -11,6 +14,7 @@ public class SideScrollController : MonoBehaviour {
 	
 		_wheels = GameObject.FindGameObjectsWithTag("Wheel");
 		startTime = Time.time;
+		SideScrollController.CONTROLLER = this;
 	}
     public float Acceleration = 2f;
     public float DeAcceleration = 1f;
@@ -20,9 +24,12 @@ public class SideScrollController : MonoBehaviour {
     public float WheelRotationFactor = 4;
     [HideInInspector]
     public float Speed = 0;
+	public float TimeAfterBuying = 30;
 
 	private float startTime;
+	public float StartTime { get {return startTime;} set {startTime = value;} }
 	private bool isLoading = false;
+
 
 	// Update is called once per frame
 	void Update () {
@@ -41,7 +48,7 @@ public class SideScrollController : MonoBehaviour {
         RotateWheels(Speed*WheelRotationFactor);
 
 		//TODO: Find another way and condition to get to the next level 
-		if ((Time.time - startTime) > 27.0f && !isLoading) {
+		if ((Time.time - startTime) > TimeAfterBuying && !isLoading && SideScrollController.HasBoughtStuff) {
 			// Increase because we want to load the afternoon table scene, which is actually on the same ingame day as the morning table scene before getting fired
 			Toolbox.Instance.levelController.Load(LevelController.TABLE);
             Toolbox.Instance.gameState.DayCounter++;

@@ -3,7 +3,7 @@
   "AllNodes": [
     {
       "index": 0,
-      "dialogue": "You got home late again. Are you having an affair?",
+      "dialogue": "Why were you so late?. Are you having an affair?",
       "answeringAppearanceDelay": 4.0,
       "nextNodeDelay": 0.0,
       "responses": [
