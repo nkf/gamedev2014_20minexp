@@ -24,14 +24,15 @@ public class CarSpawn : MonoBehaviour {
 	    var spot = ParkingConfiguration.GetSpotSpawn(_index);
 	    if (spot.Taken) {
 	        SpawnRandomCar();
-	        GetComponent<BoxCollider>().enabled = false;
+	        collider.enabled = false;
 	    }
 
-	    if (spot.Name == Toolbox.Instance.gameState.CharacterName) { //character name will be set on the 2nd day.
+	    if (spot.Name == Toolbox.Instance.gameState.CharacterName) { //CharacterName will be set on the 2nd day.
 	        _name.text = "";
 	    } else {
             GetComponent<ParkingCheck>().SetName(spot.Name);
             _name.text = spot.Name;
+	        if (Toolbox.Instance.gameState.DayCounter == GameState.FIRING_DAY_MORNING) collider.enabled = false;
 	    }
 	    _index++;
 	    if (_index >= All.Count) _index = 0;
