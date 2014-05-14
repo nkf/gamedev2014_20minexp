@@ -65,7 +65,7 @@ public class AppearanceGameState : MonoBehaviour {
 		if (!IsLate) {
 			int timerWidth = 200;
 			Rect pos = new Rect((Screen.width/2)-(timerWidth/2), Screen.height/5, timerWidth, 20);
-			GUI.Box(pos, "Time passed: "+CurrentTimeToString);
+			GUI.Box(pos, "Time left: "+CurrentTimeToString);
 		} else {
 			int gameOverBoxWidth = Screen.width/2;
 			Rect centerPos = new Rect((Screen.width/2)-(gameOverBoxWidth/2), Screen.height/2, gameOverBoxWidth, 40);

@@ -172,7 +172,7 @@ public class ConversationAgent : MonoBehaviour {
 
 		int barHeight = (Screen.height/6);
 		Rect posBackground  = new Rect(0,
-		                               Screen.height - /*(CurrentNode.Responses.Length*dialogueFontSize) -*/ barHeight,  // -10 because screen.height is apparrently not exactly screen height
+		                               Screen.height - barHeight,  // -10 because screen.height is apparrently not exactly screen height
 		                               Screen.width,
 		                               barHeight);
 		Rect posDialogue = new Rect(posBackground.x,
