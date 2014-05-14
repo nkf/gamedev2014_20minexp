@@ -12,6 +12,7 @@ public class WifeAgent : ConversationAgent {
     protected override void StopConversation() {
         base.StopConversation();
 		int today = Toolbox.Instance.gameState.DayCounter;
+        SetMoney(today);
 		if (today == GameState.FIRING_DAY_AFTERNOON ||
 		    today == GameState.APPEARANCES_DAY_1 ||
 		    today == GameState.APPEARANCES_DAY_2)
@@ -24,5 +25,12 @@ public class WifeAgent : ConversationAgent {
 		} else {
         	Toolbox.Instance.levelController.LoadNext(10);
 		}
+    }
+
+    private void SetMoney(int day) {
+        var gs = Toolbox.Instance.gameState;
+        if (day == GameState.APPEARANCES_DAY_1) gs.MoneyCounter -= 24657;
+        if (day == GameState.APPEARANCES_DAY_2) gs.MoneyCounter -= 37596;
+        if (day == GameState.APPEARANCES_DAY_3) gs.MoneyCounter = 2596;
     }
 }

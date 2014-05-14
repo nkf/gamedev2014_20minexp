@@ -50,7 +50,7 @@ public class GameState : MonoBehaviour {
     IEnumerator MoneyDecay() {
         while (true) {
             yield return new WaitForSeconds(1f);
-            _moneyCounter -= Random.Range(2,7);
+            _moneyCounter -= Random.Range(2,5);
         }
     }
 
