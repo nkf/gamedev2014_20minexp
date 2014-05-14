@@ -164,7 +164,7 @@ public class ConversationAgent : MonoBehaviour {
 	}
 
 
-	protected int dialogueFontSize = 15;
+	protected int dialogueFontSize = 20;
 	void OnGUI() {
 		if (!_conversationIsRunning)
 			return;
@@ -238,11 +238,9 @@ public class ConversationAgent : MonoBehaviour {
 	protected void RenderAnswer(int i, float dialogueOffset) {
 		int dialogueOffsetInt = (int) dialogueOffset; // Offsets the responses in the y-direction so they don't clash with the displayed dialogue.
 		Rect responsePos = new Rect(0, (i*dialogueFontSize)+dialogueOffsetInt+5, Screen.width, dialogueFontSize);
-//		String response = CurrentNode.Responses[i];
 	
 		if (i == _highlightedResponse) {
-			GUIHelpers.DrawQuad(responsePos, Color.white);
-//			response = "-> "+response+" <-"; 
+			GUIHelpers.DrawQuad(responsePos, Color.white); 
 		}
 	
 		GUIStyle style = new GUIStyle();
@@ -254,8 +252,6 @@ public class ConversationAgent : MonoBehaviour {
 			style.normal.textColor = Color.white;
 		}
 		GUI.Label(responsePos, "[ " + CurrentNode.Responses[i] + " ]", style);
-
-//		henryBubble.SetText(henryBubble.Text + "\n"+response);
 	}
 
 	protected void RenderAnswerBox(Rect posBackground) {
