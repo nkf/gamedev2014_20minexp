@@ -1923,7 +1923,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 412789223}
   - 95: {fileID: 412789224}
-  - 114: {fileID: 412789225}
   m_Layer: 0
   m_Name: Kids TV
   m_TagString: Untagged
@@ -1960,19 +1959,6 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
---- !u!114 &412789225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400030, guid: d9b1cf3bf136924409075fb1328998e8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1519007834}
-  m_GameObject: {fileID: 412789222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78e82cdf175790d43832482e754998b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SellPrice: 500
 --- !u!1 &413800491
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,6 +2216,8 @@ GameObject:
   - 4: {fileID: 473603495}
   - 33: {fileID: 473603497}
   - 23: {fileID: 473603496}
+  - 114: {fileID: 473603499}
+  - 65: {fileID: 473603498}
   m_Layer: 0
   m_Name: Box001
   m_TagString: Untagged
@@ -2284,6 +2272,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1519007834}
   m_GameObject: {fileID: 473603494}
   m_Mesh: {fileID: 4300000, guid: 0f4323c914cd947ffb04ce333aca8540, type: 3}
+--- !u!65 &473603498
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 473603494}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .359999985, y: .358669281, z: .420000076}
+  m_Center: {x: 0, y: -.0206653979, z: .210000038}
+--- !u!114 &473603499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 473603494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e82cdf175790d43832482e754998b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SellPrice: 499
 --- !u!1 &476074263
 GameObject:
   m_ObjectHideFlags: 0
@@ -6440,6 +6452,7 @@ GameObject:
   - 23: {fileID: 1201103306}
   - 95: {fileID: 1201103305}
   - 114: {fileID: 1201103308}
+  - 65: {fileID: 1201103309}
   m_Layer: 0
   m_Name: bedtable
   m_TagString: Untagged
@@ -6515,7 +6528,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78e82cdf175790d43832482e754998b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SellPrice: 500
+  SellPrice: 104
+--- !u!65 &1201103309
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1201103303}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .00572513323, y: .00542426528, z: .00916880555}
+  m_Center: {x: .00234956294, y: -.00249999971, z: .00458439765}
 --- !u!1 &1219681653
 GameObject:
   m_ObjectHideFlags: 0
@@ -8208,8 +8233,13 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400028, guid: d9b1cf3bf136924409075fb1328998e8, type: 2}
+      propertyPath: SellPrice
+      value: 104
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400020, guid: d9b1cf3bf136924409075fb1328998e8, type: 2}
+    - {fileID: 11400030, guid: d9b1cf3bf136924409075fb1328998e8, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d9b1cf3bf136924409075fb1328998e8, type: 2}
   m_RootGameObject: {fileID: 1980324022}
   m_IsPrefabParent: 0
