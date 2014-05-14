@@ -82,7 +82,7 @@ public class LevelController : MonoBehaviour {
             HallText    [GameState.FIRING_DAY_MORNING]  = "I REPEAT THE SAME ROUTINE";
             RoadText    [GameState.REGULAR_DAY]         = "THE COMMUTE";
             RoadText    [GameState.FIRING_DAY_MORNING]  = "I THINK I USED TO HAVE A PURPOSE";
-            ParkingText [GameState.REGULAR_DAY]         = "PARK THE CAR, HENRY STEIN, PARK THE CAR.";
+            ParkingText [GameState.REGULAR_DAY]         = "PARK IN\nASSIGNED\nSPACE\nONLY";
             ParkingText [GameState.FIRING_DAY_MORNING]  = "THAT MIGHT HAVE BEEN A DREAM";
             OfficeText  [GameState.REGULAR_DAY]         = "WORK WORK?";
             OfficeText  [GameState.REGULAR_DAY]         = "WORK WORK?";
