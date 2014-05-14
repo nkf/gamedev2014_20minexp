@@ -3,7 +3,7 @@
   "AllNodes": [
     {
       "index": 0,
-      "dialogue": "Jane: Henry, could you pass me the salt?",
+      "dialogue": "Henry, could you pass me the salt?",
       "answeringAppearanceDelay": 4.0,
       "nextNodeDelay": 0.0,
       "responses": [
@@ -15,7 +15,7 @@
     },
     {
       "index": 1,
-      "dialogue": "Jane: ...",
+      "dialogue": "...",
       "answeringAppearanceDelay": 4.0,
       "nextNodeDelay": 0.0
     }

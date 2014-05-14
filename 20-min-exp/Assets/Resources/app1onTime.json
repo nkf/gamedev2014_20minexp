@@ -3,7 +3,7 @@
   "AllNodes": [
     {
       "index": 0,
-      "dialogue": "Jane: How was work today?",
+      "dialogue": "How was work today?",
       "answeringAppearanceDelay": 4.0,
       "nextNodeDelay": 0.0,
       "responses": [
@@ -19,7 +19,7 @@
     },
     {
       "index": 1,
-      "dialogue": "Jane: I see...",
+      "dialogue": "I see...",
       "answeringAppearanceDelay": 4.0,
       "nextNodeDelay": 0.0
     }

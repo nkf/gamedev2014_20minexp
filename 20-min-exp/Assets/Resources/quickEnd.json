@@ -19,7 +19,7 @@
     },
     {
       "index": 1,
-      "dialogue": "Jane: I'm glad...",
+      "dialogue": "I'm glad...",
       "nextNodeDelay": 0.0,
       "answeringAppearanceDelay": 0.0
     }

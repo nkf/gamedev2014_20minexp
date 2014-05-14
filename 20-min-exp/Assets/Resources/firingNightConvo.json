@@ -3,7 +3,7 @@
   "AllNodes": [
     {
       "index": 0,
-      "dialogue": "Jane: How was work?",
+      "dialogue": "How was work?",
       "answeringAppearanceDelay": 4.0,
       "nextNodeDelay": 0.0,
       "responses": [
@@ -15,7 +15,7 @@
     },
     {
       "index": 1,
-      "dialogue": "Jane: Excellent! That explains all the gifts... Very thoughtful of you, thank you.",
+      "dialogue": "Excellent! That explains all the gifts... Very thoughtful of you, thank you.",
       "answeringAppearanceDelay": 4.0,
       "nextNodeDelay": 0.0,
       "responses": [
@@ -27,7 +27,7 @@
     },
     {
       "index": 2,
-      "dialogue": "Jane: Geoffrey! Say thank you to your father!",
+      "dialogue": "Geoffrey! Say thank you to your father!",
       "answeringAppearanceDelay": 10.0,
       "nextNodeDelay": 3.0,
       "responses": [

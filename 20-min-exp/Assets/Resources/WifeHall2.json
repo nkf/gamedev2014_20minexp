@@ -3,7 +3,7 @@
   "AllNodes": [
     {
       "index": 0,
-      "dialogue": "Jane: Have a nice day at work, darling",
+      "dialogue": "Have a nice day at work, darling",
       "responses": [
         {
           "response": "...",
@@ -13,7 +13,7 @@
     },
     {
       "index": 1,
-      "dialogue": "Jane: Oh, and buy some milk, please",
+      "dialogue": "Oh, and buy some milk, please",
       "responses": []
     }
   ]

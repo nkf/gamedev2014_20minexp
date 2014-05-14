@@ -3,7 +3,7 @@
   "AllNodes": [
     {
       "index": 0,
-      "dialogue": "Jane: How was work today? You got home early again.",
+      "dialogue": "How was work today? You got home early again.",
       "answeringAppearanceDelay": 4.0,
       "nextNodeDelay": 0.0,
       "responses": [
@@ -15,7 +15,7 @@
     },
     {
       "index": 1,
-      "dialogue": "Jane: Listen, Henry, is something wrong? I was at the bank yesterday and we're seriously low on money...",
+      "dialogue": "Listen, Henry, is something wrong? I was at the bank yesterday and we're seriously low on money...",
       "answeringAppearanceDelay": 4.0,
       "nextNodeDelay": 0.0,
       "responses": [
@@ -31,7 +31,7 @@
     },
     {
       "index": 2,
-      "dialogue": "Jane: I don't know, Henry...",
+      "dialogue": "I don't know, Henry...",
       "answeringAppearanceDelay": 4.0,
       "nextNodeDelay": 1.0
     }

@@ -19,7 +19,7 @@
     },
     {
       "index": 6,
-      "dialogue": "Jane: Could you...",
+      "dialogue": "Could you...",
       "answeringAppearanceDelay": 3.0,
       "nextNodeDelay": 5.0,
       "responses": [
@@ -31,7 +31,7 @@
     },
     {
       "index": 1,
-      "dialogue": "Jane: ...could you pass me the salt, please?",
+      "dialogue": "...could you pass me the salt, please?",
       "nextNodeDelay": 0.0,
       "answeringAppearanceDelay": 5.0,
       "responses": [
@@ -43,7 +43,7 @@
     },
     {
       "index": 2,
-      "dialogue": "Jane: ...",
+      "dialogue": "...",
       "nextNodeDelay": 4.0,
       "answeringAppearanceDelay": 11.0,
       "responses": [
@@ -55,7 +55,7 @@
     },
     {
       "index": 3,
-      "dialogue": "Jane: When do you have to be at work today?",
+      "dialogue": "When do you have to be at work today?",
       "nextNodeDelay": 0.0,
       "answeringAppearanceDelay": 4.0,
       "responses": [
@@ -71,7 +71,7 @@
     },
     {
       "index": 4,
-      "dialogue": "Jane: Of course...",
+      "dialogue": "Of course...",
       "nextNodeDelay": 2.0,
       "answeringAppearanceDelay": 7.0,
       "responses": [
@@ -83,7 +83,7 @@
     },
     {
       "index": 5,
-      "dialogue": "Jane: I'm sorry, never mind...",
+      "dialogue": "I'm sorry, never mind...",
       "nextNodeDelay": 2.5,
       "answeringAppearanceDelay": 7.0,
       "responses": [
@@ -95,7 +95,7 @@
     },
     {
       "index": 7,
-      "dialogue": "Jane: How is the toast?",
+      "dialogue": "How is the toast?",
       "nextNodeDelay": 3.0,
       "answeringAppearanceDelay": 3.0,
       "responses": [
@@ -107,7 +107,7 @@
     },
     {
       "index": 8,
-      "dialogue": "Jane: I'm glad...",
+      "dialogue": "I'm glad...",
       "nextNodeDelay": 3.0,
       "answeringAppearanceDelay": 8.0
     }

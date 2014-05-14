@@ -3,12 +3,12 @@
   "AllNodes": [
     {
       "index": 0,
-      "dialogue": "Jane: Could you...",
+      "dialogue": "Could you...",
       "nextNodeDelay": 0.0,
     },
     {
       "index": 1,
-      "dialogue": "Jane: ...could you pass me the salt, please?",
+      "dialogue": "...could you pass me the salt, please?",
       "answeringAppearanceDelay": 2.0,
       "responses": [
         {
@@ -19,7 +19,7 @@
     },
     {
       "index": 2,
-      "dialogue": "Jane: PLEEEEEASE, SALT, PLEEEEEASE"
+      "dialogue": "PLEEEEEASE, SALT, PLEEEEEASE"
     }
   ]
 }

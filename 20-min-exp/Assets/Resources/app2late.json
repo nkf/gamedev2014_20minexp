@@ -3,7 +3,7 @@
   "AllNodes": [
     {
       "index": 0,
-      "dialogue": "Jane: You got home late again. Are you having an affair?",
+      "dialogue": "You got home late again. Are you having an affair?",
       "answeringAppearanceDelay": 4.0,
       "nextNodeDelay": 0.0,
       "responses": [
@@ -19,7 +19,7 @@
     },
     {
       "index": 1,
-      "dialogue": "Jane: I'm asking because I was at the bank yesterday and we're seriously low on money... I think you are buying expensive gifts for some bimbo slut.",
+      "dialogue": "I'm asking because I was at the bank yesterday and we're seriously low on money... I think you are buying expensive gifts for some bimbo slut.",
       "answeringAppearanceDelay": 4.0,
       "nextNodeDelay": 0.0,
       "responses": [
@@ -35,7 +35,7 @@
     },
     {
       "index": 2,
-      "dialogue": "Jane: ...",
+      "dialogue": "...",
       "answeringAppearanceDelay": 4.0,
       "nextNodeDelay": 1.0
     }
