@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: No Name
-  m_Shader: {fileID: 3, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 84ffd0800f287a74a946d4ca8eabe4f3, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -25,12 +25,20 @@ Material:
         first:
           name: _Shininess
         second: .078125
+      data:
+        first:
+          name: _Outline
+        second: .00999999978
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: .45588237, g: .662271678, b: 1, a: 1}
+        second: {r: .210910439, g: .362400711, b: .610294104, a: 1}
       data:
         first:
           name: _SpecColor
         second: {r: .595588207, g: .882860005, b: 1, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 0, g: .793103218, b: 1, a: 0}

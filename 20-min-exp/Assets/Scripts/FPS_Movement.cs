@@ -24,7 +24,7 @@ public class FPS_Movement : MonoBehaviour {
 	    if (Mathf.Abs(h) + Mathf.Abs(v) < 0.2) {
 	        var velocity = rigidbody.velocity;
 	        if (velocity.magnitude < SlowDownThreshold && velocity.magnitude > 0.1f) {
-	            rigidbody.velocity = SubToZero(velocity, 0.2f);
+	            rigidbody.velocity = SubToZero(velocity, 0.4f);
 	        }  
 	    }
 	}
