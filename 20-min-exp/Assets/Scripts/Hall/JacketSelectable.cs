@@ -13,6 +13,9 @@ public class JacketSelectable : Selectable {
 	
 	public override void Select() {
 		JacketSelectable.JACKET.isTaken = true;
-		Destroy(gameObject);
+        audio.Play();
+	    renderer.enabled = false;
+	    collider.enabled = false;
+	    //Destroy(gameObject);
 	}
 }
