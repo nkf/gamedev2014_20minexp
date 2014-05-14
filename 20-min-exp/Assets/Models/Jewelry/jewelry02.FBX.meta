@@ -1,13 +1,20 @@
 fileFormatVersion: 2
-guid: d606a962624426e47b0a9abeda48d5b7
+guid: 6516b88288fd14bce8d0e649c58e230f
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Box001
+    100000: Box001
+    100002: //RootNode
+    100004: Line002
+    400000: Box001
+    400002: //RootNode
+    400004: Line002
+    2300000: Box001
+    2300002: Line002
+    3300000: Box001
+    3300002: Line002
+    4300000: Line002
+    4300002: Box001
     9500000: //RootNode
   materials:
     importMaterials: 0
