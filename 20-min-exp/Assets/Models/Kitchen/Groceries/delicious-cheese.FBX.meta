@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0590b22afd0254547b0101516ec42ceb
+guid: c8283e392538549b2ba19ca28901c18a
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -10,7 +10,7 @@ ModelImporter:
     4300000: Prism001
     9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:

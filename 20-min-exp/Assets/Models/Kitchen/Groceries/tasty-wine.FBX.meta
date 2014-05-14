@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 667397d037f7f4ddea540df6064928fd
+guid: 44a385df0a10e402195174bcedf3106d
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -10,7 +10,7 @@ ModelImporter:
     4300000: Cylinder001
     9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
