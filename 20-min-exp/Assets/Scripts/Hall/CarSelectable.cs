@@ -9,6 +9,6 @@ public class CarSelectable : Selectable {
 	    } else {
 	        Toolbox.Instance.levelController.Load(LevelController.PARKING);
 	    }
-		
+		audio.Play();
 	}
 }

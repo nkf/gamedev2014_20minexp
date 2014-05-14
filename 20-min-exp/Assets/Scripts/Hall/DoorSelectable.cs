@@ -14,6 +14,7 @@ public class DoorSelectable : Selectable {
 	public override void Select() {
 		if (KeysSelectable.KEYS.isTaken && JacketSelectable.JACKET.isTaken && !isOpened) {
 			FRONT_DOOR.isOpened = true;
+            audio.Play();
 		    animation.Play();
 		}
 		else if (!KeysSelectable.KEYS.isTaken && !JacketSelectable.JACKET.isTaken) {

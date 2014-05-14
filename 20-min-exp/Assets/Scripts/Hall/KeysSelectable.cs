@@ -13,6 +13,8 @@ public class KeysSelectable : Selectable {
 	
 	public override void Select() {
 		KeysSelectable.KEYS.isTaken = true;
-		Destroy(gameObject);
+        audio.Play();
+	    renderer.enabled = false;
+	    collider.enabled = false;
 	}
 }

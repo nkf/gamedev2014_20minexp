@@ -11,10 +11,20 @@ public class HallMovement : MonoBehaviour {
 
 	public static bool WifeSatisfied;
 
+    public AudioClip FootstepsSoft;
+    public AudioClip FootstepsHard;
+    private AudioSource _footstepsSoft;
+    private AudioSource _footstepsHard;
 	void Start() {
 		Screen.lockCursor = true;
 		Screen.showCursor = false;
 		WifeSatisfied = false;
+	    _footstepsSoft = gameObject.AddComponent<AudioSource>();
+	    _footstepsSoft.clip = FootstepsSoft;
+	    _footstepsSoft.volume = 0.4f;
+	    _footstepsHard = gameObject.AddComponent<AudioSource>();
+	    _footstepsHard.clip = FootstepsHard;
+        _footstepsHard.volume = 0.4f;
 	}
 
 	void Update () {
@@ -30,6 +40,7 @@ public class HallMovement : MonoBehaviour {
 		if (p.z > IN_FRONT_OF_DOOR && p.z < 1.0f && WifeSatisfied) 
 		{
 			p.z -= (v * Time.deltaTime);
+            if(Mathf.Abs(v) > 0.2f && !_footstepsSoft.isPlaying) _footstepsSoft.Play();
 			if (p.z > 1.0f)
 				return;
 			if (p.z < IN_FRONT_OF_DOOR &&
@@ -38,11 +49,13 @@ public class HallMovement : MonoBehaviour {
 		} else if (DoorSelectable.FRONT_DOOR.isOpened && p.z > IN_FRONT_OF_CAR) {
 			// Go outside
 				p.z -= (v * Time.deltaTime * 2);
+                if(Mathf.Abs(v) > 0.2f && !_footstepsHard.isPlaying) _footstepsHard.Play();
 				if (p.z < IN_FRONT_OF_CAR)
 					return;
 		} else if (p.z > NEXT_TO_WIFE && p.z < WALL) {
 			// Be stopped by wife
 			p.z -= (v * Time.deltaTime);
+            if(Mathf.Abs(v) > 0.2f && !_footstepsSoft.isPlaying) _footstepsSoft.Play();
 			if (p.z > 1.0f)
 					return;
 			// Be stopped by wife

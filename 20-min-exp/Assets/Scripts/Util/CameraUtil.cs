@@ -89,11 +89,11 @@ public static class CameraUtil {
         c.transform.localEulerAngles = a;
     }
 
-    public static IEnumerator ShowCenterText(this Camera camera, string text, Action onComplete) {
+    public static IEnumerator ShowCenterText(this Camera camera, string text, Action onComplete = null) {
         Toolbox.Instance.gameState.ShowCenterText(text);
         yield return new WaitForSeconds(5);
         Toolbox.Instance.gameState.HideCenterText();
-        onComplete();
+        if(onComplete != null) onComplete();
     }
 }
 public class Fader {
