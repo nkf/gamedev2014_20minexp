@@ -61,6 +61,8 @@ public class SplineController : MonoBehaviour {
 	public bool ignoreNextNode;
 	public bool startOnVert;
 
+	public bool showVelocityGUI = true;
+
 	public bool KeyControl = true;
 
 	public float maxCarSpeed = 0.4f;
@@ -72,7 +74,8 @@ public class SplineController : MonoBehaviour {
 	bool reverse = false;
 
 	void OnGUI() {
-		GUI.Box(new Rect(Screen.width - 75, 25, 75, 20), rigidbody.velocity.ToString());
+		if (showVelocityGUI)
+			GUI.Box(new Rect(Screen.width - 75, 25, 75, 20), rigidbody.velocity.ToString());
 	}
 	public virtual void Start() {
 		mode = Mode.KEYBOARD;
