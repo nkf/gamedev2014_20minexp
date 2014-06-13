@@ -13,8 +13,10 @@ public class Buyable : Selectable {
     public override void Select() {
         Toolbox.Instance.gameState.MoneyCounter -= BuyPrice;
         Destroy(gameObject);
-		SideScrollController.CONTROLLER.StartTime = Time.time;
-		SideScrollController.HasBoughtStuff = true;
+        if (!SideScrollController.HasBoughtStuff) {
+            SideScrollController.CONTROLLER.StartTime = Time.time;
+            SideScrollController.HasBoughtStuff = true;
+        }
     }
 
 }

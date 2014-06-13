@@ -32,5 +32,6 @@ public class WifeAgent : ConversationAgent {
         if (day == GameState.FIRING_DAY_AFTERNOON) gs.MoneyCounter -= 25657;
         if (day == GameState.APPEARANCES_DAY_1) gs.MoneyCounter -= 37596;
         if (day == GameState.APPEARANCES_DAY_2) gs.MoneyCounter = 2596;
+        Debug.Log("ITS DAY :"+ day + " SPECIAL HAPPENS ON " + GameState.FIRING_DAY_AFTERNOON + " " + GameState.APPEARANCES_DAY_1 + " " + GameState.APPEARANCES_DAY_2);
     }
 }
